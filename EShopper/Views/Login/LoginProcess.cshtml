@@ -1,8 +1,10 @@
 ﻿
+@model EShopper.Models.UsersModel
 @{
     ViewBag.Title = "Üye Ol Ve Giriş Yap";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 <section id="form">
     <!--form-->
@@ -11,17 +13,23 @@
             <div class="col-sm-4 col-sm-offset-1">
                 <div class="login-form">
                     <!--login form-->
-                    <h2>Login to your account</h2>
-                    <form action="#">
-                        <input type="text" placeholder="Name" />
-                        <input type="email" placeholder="Email Address" />
-                        <span>
-                            <input type="checkbox" class="checkbox">
-                            Keep me signed in
-                        </span>
-                        <button type="submit" class="btn btn-default">Login</button>
-                    </form>
-                </div><!--/login form-->
+                    @using (Html.BeginForm("LoginControl", "Login", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <h2>Login to your account</h2>
+                        <form action="#">
+                            <input type="email" placeholder="Email Address" name="TxtEmail" />
+                            <input type="password" placeholder="Password" name="TxtPassword" />
+                            <button type="submit" class="btn btn-default">Login</button>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10" style="color:red">
+                                    @ViewBag.ErrorMessage
+
+                                </div>
+                            </div>
+                        </form>
+                    }
+                    </div><!--/login form-->
             </div>
             <div class="col-sm-1">
                 <h2 class="or">OR</h2>
@@ -29,13 +37,42 @@
             <div class="col-sm-4">
                 <div class="signup-form">
                     <!--sign up form-->
-                    <h2>New User Signup!</h2>
-                    <form action="#">
-                        <input type="text" placeholder="Name" />
-                        <input type="email" placeholder="Email Address" />
-                        <input type="password" placeholder="Password" />
-                        <button type="submit" class="btn btn-default">Signup</button>
-                    </form>
+                    @using (Html.BeginForm("AddUser", "Login", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <h2>New User Signup!</h2>
+                        <form action="#">
+                            @Html.ValidationMessage("Name", "Please enter Name", "text-danger")
+                            <input type="text" placeholder="Name*" name="TxtName" />
+                            @Html.ValidationMessage("Surname", "Please enter Surname", "text-danger")
+                            <input type="text" placeholder="Surname*" name="TxtSurname" />
+                            @Html.ValidationMessage("Email", "Please enter email", "text-danger")
+                            <input type="email" placeholder="Email Address*" name="TxtEmail" />
+                            @Html.ValidationMessage("Password", "Please enter password", "text-danger")
+                            <input type="password" placeholder="Password*" name="TxtPassword" />
+                            @Html.ValidationMessage("DateOfBirth", "Please enter Birth Of Date", "text-danger")
+                            <input type="date" placeholder="Date Of Birth*" name="DtDateOfBirth" />
+                            @Html.ValidationMessage("Address", "Please enter Address", "text-danger")
+                            <input type="text" placeholder="Address*" name="TxtAddress" />
+                            @Html.ValidationMessage("Gender", "Please enter Gender", "text-danger")
+                            <select name="slGender">
+                                <option selected>Gender Choose</option>
+                                <option value="Man">Man*</option>
+                                <option value="Woman">Woman*</option>
+                            </select>
+                            <button style="margin-top:10px;" type="submit" class="btn btn-default" onclick="location.href='@Url.Action("AddUser", "Login")'">
+                                Signup
+                            </button>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10" style="color:red">
+                                    @ViewBag.ErrorMessage
+
+                                </div>
+                            </div>
+                        </form>
+
+
+                    }
                 </div><!--/sign up form-->
             </div>
         </div>

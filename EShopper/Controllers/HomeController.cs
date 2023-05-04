@@ -12,6 +12,5 @@ namespace EShopper.Controllers
         {
             return View();
         }
-
     }
 }
