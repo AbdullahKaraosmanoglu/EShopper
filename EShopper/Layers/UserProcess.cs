@@ -13,7 +13,7 @@ namespace EShopper.Layers
     public class UserProcess
     {
         private SqlConnection con;
-        
+
         /// <summary>
         /// web.config'den connection string'i alan SQL bağlantı yapısı...
         /// </summary>
@@ -48,17 +48,14 @@ namespace EShopper.Layers
             con.Close();
             if (i >= 1)
             {
-
                 return true;
-
             }
             else
             {
-
                 return false;
             }
         }
-        
+
         /// <summary>
         /// Kullanıcı Giriş yaparken Sistemde Hesabı Olup olmadığını dönen ve kontrol eden SELECT Yapısı ve Methodudur...
         /// </summary>
@@ -70,8 +67,10 @@ namespace EShopper.Layers
             List<UsersModel> userModelList = new List<UsersModel>();
 
 
-            SqlCommand com = new SqlCommand("dbo.SpLoginControl", con);
-            com.CommandType = CommandType.StoredProcedure;
+            SqlCommand com = new SqlCommand("dbo.SpLoginControl", con)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
 
             com.Parameters.AddWithValue("@Email", usersModel.Email).DbType = DbType.String;
             com.Parameters.AddWithValue("@Password", usersModel.Password).DbType = DbType.String;
@@ -90,7 +89,7 @@ namespace EShopper.Layers
 
                     new UsersModel
                     {
-                        UserId=Convert.ToInt32(dr["UserId"]),
+                        UserId = Convert.ToInt32(dr["UserId"]),
                         Name = Convert.ToString(dr["Name"]),
                         Surname = Convert.ToString(dr["Surname"]),
                         Email = Convert.ToString(dr["Email"]),
@@ -105,5 +104,27 @@ namespace EShopper.Layers
 
             return userModelList;
         }
+
+        public Boolean SignUpControl(UsersModel usersModel)
+        {
+            connection();
+
+            SqlCommand com = new SqlCommand("dbo.SpUsersControl", con)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            com.Parameters.AddWithValue("@Email", usersModel.Email).DbType = DbType.String;
+
+            con.Open();
+            var sp = com.ExecuteScalar();
+            con.Close(); //burada kayıt varsa  
+            if (sp.Equals("true"))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
+

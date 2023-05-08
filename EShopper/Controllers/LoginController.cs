@@ -16,9 +16,9 @@ namespace EShopper.Controllers
             return View();
         }
         //örnek region kullanımı
-        #region Insert method 
+        #region Insert method  
         /// <summary>
-        /// Kullanıcıyı Üye Yapan Controller Methodudur...
+        /// Müşteriyi Üye Yapan Controller Methodudur...
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
@@ -34,7 +34,7 @@ namespace EShopper.Controllers
                 string DtDateOfBirth = Request.Form["DtDateOfBirth"].ToString();
                 string TxtAddress = Request.Form["TxtAddress"].ToString();
                 string slGender = Request.Form["slGender"].ToString();
-                int gender = 2;
+                int gender = 0;
                 if (slGender == "Man")
                 {
                     gender = 0;
@@ -43,7 +43,14 @@ namespace EShopper.Controllers
                 {
                     gender = 1;
                 }
-                if (ModelState.IsValid)
+
+                if (!SignUpControl())
+                {
+                    @ViewBag.SErrorMessage = "Aynı Email İle Kayıtlı Üye Mevcut Başka Bir Email İle Deneyiniz";
+                    return View("~/Views/Login/LoginProcess.cshtml");
+                }
+
+                else if (FormValidation())
                 {
                     UsersModel usersModel = new UsersModel
                     {
@@ -64,6 +71,7 @@ namespace EShopper.Controllers
                     @ViewBag.ErrorMessage = "Tüm alanları doldurunuz.";
 
                 }
+
             }
             catch (Exception ex)
             {
@@ -99,13 +107,13 @@ namespace EShopper.Controllers
 
                     if (response == null || response.Count <= 0)
                     {
-                        @ViewBag.ErrorMessage = "Email veya şifre hatalı.";
+                        @ViewBag.LErrorMessage = "Email veya şifre hatalı.";
                         return View("~/Views/Login/LoginProcess.cshtml");
                     }
                 }
                 else
                 {
-                    @ViewBag.ErrorMessage = "Tüm alanları doldurunuz.";
+                    @ViewBag.LErrorMessage = "Tüm alanları doldurunuz.";
                     return View("~/Views/Login/LoginProcess.cshtml");
 
                 }
@@ -116,6 +124,50 @@ namespace EShopper.Controllers
             }
 
             return View("~/Views/Home/Index.cshtml");
+
+            
+        }
+
+        private Boolean FormValidation()
+        {
+            string TxtName = Request.Form["TxtName"].ToString();
+            string TxtSurname = Request.Form["TxtSurname"].ToString();
+            string TxtEmail = Request.Form["TxtEmail"].ToString();
+            string TxtPassword = Request.Form["TxtPassword"].ToString();
+            string DtDateOfBirth = Request.Form["DtDateOfBirth"].ToString();
+            string TxtAddress = Request.Form["TxtAddress"].ToString();
+            if (String.IsNullOrEmpty(TxtName) || String.IsNullOrEmpty(TxtSurname) || 
+                String.IsNullOrEmpty(TxtEmail) || String.IsNullOrEmpty(TxtPassword)|| 
+                String.IsNullOrEmpty(DtDateOfBirth) || String.IsNullOrEmpty(TxtAddress))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private Boolean SignUpControl()
+        {
+            string TxtEmail = Request.Form["TxtEmail"].ToString();
+            if (!String.IsNullOrEmpty(TxtEmail))
+            {
+                UsersModel usersModelGet = new UsersModel
+                {
+                    Email = TxtEmail,
+                };
+
+                UserProcess userProcess = new UserProcess();
+                var response = userProcess.SignUpControl(usersModelGet);
+                if (response == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
