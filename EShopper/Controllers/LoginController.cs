@@ -3,6 +3,7 @@ using EShopper.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 
@@ -22,11 +23,36 @@ namespace EShopper.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
+        /// 
+        //tüm alanları doldurmadan add Usera geçmesini bekleyemezsin. 
+        //çünkü parametre olarak model alıyorsun. Frontend tarafında model oluşmadan
+        //yani tüm alanlar entity oluşturmadan model oluşmaz. 
+        //model oluşmadığu içinde httppost metodu yerine get metodunu arar
+
+
+        [HttpGet]
+        public ActionResult AddUser()
+        {
+            //if (FormValidation())
+            //{
+                @ViewBag.ErrorMessage = "Tüm alanları doldurunuz.";
+            //}
+            //else if (!SignUpControl())
+            //{
+            //    @ViewBag.SErrorMessage = "Aynı Email İle Kayıtlı Üye Mevcut Başka Bir Email İle Deneyiniz";
+            //}
+            return View("~/Views/Login/LoginProcess.cshtml");
+            //return RedirectToAction("AddUser","Login");
+        }
         [HttpPost]
         public ActionResult AddUser(UsersModel user)
         {
             try
             {
+                if (FormValidation())
+                {
+                    @ViewBag.ErrorMessage = "Tüm alanları doldurunuz.";
+                }
                 string TxtName = Request.Form["TxtName"].ToString();
                 string TxtSurname = Request.Form["TxtSurname"].ToString();
                 string TxtEmail = Request.Form["TxtEmail"].ToString();
@@ -90,10 +116,12 @@ namespace EShopper.Controllers
         [HttpPost]
         public ActionResult LoginControl(UsersModel usersModel)
         {
+            UserProcess userProcess = new UserProcess();
+            string TxtEmail = Request.Form["TxtEmail"].ToString();
+            string TxtPassword = Request.Form["TxtPassword"].ToString();
             try
             {
-                string TxtEmail = Request.Form["TxtEmail"].ToString();
-                string TxtPassword = Request.Form["TxtPassword"].ToString();
+                
                 if (!String.IsNullOrEmpty(TxtEmail) || !String.IsNullOrEmpty(TxtPassword)/*ModelState.IsValid*/)
                 {
                     UsersModel usersModelGet = new UsersModel
@@ -101,8 +129,7 @@ namespace EShopper.Controllers
                         Email = TxtEmail,
                         Password = TxtPassword
                     };
-
-                    UserProcess userProcess = new UserProcess();
+                    
                     var response = userProcess.LoginControl(usersModelGet);
 
                     if (response == null || response.Count <= 0)
@@ -122,23 +149,30 @@ namespace EShopper.Controllers
             {
                 throw ex;
             }
-
-            return View("~/Views/Home/Index.cshtml");
+            var responseUserModel = userProcess.SelectUserModelByEmailAndPassword(TxtEmail,TxtPassword);
+            ViewBag.UserModel = responseUserModel;
+            Session["userId"] = responseUserModel.UserId;
+            return View("~/Views/Home/Index.cshtml", ViewBag);
 
             
         }
 
         private Boolean FormValidation()
         {
-            string TxtName = Request.Form["TxtName"].ToString();
-            string TxtSurname = Request.Form["TxtSurname"].ToString();
-            string TxtEmail = Request.Form["TxtEmail"].ToString();
-            string TxtPassword = Request.Form["TxtPassword"].ToString();
-            string DtDateOfBirth = Request.Form["DtDateOfBirth"].ToString();
-            string TxtAddress = Request.Form["TxtAddress"].ToString();
-            if (String.IsNullOrEmpty(TxtName) || String.IsNullOrEmpty(TxtSurname) || 
-                String.IsNullOrEmpty(TxtEmail) || String.IsNullOrEmpty(TxtPassword)|| 
-                String.IsNullOrEmpty(DtDateOfBirth) || String.IsNullOrEmpty(TxtAddress))
+            //string TxtName = Request.Form["TxtName"].ToString();
+            //string TxtSurname = Request.Form["TxtSurname"].ToString();
+            //string TxtEmail = Request.Form["TxtEmail"].ToString();
+            //string TxtPassword = Request.Form["TxtPassword"].ToString();
+            //string DtDateOfBirth = Request.Form["DtDateOfBirth"].ToString();
+            //string TxtAddress = Request.Form["TxtAddress"].ToString();
+            //if (String.IsNullOrEmpty(TxtName) || String.IsNullOrEmpty(TxtSurname) || 
+            //    String.IsNullOrEmpty(TxtEmail) || String.IsNullOrEmpty(TxtPassword)|| 
+            //    String.IsNullOrEmpty(DtDateOfBirth) || String.IsNullOrEmpty(TxtAddress))
+            //{
+            //    return false;
+            //}
+
+            if (!ModelState.IsValid)
             {
                 return false;
             }

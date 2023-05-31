@@ -28,3 +28,17 @@ $(document).ready(function(){
 		});
 	});
 });
+
+function ValidControl(AInput) {
+	var Input = AInput;
+    if (Input.required != null) {
+        if (Input.required) {
+            if (Input.value === "" || Input.value === "-1") {
+				Input.style.bacgroundColor = "#ff000070";
+			}
+            else {
+				Input.style.bacgroundColor = "#fOFOE9";
+            }
+        }
+    }
+}

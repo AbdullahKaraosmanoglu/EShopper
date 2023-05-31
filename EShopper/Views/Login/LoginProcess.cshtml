@@ -3,10 +3,11 @@
 @{
     ViewBag.Title = "Üye Ol Ve Giriş Yap";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    //ViewBag.UserId = Model.UserId;
 }
 
 
-<section id="form">
+<!--<section id="form">-->
     <!--form-->
     <div class="container">
         <div class="row">
@@ -29,7 +30,26 @@
                             </div>
                         </form>
                     }
-                    </div><!--/login form-->
+                </div><!--/login form-->
+                <div class="login-form">
+                    <!--login form-->
+                    @using (Html.BeginForm("LoginControl", "Login", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <h2>Login to your account</h2>
+                        <form action="#">
+                            <input type="email" placeholder="Email Address" name="TxtEmail" />
+                            <input type="password" placeholder="Password" name="TxtPassword" />
+                            <button type="submit" class="btn btn-default">Login</button>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10" style="color:red">
+                                    @ViewBag.LErrorMessage
+
+                                </div>
+                            </div>
+                        </form>
+                    }
+                </div><!--/login form-->
             </div>
             <div class="col-sm-1">
                 <h2 class="or">OR</h2>
@@ -41,11 +61,10 @@
                     {
                         @Html.AntiForgeryToken()
                         <h2>New User Signup!</h2>
-                        <form action="#">
                             @Html.ValidationMessage("Name", "Please enter Name", "text-danger")
-                            <input type="text" placeholder="Name*" name="TxtName" />
+                            <input type="text" class="" placeholder="Name*" name="TxtName" onblur="ValidControl(this);" required />
                             @Html.ValidationMessage("Surname", "Please enter Surname", "text-danger")
-                            <input type="text" placeholder="Surname*" name="TxtSurname" />
+                            <input type="text" class="" placeholder="Surname*" name="TxtSurname" onblur="ValidControl(this);" required />
                             @Html.ValidationMessage("Email", "Please enter email", "text-danger")
                             <input type="email" placeholder="Email Address*" name="TxtEmail" />
                             @Html.ValidationMessage("Password", "Please enter password", "text-danger")
@@ -55,7 +74,8 @@
                             @Html.ValidationMessage("Address", "Please enter Address", "text-danger")
                             <input type="text" placeholder="Address*" name="TxtAddress" />
                             @Html.ValidationMessage("Gender", "Please enter Gender", "text-danger")
-                            <select name="slGender">
+                            <select name="slGender" onchange="ValidControl(this);" required>
+                                <option value="-1" selected>Seçiniz</option>
                                 <option value="Man" selected>Man*</option>
                                 <option value="Woman">Woman*</option>
                             </select>
@@ -69,12 +89,9 @@
 
                                 </div>
                             </div>
-                        </form>
-
-
                     }
                 </div><!--/sign up form-->
             </div>
         </div>
     </div>
-</section><!--/form-->
+<!--</section>--><!--/form-->

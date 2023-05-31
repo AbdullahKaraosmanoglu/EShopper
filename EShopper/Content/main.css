@@ -28,15 +28,56 @@ a:focus {
 }
 
 a {
-  -webkit-transition: 300ms;
-  -moz-transition: 300ms;
-    -o-transition: 300ms;
-    transition: 300ms;
+	-webkit-transition: 300ms;
+	-moz-transition: 300ms;
+	-o-transition: 300ms;
+	transition: 300ms;
+	/*margin-left: 260px*/
 }
+
+input.form-control {
+	/*margin-left: 50%;*/
+	/*width: 50%;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;*/
+
+	background: #F0F0E9;
+	border: medium none;
+	color: #696763;
+	display: block;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	font-weight: 300;
+	height: 40px;
+	margin-bottom: 10px;
+	outline: medium none;
+	padding-left: 10px;
+	width: 30%;
+}
+
+.btn-default {
+	background: #FE980F;
+	border: medium none;
+	border-radius: 0;
+	color: #FFFFFF;
+	display: block;
+	font-family: 'Roboto', sans-serif;
+	padding: 6px 25px;
+}
+
+label {
+	color: #FE980F;
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+}
+
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto', sans-serif;
+  /*margin-left:200px*/
 }
+
 
 .btn:hover, 
 .btn:focus{
@@ -2520,4 +2561,17 @@ h2.title {
   color: #FE980F;
 }
 
-
+.ValidInput{
+	background: #ff000070;
+	font-family: 'Roboto', sans-serif;
+	font-size: 4px;
+	font-weight: 300;
+	height: 40px;
+	margin-bottom: 10px;
+	outline: medium none;
+	padding-left: 10px;
+	width: 100%;
+	border: solid 2px #ff1900;
+	background-color: #ff000070;
+	
+}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EShopper.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,8 @@ namespace EShopper.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            UsersModel model = new UsersModel();
+            return View(model);
         }
     }
 }

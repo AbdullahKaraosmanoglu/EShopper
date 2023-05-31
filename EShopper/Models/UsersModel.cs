@@ -43,10 +43,10 @@ namespace EShopper.Models
 
         [Display(Name = "DateOfBirth")]
         [Required(ErrorMessage = "Doğum tarihi alanını doldurmak zorundasınız")]
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         [Display(Name = "Gender")]
         [Required(ErrorMessage = "Cinsiyet alanını doldurmak zorundasınız")]
-        public int Gender { get; set; }
+        public int? Gender { get; set; }
     }
 }
