@@ -1,13 +1,13 @@
 ﻿
 @{
-    EShopper.Models.UsersModel UserModelData = null;
+    //EShopper.Models.UsersModel UserModelData = null;
     ViewBag.Title = "Ana Sayfa";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    if (ViewBag.UserModel != null)
-    {
-        UserModelData = (EShopper.Models.UsersModel)ViewBag.UserModel;
-        ViewBag.UserModelData = UserModelData;
-    }
+    //if (ViewBag.UserModel != null)
+    //{
+    //    UserModelData = (EShopper.Models.UsersModel)ViewBag.UserModel;
+    //    ViewBag.UserModelData = UserModelData;
+    //}
 }
 
 
@@ -32,6 +32,10 @@
                                 <div class="panel-body">
                                     <ul>
                                         @* controller ve actionresult adı ver*@
+                                        @foreach (var item in @ViewBag.ProductList)
+                                        {
+                                            <li><a href="#">@item.ProductName </a></li>
+                                        }
                                         <li><a href="~/Login/LoginProcess">Nike </a></li>
                                         <li><a href="#">Under Armour </a></li>
                                         <li><a href="#">@Session["userId"] </a></li>
@@ -149,294 +153,298 @@
                 <div class="features_items">
                     <!--features_items-->
                     <h2 class="title text-center">FEATURES ITEMS</h2>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="~/images/home/men-Jogger1.jpg" alt="" />
-                                    <h2>$44</h2>
-                                    <p>Nike Men Jogger</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <div class="product-overlay">
-                                    <div class="overlay-content">
-                                        <h2>$44</h2>
-                                        <p>Nike Men Jogger</p>
+                    @foreach (var item in @ViewBag.ProductList)
+                    {
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="~/images/home/men-Jogger1.jpg" alt="" />
+                                        <h2>@item.Price TL</h2>
+                                        <p>@item.ProductName</p>
                                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
+                                    <div class="product-overlay">
+                                        <div class="overlay-content">
+                                            <h2>@item.Price TL</h2>
+                                            <p>@item.ProductName</p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                </ul>
+                                <div class="choose">
+                                    <ul class="nav nav-pills nav-justified">
+                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="~/images/home/men-Thsirt.jpg" alt="" />
-                                    <h2>$37</h2>
-                                    <p>Nike Men Logo T-Shirt</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <div class="product-overlay">
-                                    <div class="overlay-content">
+                    }
+
+                    @*<div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="~/images/home/men-Thsirt.jpg" alt="" />
                                         <h2>$37</h2>
-                                        <p>Nike Men Logo T-Shirt</p>
+                                        <p>Nike Men Logo Black T-Shirt</p>
                                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
+                                    <div class="product-overlay">
+                                        <div class="overlay-content">
+                                            <h2>$37</h2>
+                                            <p>Nike Men Logo  Black T-Shirt</p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                </ul>
+                                <div class="choose">
+                                    <ul class="nav nav-pills nav-justified">
+                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="~/images/home/men-Jogger.jpg" alt="" />
-                                    <h2>$70</h2>
-                                    <p>Nike Men Jogger</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <div class="product-overlay">
-                                    <div class="overlay-content">
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="~/images/home/men-Jogger.jpg" alt="" />
                                         <h2>$70</h2>
-                                        <p>Nike Men Jogger</p>
+                                        <p>Nike Men White Jogger</p>
                                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
+                                    <div class="product-overlay">
+                                        <div class="overlay-content">
+                                            <h2>$70</h2>
+                                            <p>Nike Men White Jogger</p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                </ul>
+                                <div class="choose">
+                                    <ul class="nav nav-pills nav-justified">
+                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="~/images/home/women-jogger.jpg" alt="" />
-                                    <h2>$43</h2>
-                                    <p>Women Jogger </p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <div class="product-overlay">
-                                    <div class="overlay-content">
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="~/images/home/women-jogger.jpg" alt="" />
                                         <h2>$43</h2>
-                                        <p>Women Jogger</p>
+                                        <p>Nike Women Green Jogger </p>
                                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
+                                    <div class="product-overlay">
+                                        <div class="overlay-content">
+                                            <h2>$43</h2>
+                                            <p>Nike Women Green Jogger</p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                </ul>
+                                <div class="choose">
+                                    <ul class="nav nav-pills nav-justified">
+                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="~/images/home/Women-Sweat.jpg" alt="" />
-                                    <h2>$54</h2>
-                                    <p>Women Sweat</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <div class="product-overlay">
-                                    <div class="overlay-content">
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="~/images/home/Women-Sweat.jpg" alt="" />
                                         <h2>$54</h2>
-                                        <p>Women Sweat</p>
+                                        <p>Nike Women Black Sweat</p>
                                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
+                                    <div class="product-overlay">
+                                        <div class="overlay-content">
+                                            <h2>$54</h2>
+                                            <p>Nike Women Black Sweat</p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                </ul>
+                                <div class="choose">
+                                    <ul class="nav nav-pills nav-justified">
+                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="~/images/home/womens-training-suit.jpg" alt="" />
-                                    <h2>$50</h2>
-                                    <p>Women's Training Suit</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <div class="product-overlay">
-                                    <div class="overlay-content">
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="~/images/home/womens-training-suit.jpg" alt="" />
                                         <h2>$50</h2>
-                                        <p>Women's Training Suit</p>
+                                        <p>Nike Women's Black Training Suit</p>
                                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
+                                    <div class="product-overlay">
+                                        <div class="overlay-content">
+                                            <h2>$50</h2>
+                                            <p>Nike Women's Black Training Suit</p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                </ul>
+                                <div class="choose">
+                                    <ul class="nav nav-pills nav-justified">
+                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="~/images/home/men-Adidas-Tshirt.jpg" alt="" />
-                                    <h2>$25</h2>
-                                    <p>Adidas Men T-Shirt</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <div class="product-overlay">
-                                    <div class="overlay-content">
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="~/images/home/men-Adidas-Tshirt.jpg" alt="" />
                                         <h2>$25</h2>
-                                        <p>Adidas Men T-Shirt</p>
+                                        <p>Adidas Men White T-Shirt</p>
                                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
+                                    <div class="product-overlay">
+                                        <div class="overlay-content">
+                                            <h2>$25</h2>
+                                            <p>Adidas Men White T-Shirt</p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                </ul>
+                                <div class="choose">
+                                    <ul class="nav nav-pills nav-justified">
+                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="~/images/home/Adidas-RealMadrid-Men-Tshirt.jpg" alt="" />
-                                    <h2>$88</h2>
-                                    <p>Adidas Real Madrid Men Tshirt</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <div class="product-overlay">
-                                    <div class="overlay-content">
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="~/images/home/Adidas-RealMadrid-Men-Tshirt.jpg" alt="" />
                                         <h2>$88</h2>
                                         <p>Adidas Real Madrid Men Tshirt</p>
                                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
+                                    <div class="product-overlay">
+                                        <div class="overlay-content">
+                                            <h2>$88</h2>
+                                            <p>Adidas Real Madrid Men Tshirt</p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                </ul>
+                                <div class="choose">
+                                    <ul class="nav nav-pills nav-justified">
+                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="~/images/home/Adidas-Sweatspants.jpg" alt="" />
-                                    <h2>$33</h2>
-                                    <p>Adidas Men Sweatspants</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <div class="product-overlay">
-                                    <div class="overlay-content">
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="~/images/home/Adidas-Sweatspants.jpg" alt="" />
                                         <h2>$33</h2>
                                         <p>Adidas Men Sweatspants</p>
                                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
+                                    <div class="product-overlay">
+                                        <div class="overlay-content">
+                                            <h2>$33</h2>
+                                            <p>Adidas Men Sweatspants</p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                </ul>
+                                <div class="choose">
+                                    <ul class="nav nav-pills nav-justified">
+                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="~/images/home/Adidas-Womens-Sweatpants.jpg" alt="" />
-                                    <h2>$43</h2>
-                                    <p>Adidas Womens Sweatpants</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <div class="product-overlay">
-                                    <div class="overlay-content">
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="~/images/home/Adidas-Womens-Sweatpants.jpg" alt="" />
                                         <h2>$43</h2>
                                         <p>Adidas Womens Sweatpants</p>
                                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
+                                    <div class="product-overlay">
+                                        <div class="overlay-content">
+                                            <h2>$43</h2>
+                                            <p>Adidas Womens Sweatpants</p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                </ul>
+                                <div class="choose">
+                                    <ul class="nav nav-pills nav-justified">
+                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="~/images/home/Adidas-Womens-Sweatpants1.jpg" alt="" />
-                                    <h2>$43</h2>
-                                    <p>Adidas Womens Sweatpants</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <div class="product-overlay">
-                                    <div class="overlay-content">
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="~/images/home/Adidas-Womens-Sweatpants1.jpg" alt="" />
                                         <h2>$43</h2>
                                         <p>Adidas Womens Sweatpants</p>
                                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
+                                    <div class="product-overlay">
+                                        <div class="overlay-content">
+                                            <h2>$43</h2>
+                                            <p>Adidas Womens Sweatpants</p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                </ul>
+                                <div class="choose">
+                                    <ul class="nav nav-pills nav-justified">
+                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="~/images/home/Adidas-Womens-OversizedTT.jpg" alt="" />
-                                    <h2>$69</h2>
-                                    <p>Adidas Womens Oversized TT</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <div class="product-overlay">
-                                    <div class="overlay-content">
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="~/images/home/Adidas-Womens-OversizedTT.jpg" alt="" />
                                         <h2>$69</h2>
                                         <p>Adidas Womens Oversized TT</p>
                                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
+                                    <div class="product-overlay">
+                                        <div class="overlay-content">
+                                            <h2>$69</h2>
+                                            <p>Adidas Womens Oversized TT</p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="choose">
+                                    <ul class="nav nav-pills nav-justified">
+                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                        </div>*@
                 </div>
 
 

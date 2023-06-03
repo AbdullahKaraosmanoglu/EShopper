@@ -23,7 +23,7 @@ namespace EShopper.Layers
             {
                 SqlCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "SpAddProducts";
+                command.CommandText = "SpGetProducts";
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(command);
                 DataTable DataProducts = new DataTable();
 
@@ -35,13 +35,15 @@ namespace EShopper.Layers
                 {
                     ProductList.Add(new ProductModel
                     {
-                       ProductId = Convert.ToInt32(dr["ProductId"]),
-                       ProductCategoryId = Convert.ToInt32(dr["ProductCategoryId"]),
-                       ProductBrandId = Convert.ToInt32(dr["ProductBrandId"]),
-                       ProductName = dr["ProductName"].ToString(),
-                       ProductGuid = dr["ProductGuid"].ToString(),
-                       Price = Convert.ToDecimal(dr["Price"]),
-                       Stock = Convert.ToInt32(dr["Stock"]),
+                        ProductId = Convert.ToInt32(dr["ProductId"]),
+                        ProductCategoryId = Convert.ToInt32(dr["ProductCategoryId"]),
+                        ProductBrandId = Convert.ToInt32(dr["ProductBrandId"]),
+                        ProductName = dr["ProductName"].ToString(),
+                        ProductGuid = dr["ProductGuid"].ToString(),
+                        Price = Convert.ToDecimal(dr["Price"]),
+                        Stock = Convert.ToInt32(dr["Stock"]),
+                        ProductBrandName = dr["ProductBrandName"].ToString(),
+                        ProductCategoryName = dr["ProductCategoryName"].ToString()
                     });
                 }
             }

@@ -24,5 +24,7 @@ namespace EShopper.Models
         public decimal Price { get; set; }
         [Display(Name = "Stock")]
         public int Stock { get; set; }
+        public string ProductBrandName { get; set; }
+        public string ProductCategoryName { get; set; }
     }
 }
