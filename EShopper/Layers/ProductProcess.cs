@@ -12,9 +12,6 @@ namespace EShopper.Layers
     public class ProductProcess
     {
         string ConString = ConfigurationManager.ConnectionStrings["dbconnection"].ToString();
-
-        //Get All Product
-
         public List<ProductModel> GetAllProduct()
         {
             List<ProductModel> ProductList = new List<ProductModel>();
@@ -42,6 +39,8 @@ namespace EShopper.Layers
                         ProductGuid = dr["ProductGuid"].ToString(),
                         Price = Convert.ToDecimal(dr["Price"]),
                         Stock = Convert.ToInt32(dr["Stock"]),
+                        ImageExtension = dr["ProductName"].ToString(),
+                        ImagePath = dr["ProductGuid"].ToString(),
                         ProductBrandName = dr["ProductBrandName"].ToString(),
                         ProductCategoryName = dr["ProductCategoryName"].ToString()
                     });

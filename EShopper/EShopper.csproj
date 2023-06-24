@@ -128,8 +128,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Layers\CartProcess.cs" />
     <Compile Include="Layers\ProductProcess.cs" />
     <Compile Include="Layers\UserProcess.cs" />
+    <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\UsersModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

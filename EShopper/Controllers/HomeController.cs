@@ -18,7 +18,8 @@ namespace EShopper.Controllers
             ProductProcess productProcess = new ProductProcess();
             var GetProducts = productProcess.GetAllProduct();
             ViewBag.ProductList = GetProducts;
-            return View();
+            var session = Session["userId"];
+            return View(ViewBag);
         }
     }
 }

@@ -11,15 +11,13 @@ namespace EShopper.Controllers
     public class AccountController : Controller
     {
         // GET: Account
-        public ActionResult Profile(int userId)
+  
+        public new ActionResult Profile(int userId)
         {
             UserProcess userProcess = new UserProcess();
             UsersModel model = new UsersModel();
             var responseUserModel = userProcess.GetUserModelByUserId(userId);
             model = responseUserModel;
-
-
-
 
             return View(model);
         }
