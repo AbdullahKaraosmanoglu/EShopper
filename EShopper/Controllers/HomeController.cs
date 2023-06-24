@@ -21,5 +21,7 @@ namespace EShopper.Controllers
             var session = Session["userId"];
             return View(ViewBag);
         }
+
+        
     }
 }

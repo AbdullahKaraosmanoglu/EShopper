@@ -47,20 +47,20 @@
                     @Html.ValidationMessage("Surname", "Please enter Surname", "text-danger")
                     <input type="text" class="" placeholder="Surname*" name="TxtSurname" onblur="ValidControl(this);" required />
                     @Html.ValidationMessage("Email", "Please enter email", "text-danger")
-                    <input type="email" placeholder="Email Address*" name="TxtEmail" />
+                    <input type="email" placeholder="Email Address*" name="TxtEmail" onblur="ValidControl(this);" required/>
                     @Html.ValidationMessage("Password", "Please enter password", "text-danger")
-                    <input type="password" placeholder="Password*" name="TxtPassword" />
+                    <input type="password" placeholder="Password*" name="TxtPassword" onblur="ValidControl(this);" required/>
                     @Html.ValidationMessage("DateOfBirth", "Please enter Birth Of Date", "text-danger")
-                    <input type="date" placeholder="Date Of Birth*" name="DtDateOfBirth" />
+                    <input type="date" placeholder="Date Of Birth*" name="DtDateOfBirth" onblur="ValidControl(this);" required/>
                     @Html.ValidationMessage("Address", "Please enter Address", "text-danger")
-                    <input type="text" placeholder="Address*" name="TxtAddress" />
+                    <input type="text" placeholder="Address*" name="TxtAddress" onblur="ValidControl(this);" required/>
                     @Html.ValidationMessage("Gender", "Please enter Gender", "text-danger")
                     <select name="slGender" onchange="ValidControl(this);" required>
                         <option value="-1" selected>Seçiniz</option>
                         <option value="Man">Man*</option>
                         <option value="Woman">Woman*</option>
                     </select>
-                    <button style="margin-top:10px;" type="submit" class="btn btn-default" onclick="location.href='@Url.Action("AddUser", "Login")'">
+                    <button style="margin-top:10px;" type="submit" class="btn btn-default">
                         Signup
                     </button>
                     <div class="form-group">

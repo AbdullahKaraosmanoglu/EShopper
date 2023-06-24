@@ -25,6 +25,7 @@ $(document).ready(function () {
             scrollImg: false, // Set true to use image
             activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
             zIndex: 2147483647 // Z-Index for the overlay
+            
         });
     });
 });
@@ -34,10 +35,10 @@ function ValidControl(AInput) {
     if (Input.required != null) {
         if (Input.required) {
             if (Input.value === "" || Input.value === "-1") {
-                Input.style.bacgroundColor = "#4A148C";
+                Input.style.backgroundColor = "#FF4D4D";
             }
             else {
-                Input.style.bacgroundColor = "#fOFOE9";
+                Input.style.backgroundColor = "#F0F0E9";
             }
         }
     }

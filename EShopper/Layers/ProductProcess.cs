@@ -39,8 +39,7 @@ namespace EShopper.Layers
                         ProductGuid = dr["ProductGuid"].ToString(),
                         Price = Convert.ToDecimal(dr["Price"]),
                         Stock = Convert.ToInt32(dr["Stock"]),
-                        ImageExtension = dr["ProductName"].ToString(),
-                        ImagePath = dr["ProductGuid"].ToString(),
+                        ImagePath = dr["ImagePath"].ToString(),
                         ProductBrandName = dr["ProductBrandName"].ToString(),
                         ProductCategoryName = dr["ProductCategoryName"].ToString()
                     });

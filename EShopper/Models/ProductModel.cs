@@ -24,10 +24,16 @@ namespace EShopper.Models
         public decimal Price { get; set; }
         [Display(Name = "Stock")]
         public int Stock { get; set; }
-        public string ImageExtension { get; set; }
+        [Display(Name = "TotalAmount")]
+        public Nullable<int> TotalAmount { get; set; }
+       
+        [Display(Name = "ImagePath")]
         public string ImagePath { get; set; }
+        [Display(Name = "Quantity")]
         public int Quantity { get; set; }
+        [Display(Name = "ProductBrandName")]
         public string ProductBrandName { get; set; }
+        [Display(Name = "ProductCategoryName")]
         public string ProductCategoryName { get; set; }
     }
 }

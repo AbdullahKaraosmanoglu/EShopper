@@ -33,10 +33,10 @@ namespace EShopper.Controllers
         //model oluşmadığu içinde httppost metodu yerine get metodunu arar
 
 
-        public ActionResult AddUser()
-        {
-            return RedirectToAction("AddUser", "Login", FormMethod.Post);
-        }
+        //public ActionResult AddUser()
+        //{
+        //    return RedirectToAction("AddUser", "Login", FormMethod.Post);
+        //}
         [HttpPost]
         public ActionResult AddUser(UsersModel user)
         {
@@ -45,6 +45,7 @@ namespace EShopper.Controllers
                 if (!FormValidation())
                 {
                     @ViewBag.ErrorMessage = "Tüm alanları doldurunuz.";
+
                     return View("~/Views/Login/LoginProcess.cshtml");
                 }
                 if (!SignUpControl())
@@ -158,9 +159,11 @@ namespace EShopper.Controllers
             string TxtPassword = Request.Form["TxtPassword"].ToString();
             string DtDateOfBirth = Request.Form["DtDateOfBirth"].ToString();
             string TxtAddress = Request.Form["TxtAddress"].ToString();
+            string slGender = Request.Form["slGender"].ToString();
             if (String.IsNullOrEmpty(TxtName) || String.IsNullOrEmpty(TxtSurname) ||
                 String.IsNullOrEmpty(TxtEmail) || String.IsNullOrEmpty(TxtPassword) ||
-                String.IsNullOrEmpty(DtDateOfBirth) || String.IsNullOrEmpty(TxtAddress))
+                String.IsNullOrEmpty(DtDateOfBirth) || String.IsNullOrEmpty(TxtAddress)
+                || slGender== "-1")
             {
                 return false;
             }
@@ -190,6 +193,13 @@ namespace EShopper.Controllers
                 }
             }
             return true;
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            Session.Clear();
+            return RedirectToAction("LoginProcess");
         }
     }
 }
