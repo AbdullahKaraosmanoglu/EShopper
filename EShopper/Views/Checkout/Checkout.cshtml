@@ -7,15 +7,12 @@
     <div class="container">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">Check out</li>
+                <li><a href=@Url.Action("Index", "Home") class="active">AnaSayfa</a></li>
+                <li class="active"> Ödeme/Adres Bilgileri</li>
             </ol>
-        </div><!--/breadcrums-->
-
-        <div class="step-one">
-            <h2 class="heading">Step1</h2>
         </div>
-        <div class="checkout-options">
+    <!--/breadcrums-->
+        <!--<div class="checkout-options">
             <h3>New User</h3>
             <p>Checkout options</p>
             <ul class="nav">
@@ -29,11 +26,11 @@
                     <a href=""><i class="fa fa-times"></i>Cancel</a>
                 </li>
             </ul>
-        </div><!--/checkout-options-->
+        </div>--><!--/checkout-options-->
 
-        <div class="register-req">
+        <!--<div class="register-req">
             <p>Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest</p>
-        </div><!--/register-req-->
+        </div>--><!--/register-req-->
 
         <div class="shopper-informations">
             <div class="row">
@@ -41,34 +38,33 @@
                     <div class="shopper-info">
                         <p>Shopper Information</p>
                         <form>
-                            <input type="text" placeholder="Display Name">
-                            <input type="text" placeholder="User Name">
-                            <input type="password" placeholder="Password">
-                            <input type="password" placeholder="Confirm password">
+                            <input type="text" placeholder="İsim Soyisim">
+                            <input type="text" placeholder="Mail Adresi">
+                            <input type="password" placeholder="Şifre">
+                            <input type="password" placeholder="Şifre Onayla">
                         </form>
-                        <a class="btn btn-primary" href="">Continue</a>
                     </div>
                 </div>
                 <div class="col-sm-5 clearfix">
                     <div class="bill-to">
-                        <p>Bill To</p>
+                        <p>Fatura</p>
                         <div class="form-one">
                             <form>
-                                <input type="text" placeholder="Company Name">
-                                <input type="text" placeholder="Email*">
-                                <input type="text" placeholder="Title">
-                                <input type="text" placeholder="First Name *">
-                                <input type="text" placeholder="Middle Name">
-                                <input type="text" placeholder="Last Name *">
-                                <input type="text" placeholder="Address 1 *">
-                                <input type="text" placeholder="Address 2">
+                                <input type="text" placeholder="Şirket İsmi (İsteğe Bağlı)">
+                                <input type="text" placeholder="Email *">
+                                <input type="text" placeholder="Meslek(İsteğe Bağlı)">
+                                <input type="text" placeholder="Birinci İsim *">
+                                <input type="text" placeholder="Varsa İkinci İsim">
+                                <input type="text" placeholder="Soyisim *">
+                                <input type="text" placeholder="Birincil Adres  *">
+                                <input type="text" placeholder="İkincil Adres *">
                             </form>
                         </div>
                         <div class="form-two">
                             <form>
-                                <input type="text" placeholder="Zip / Postal Code *">
+                                <input type="text" placeholder="Posta Kodu *">
                                 <select>
-                                    <option>-- Country --</option>
+                                    <option>-- Ülke --</option>
                                     <option>TÜRKİYE</option>
                                     <option>United States</option>
                                     <option>Bangladesh</option>
@@ -80,7 +76,7 @@
                                     <option>Dubai</option>
                                 </select>
                                 <select>
-                                    <option>-- State / Province / Region --</option>
+                                    <option>-- Şehir --</option>
                                     <option>ANKARA</option>
                                     <option>İSTANBUL</option>
                                     <option>KOCAELİ</option>
@@ -90,9 +86,9 @@
                                     <option>İZMİR</option>
                                     <option>ANTALYA</option>
                                 </select>
-                                <input type="password" placeholder="Confirm password">
-                                <input type="text" placeholder="Phone *">
-                                <input type="text" placeholder="Mobile Phone">
+                                <input type="password" placeholder="Şifreyi Onayla">
+                                <input type="text" placeholder="İş Yeri Telefonu (İsteğe Bağlı) ">
+                                <input type="text" placeholder="Cep Telefonu*">
                                 <input type="text" placeholder="Fax">
                             </form>
                         </div>
@@ -100,9 +96,13 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="order-message">
-                        <p>Shipping Order</p>
-                        <textarea name="message" placeholder="Notes about your order, Special Notes for Delivery" rows="16"></textarea>
-                        <label><input type="checkbox"> Shipping to bill address</label>
+                        <p>Alışveriş Siparişi</p>
+                        <textarea name="message" placeholder="Siparişinizle ilgili notlar, Teslimata İlişkin Özel Notlar" rows="16"></textarea>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Kaydet" class="btn btn-default" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

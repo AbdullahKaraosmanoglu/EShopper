@@ -11,5 +11,6 @@ namespace EShopper.Models
         [Key]
         public int UserId { get; set; }
         public int ProductId { get; set; }
+        public string ImagePath { get; set; }
     }
 }

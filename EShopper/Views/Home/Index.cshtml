@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-sm-3">
             <div class="left-sidebar">
-                <h2>Category</h2>
+                <h2>KATEGORİLER</h2>
                 <div class="panel-group category-products" id="accordian">
                     <!--category-productsr-->
                     <div class="panel panel-default">
@@ -23,20 +23,17 @@
                             <h4 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
                                     <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                    Sportswear
+                                    Spor Giyim
                                 </a>
                             </h4>
                         </div>
                         <div id="sportswear" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <ul>
-                                    @foreach (var item in @ViewBag.ProductList)
-                                    {
-                                        <li><a href="#">@item.ProductId </a></li>
-                                    }
-                                    <li><a href="~/Login/LoginProcess">Nike </a></li>
+                                    <li><a href="#">The North Face</a></li>
+                                    <li><a href="#">Nike </a></li>
                                     <li><a href="#">Under Armour </a></li>
-                                    <li><a href="#">@Session["userId"] </a></li>
+                                    <li><a href="#">Slazenger </a></li>
                                     <li><a href="#">Puma</a></li>
                                 </ul>
                             </div>
@@ -47,7 +44,7 @@
                             <h4 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordian" href="#mens">
                                     <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                    Mens
+                                    Erkek
                                 </a>
                             </h4>
                         </div>
@@ -74,7 +71,7 @@
                             <h4 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordian" href="#womens">
                                     <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                    Womens
+                                    Kadın
                                 </a>
                             </h4>
                         </div>
@@ -92,29 +89,29 @@
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title"><a href="#">Interiors</a></h4>
+                            <h4 class="panel-title"><a href="#">Outdoor</a></h4>
                         </div>
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title"><a href="#">Clothing</a></h4>
+                            <h4 class="panel-title"><a href="#">Elbise</a></h4>
                         </div>
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title"><a href="#">Bags</a></h4>
+                            <h4 class="panel-title"><a href="#">Çanta</a></h4>
                         </div>
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title"><a href="#">Shoes</a></h4>
+                            <h4 class="panel-title"><a href="#">Ayakkabı</a></h4>
                         </div>
                     </div>
                 </div><!--/category-products-->
 
                 <div class="brands_products">
                     <!--brands_products-->
-                    <h2>Brands</h2>
+                    <h2>Markalar</h2>
                     <div class="brands-name">
                         <ul class="nav nav-pills nav-stacked">
                             <li><a href="#"> <span class="pull-right">(50)</span>Nike</a></li>
@@ -140,7 +137,7 @@
         <div class="col-sm-9 padding-right">
             <div class="features_items">
                 <!--features_items-->
-                <h2 class="title text-center">FEATURES ITEMS</h2>
+                <h2 class="title text-center">YENİ SEZON</h2>
 
                 @*@using (Html.BeginForm("AddCart", "Cart", FormMethod.Post))
                 {
