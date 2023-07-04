@@ -15,11 +15,17 @@ namespace EShopper.Controllers
         public new ActionResult Profile(int userId)
         {
             UserProcess userProcess = new UserProcess();
-            UsersModel model = new UsersModel();
             var responseUserModel = userProcess.GetUserModelByUserId(userId);
-            model = responseUserModel;
+            return View(responseUserModel);
+        }
 
-            return View(model);
+        [HttpPost]
+        public ActionResult ProfileUpdate(UsersModel usersModel)
+        {
+            UserProcess UserProcess = new UserProcess();
+            var ResponseUserProcess = UserProcess.UpdateUsers(usersModel);
+            var responseUserModel = UserProcess.GetUserModelByUserId(usersModel.UserId);
+            return View("~/Views/Account/Profile.cshtml", responseUserModel);
         }
     }
 }

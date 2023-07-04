@@ -17,11 +17,11 @@ namespace EShopper.Controllers
             return View();
         }
 
-        public void AddCart(string productId, string ImagePath)
+        public void AddCart(string productId)
         {
             string userId = Session["userId"].ToString();
             CartProcess cartProcess = new CartProcess();
-            var response = cartProcess.AddCart(productId, userId, ImagePath);
+            var response = cartProcess.AddCart(productId, userId);
             if (!response)
             {
             }

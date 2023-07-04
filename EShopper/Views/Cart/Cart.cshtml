@@ -29,8 +29,7 @@
                     {
                         <tr>
                             <td class="cart_product">
-                                <img src="@item.ImagePath" alt="" />
-                                <a href=""><img src="~/images/cart/one.png" alt=""></a>
+                                <img src="@item.ImagePath" width="100" height="100" alt="" />
                             </td>
                             <td class="cart_description">
                                 <h4><a href="">@item.ProductName</a></h4>
@@ -41,7 +40,7 @@
                             </td>
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
-                                    <a class="cart_quantity_up" href=""> + </a>
+                                    <a class="cart_quantity_up"  href="" onclick="Dumenden();"> + </a>
                                     <input class="cart_quantity_input" type="text" name="quantity" value="@item.Quantity" autocomplete="off" size="2">
                                     <a class="cart_quantity_down" href=""> - </a>
                                 </div>
@@ -70,13 +69,13 @@
                                     <td>Toplam</td>
                                     <td><span>79TL</span></td>
                                 </tr>
-                                
+
                             </table>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <a class="btn btn-primary">Sipariş Ver</a>
+            @*<a class="btn btn-primary">Sipariş Ver</a>*@
         </div>
         <div class="payment-options">
             <span>
@@ -89,8 +88,104 @@
                 <label><input type="checkbox"> Kredi Kartı İle Ödeme</label>
             </span>
         </div>
+
+        <div class="shopper-informations">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="shopper-info">
+                        <p>Shopper Information</p>
+                        <form>
+                            <input type="text" placeholder="İsim Soyisim">
+                            <input type="text" placeholder="Mail Adresi">
+                            <input type="password" placeholder="Şifre">
+                            <input type="password" placeholder="Şifre Onayla">
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-5 clearfix">
+                    <div class="bill-to">
+                        <p>Fatura</p>
+                        <div class="form-one">
+                            <form>
+                                <input type="text" placeholder="Şirket İsmi (İsteğe Bağlı)">
+                                <input type="text" placeholder="Email *">
+                                <input type="text" placeholder="Meslek(İsteğe Bağlı)">
+                                <input type="text" placeholder="Birinci İsim *">
+                                <input type="text" placeholder="Varsa İkinci İsim">
+                                <input type="text" placeholder="Soyisim *">
+                                <input type="text" placeholder="Birincil Adres  *">
+                                <input type="text" placeholder="İkincil Adres *">
+                            </form>
+                        </div>
+                        <div class="form-two">
+                            <form>
+                                <input type="text" placeholder="Posta Kodu *">
+                                <select>
+                                    <option>-- Ülke --</option>
+                                    <option>TÜRKİYE</option>
+                                    <option>United States</option>
+                                    <option>Bangladesh</option>
+                                    <option>UK</option>
+                                    <option>India</option>
+                                    <option>Pakistan</option>
+                                    <option>Ucrane</option>
+                                    <option>Canada</option>
+                                    <option>Dubai</option>
+                                </select>
+                                <select>
+                                    <option>-- Şehir --</option>
+                                    <option>ANKARA</option>
+                                    <option>İSTANBUL</option>
+                                    <option>KOCAELİ</option>
+                                    <option>RİZE</option>
+                                    <option>BURSA</option>
+                                    <option>SAKARYA</option>
+                                    <option>İZMİR</option>
+                                    <option>ANTALYA</option>
+                                </select>
+                                <input type="password" placeholder="Şifreyi Onayla">
+                                <input type="text" placeholder="İş Yeri Telefonu (İsteğe Bağlı) ">
+                                <input type="text" placeholder="Cep Telefonu*">
+                                <input type="text" placeholder="Fax">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="order-message">
+                        <p>Alışveriş Siparişi</p>
+                        <textarea name="message" placeholder="Siparişinizle ilgili notlar, Teslimata İlişkin Özel Notlar" rows="16"></textarea>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Kaydet" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

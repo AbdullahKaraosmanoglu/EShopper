@@ -20,7 +20,7 @@ namespace EShopper.Layers
             con = new SqlConnection(constr);
 
         }
-        public bool AddCart(string productId , string userId, string ImagePath)
+        public bool AddCart(string productId , string userId)
         {
 
             connection();
@@ -28,7 +28,6 @@ namespace EShopper.Layers
             com.CommandType = CommandType.StoredProcedure;
             com.Parameters.AddWithValue("@UserId", userId).DbType = DbType.Int32;
             com.Parameters.AddWithValue("@ProductId", productId).DbType =DbType.Int32;
-            com.Parameters.AddWithValue("@ImagePath", ImagePath).DbType = DbType.Int32;
 
             con.Open();
             var sp = com.ExecuteScalar();
@@ -55,11 +54,6 @@ namespace EShopper.Layers
                 {
                     CommandType = CommandType.StoredProcedure
                 };
-                //SqlCommand command = sqlConnection.CreateCommand();
-                //command.CommandType = CommandType.StoredProcedure;
-                //command.CommandText = "SpGetProducts";
-                //SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(command);
-                //DataTable DataCarts = new DataTable();
                 com.Parameters.AddWithValue("@UserId", userId).DbType = DbType.Int32;
                 SqlDataAdapter da = new SqlDataAdapter(com);
                 DataTable dt = new DataTable();

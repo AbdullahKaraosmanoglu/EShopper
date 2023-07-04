@@ -30,7 +30,6 @@ namespace EShopper.Layers
         /// <returns></returns>
         public bool AddUser(UsersModel obj)
         {
-
             connection();
             SqlCommand com = new SqlCommand("dbo.SpAddNewUsers", con);
             com.CommandType = CommandType.StoredProcedure;
@@ -65,7 +64,6 @@ namespace EShopper.Layers
         {
             connection();
             List<UsersModel> userModelList = new List<UsersModel>();
-
 
             SqlCommand com = new SqlCommand("dbo.SpLoginControl", con)
             {
@@ -108,7 +106,6 @@ namespace EShopper.Layers
         public Boolean SignUpControl(UsersModel usersModel)
         {
             connection();
-
             SqlCommand com = new SqlCommand("dbo.SpUsersControl", con)
             {
                 CommandType = CommandType.StoredProcedure
@@ -124,39 +121,6 @@ namespace EShopper.Layers
                 return true;
             }
             return false;
-        }
-        public UsersModel GetUserModelByUserId(int UserId)
-        {
-            connection();
-            UsersModel userModel = new UsersModel();
-
-
-            SqlCommand com = new SqlCommand("dbo.SpGetUserModelByUserId", con)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-
-            com.Parameters.AddWithValue("@UserId", UserId).DbType = DbType.Int32;
-
-            SqlDataAdapter da = new SqlDataAdapter(com);
-            DataTable dt = new DataTable();
-
-            con.Open();
-            da.Fill(dt);
-            con.Close();
-
-            var dr = dt.Rows[0];
-
-            userModel.UserId = Convert.ToInt32(dr["UserId"]);
-            userModel.Name = Convert.ToString(dr["Name"]);
-            userModel.Surname = Convert.ToString(dr["Surname"]);
-            userModel.Email = Convert.ToString(dr["Email"]);
-            userModel.Password = Convert.ToString(dr["Password"]);
-            userModel.DateOfBirth = Convert.ToDateTime(dr["DateOfBirth"]);
-            userModel.Gender = Convert.ToInt32(dr["Gender"]);
-            userModel.Address = Convert.ToString(dr["Address"]);
-
-            return userModel;
         }
 
         public UsersModel SelectUserModelByEmailAndPassword(string Email, string Password)
@@ -192,6 +156,66 @@ namespace EShopper.Layers
             userModel.Address = Convert.ToString(dr["Address"]);
 
             return userModel;
+        }
+        public UsersModel GetUserModelByUserId(int UserId)
+        {
+            connection();
+            UsersModel userModel = new UsersModel();
+
+
+            SqlCommand com = new SqlCommand("dbo.SpGetUserModelByUserId", con)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            com.Parameters.AddWithValue("@UserId", UserId).DbType = DbType.Int32;
+
+            SqlDataAdapter da = new SqlDataAdapter(com);
+            DataTable dt = new DataTable();
+
+            con.Open();
+            da.Fill(dt);
+            con.Close();
+
+            var dr = dt.Rows[0];
+
+            userModel.UserId = Convert.ToInt32(dr["UserId"]);
+            userModel.Name = Convert.ToString(dr["Name"]);
+            userModel.Surname = Convert.ToString(dr["Surname"]);
+            userModel.Email = Convert.ToString(dr["Email"]);
+            userModel.Password = Convert.ToString(dr["Password"]);
+            userModel.DateOfBirth = Convert.ToDateTime(dr["DateOfBirth"]);
+            userModel.Gender = Convert.ToInt32(dr["Gender"]);
+            userModel.Address = Convert.ToString(dr["Address"]);
+            
+            return userModel;
+        }
+       
+        public Boolean UpdateUsers(UsersModel usersModel)
+        {
+            connection();
+            SqlCommand com = new SqlCommand("dbo.SpUpdateUsers", con);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@UserId", usersModel.UserId).DbType = DbType.Int32;
+            com.Parameters.AddWithValue("@Name", usersModel.Name).DbType = DbType.String;
+            com.Parameters.AddWithValue("@Surname", usersModel.Surname).DbType = DbType.String;
+            com.Parameters.AddWithValue("@Email", usersModel.Email).DbType = DbType.String;
+            com.Parameters.AddWithValue("@Password", usersModel.Password).DbType = DbType.String;
+            com.Parameters.AddWithValue("@DateOfBirth", usersModel.DateOfBirth).DbType = DbType.DateTime;
+            com.Parameters.AddWithValue("@Address", usersModel.Address).DbType = DbType.String;
+
+            con.Open();
+            var sp = com.ExecuteScalar();
+            int i = sp.GetHashCode();
+            con.Close();
+            if (i >= 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

@@ -60,3 +60,17 @@ function AddToCart(productId) {
     });
 };
 
+function Dumenden() {
+
+
+    var price = document.getElementsByClassName("ticket_price")[n].innerHTML;
+    var noTickets = document.getElementsByClassName("num")[n].value;
+    var total = parseFloat(price) * noTickets;
+    if (!isNaN(total))
+        document.getElementsByClassName("total")[n].innerHTML = total;
+
+
+            alert("dümenden giriþ baþarýlý");
+      
+};
+

@@ -39,6 +39,7 @@ namespace EShopper.Models
 
         [Display(Name = "DateOfBirth")]
         [Required(ErrorMessage = "Doğum tarihi alanını doldurmak zorundasınız")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DateOfBirth { get; set; }
 
         [Display(Name = "Gender")]
