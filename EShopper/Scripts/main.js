@@ -73,4 +73,11 @@ function Dumenden() {
             alert("dümenden giriþ baþarýlý");
       
 };
+var value123 = 1;
+function QuantityUpMethod(n) {
+    //var value = parseInt(document.getElementById(n).value);
+    //value = value+1;
+    value123 = value123 + 1;
+    document.getElementById(n).value = value123;
+}
 
