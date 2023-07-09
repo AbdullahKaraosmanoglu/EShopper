@@ -44,5 +44,16 @@ namespace EShopper.Controllers
 
             return View("~/Views/Cart/Cart.cshtml", ViewBag);
         }
+
+        public void DeleteItemCart(string productId)
+        {
+            string userId = Session["userId"].ToString();
+            CartProcess cartProcess = new CartProcess();
+            var response = cartProcess.DeleteItemCart(productId, userId);
+            if (!response)
+            {
+            }
+            return;
+        }
     }
 }

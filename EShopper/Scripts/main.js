@@ -25,7 +25,7 @@ $(document).ready(function () {
             scrollImg: false, // Set true to use image
             activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
             zIndex: 2147483647 // Z-Index for the overlay
-            
+
         });
     });
 });
@@ -50,7 +50,7 @@ function AddToCart(productId) {
         type: 'POST',
         url: '/Cart/AddCart',
         data: { productID }
-,
+        ,
         success: function () {
             alert("Ürün sepete eklendi.");
         },
@@ -60,24 +60,43 @@ function AddToCart(productId) {
     });
 };
 
-function Dumenden() {
+function hesapla() {
+    var urunler = document.getElementsByClassName("urun");
+    var toplamTutar = 0;
+    var kargoFiyati = 20;
 
+    for (var i = 0; i < urunler.length; i++) {
+        var urun = urunler[i];
+        var fiyat = parseFloat(urun.getAttribute("data-fiyat"));
+        var adetInput = urun.getElementsByClassName("cart_quantity_input")[0];
+        var adet = parseInt(adetInput.value);
 
-    var price = document.getElementsByClassName("ticket_price")[n].innerHTML;
-    var noTickets = document.getElementsByClassName("num")[n].value;
-    var total = parseFloat(price) * noTickets;
-    if (!isNaN(total))
-        document.getElementsByClassName("total")[n].innerHTML = total;
+        var urunTutari = fiyat * adet;
+        toplamTutar += urunTutari;
+    }
 
+    var sepetTutariSpan = document.getElementById("sepetTutari");
+    sepetTutariSpan.textContent = toplamTutar.toFixed(2);
 
-            alert("dümenden giriþ baþarýlý");
-      
-};
-var value123 = 1;
-function QuantityUpMethod(n) {
-    //var value = parseInt(document.getElementById(n).value);
-    //value = value+1;
-    value123 = value123 + 1;
-    document.getElementById(n).value = value123;
+    var toplamSepetTutariSpan = document.getElementById("toplamSepetTutari"); 
+    var toplamSepTutar = toplamTutar + kargoFiyati;
+    toplamSepetTutariSpan.textContent = toplamSepTutar.toFixed(2);
 }
+window.onload = hesapla;
+
+function DeleteItemCart(productId) {
+    var productID = productId;
+    $.ajax({
+        type: 'POST',
+        url: '/Cart/DeleteItemCart',
+        data: { productID }
+        ,
+        success: function () {
+            alert("Ürün sepetten silindi.");
+        },
+        error: function () {
+            alert("Ürün sepetten silinemedi.");
+        }
+    });
+};
 

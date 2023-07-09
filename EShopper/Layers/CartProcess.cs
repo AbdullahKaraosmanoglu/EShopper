@@ -43,6 +43,28 @@ namespace EShopper.Layers
             }
         }
 
+        public bool DeleteItemCart(string productId, string userId)
+        {
+            connection();
+            SqlCommand com = new SqlCommand("dbo.SpDeleteCartItemByProductId", con);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@UserId", userId).DbType = DbType.Int32;
+            com.Parameters.AddWithValue("@ProductId", productId).DbType = DbType.Int32;
+
+            con.Open();
+            var sp = com.ExecuteScalar();
+            int i = sp.GetHashCode();
+            con.Close();
+            if (i == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public List<ProductModel> GetCarts(string userId)
         {
             connection();
@@ -65,6 +87,7 @@ namespace EShopper.Layers
                 {
                     CartList.Add(new ProductModel
                     {
+                        ProductId= Convert.ToInt32(item["ProductId"]),
                         ProductName = item["ProductName"].ToString(),
                         Price = Convert.ToDecimal(item["Price"]),
                         Stock = Convert.ToInt32(item["Stock"]),
