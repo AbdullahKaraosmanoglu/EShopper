@@ -56,7 +56,7 @@ namespace EShopper.Layers
         }
 
         /// <summary>
-        /// Kullanıcı Giriş yaparken Sistemde Hesabı Olup olmadığını dönen ve kontrol eden SELECT Yapısı ve Methodudur...
+        /// Kullanıcı Giriş yaparken VeriTabanında Hesabı Olup olmadığını dönen ve kontrol eden SELECT Yapısı ve Methodudur...
         /// </summary>
         /// <param name="usersModel"></param>
         /// <returns></returns>
@@ -216,6 +216,7 @@ namespace EShopper.Layers
             {
                 return false;
             }
+        
         }
     }
 }

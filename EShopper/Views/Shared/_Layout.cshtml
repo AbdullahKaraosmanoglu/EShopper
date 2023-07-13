@@ -55,19 +55,19 @@
                     <div class="col-sm-6">
                         <div class="contactinfo">
                             <ul class="nav nav-pills">
-                                <li><a href="#"><i class="fa fa-phone"></i> +90 850 0501 53 41</a></li>
-                                <li><a href="#"><i class="fa fa-envelope"></i> e.shopper@domain.com</a></li>
+                                <li><a href="#"><i class="fa fa-phone"></i> +90 543 681 74 10</a></li>
+                                <li><a href="#"><i class="fa fa-envelope"></i> abdullahkaraosmanoglu53@gmail.com</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="social-icons pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="https://www.instagram.com/apofather/"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://twitter.com/apofather"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="mailto:abdullahkaraosmanoglu53@gmail.com"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="mailto:abdullahkaraosmanoglu53@gmail.com"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="mailto:abdullahkaraosmanoglu53@gmail.com"><i class="fa fa-google-plus"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -90,8 +90,8 @@
                                 @if (@Session["userId"] != null)
                                 {
                                     <li><a href=@Url.Action("Profile", "Account", new { userId = @Session["userId"] })><i class="fa fa-user"></i>Hesabım</a></li>
-                                    <li><a href=@Url.Action("Index", "Orders")><i class="fa fa-star"></i> Siparişlerim</a></li>
-                                    <li><a href=@Url.Action("Checkout", "Checkout")><i class="fa fa-crosshairs"></i> Ödeme/Adres Bilgileri</a></li>
+                                    <li><a href=@Url.Action("GetOrder", "Order")><i class="fa fa-star"></i> Siparişlerim</a></li>
+                                    @*<li><a href=@Url.Action("Checkout", "Checkout")><i class="fa fa-crosshairs"></i> Ödeme/Adres Bilgileri</a></li>*@
                                     <li><a href=@Url.Action("GetProductToCart", "Cart")><i class="fa fa-shopping-cart"></i> Sepetim</a></li>
                                     <li><a href=@Url.Action("Logout", "Login") class="active"><i class="fa fa-lock"></i> Çıkış Yap</a></li>
                                 }
@@ -108,10 +108,9 @@
                 </div>
             </div>
         </div><!--/header-middle-->
-
         <!--<div class="header-bottom">-->
-            <!--header-bottom-->
-            <!--<div class="container">
+        <!--header-bottom-->
+        <!--<div class="container">
                 <div class="row">
                     <div class="col-sm-9">
                         <div class="navbar-header">
@@ -153,11 +152,12 @@
                     </div>
                 </div>
             </div>
-        </div>--><!--/header-bottom-->
+        </div>-->
+        <!--/header-bottom-->
     </header><!--/header-->
 
     @RenderBody()
-    
+
 
     <footer id="footer">
         <!--Footer-->
@@ -308,7 +308,7 @@
 
 
 
-    
+
 
 </body>
 </html>

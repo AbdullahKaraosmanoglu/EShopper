@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Siparişlerim";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <section id="cart_items">
@@ -9,50 +9,32 @@
             <table class="table table-condensed">
                 <thead>
                     <tr class="cart_menu">
-                        <td class="">Sipariş:</td>
+                        <td class="">Adres:</td>
+                        <td class="">Ödeme Tipi:</td>
                         <td class="">Sipariş Açıklaması:</td>
+                        <td class="">Telefon Numarası:</td>
+                        <td class="">Sipariş Tarihi:</td>
                         <td class="">Toplam Fiyat:</td>
                         <td class="">Durum:</td>
-                        <td class="">Adres:</td>
                         <td></td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Sepet Toplamı</td>
-                        <td>59TL</td>
-                        <td>Kargo Ücreti</td>
-                        <td>20TL</td>
-                        <td>Toplam</td>
-                    </tr>
-                    <tr>
-                        <td>Sepet Toplamı</td>
-                        <td>59TL</td>
-                        <td>Kargo Ücreti</td>
-                        <td>20TL</td>
-                        <td>Toplam</td>
-                    </tr>
-                    <tr>
-                        <td>Sepet Toplamı</td>
-                        <td>59TL</td>
-                        <td>Kargo Ücreti</td>
-                        <td>20TL</td>
-                        <td>Toplam</td>
-                    </tr>
-                    <tr>
-                        <td>Sepet Toplamı</td>
-                        <td>59TL</td>
-                        <td>Kargo Ücreti</td>
-                        <td>20TL</td>
-                        <td>Toplam</td>
-                    </tr>
-                    <tr>
-                        <td>Sepet Toplamı</td>
-                        <td>59TL</td>
-                        <td>Kargo Ücreti</td>
-                        <td>20TL</td>
-                        <td>Toplam</td>
-                    </tr>
+
+                    @foreach (var item in @ViewBag.OrderList)
+                    {
+                        <tr>
+                            <td class="glyphicon-hourglass">@item.Address</td>
+                            <td>@item.PaymentTypeText</td>
+                            <td>@item.Description</td>
+                            <td>@item.PhoneNumber</td>
+                            <td>@item.TranDate</td>
+                            <td>@item.SubTotal</td>
+                            <td>@item.OrderStatusText</td>
+
+                        </tr>
+                    }
+
                 </tbody>
             </table>
         </div>

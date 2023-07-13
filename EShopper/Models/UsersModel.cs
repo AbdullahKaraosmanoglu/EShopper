@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Profile;
 
 namespace EShopper.Models
 {
+    [Bind(Include = "UserId,Name,Surname,Address,Email,Password,DateOfBirth,Gender ")]
     public class UsersModel
     {
         /// <summary>

@@ -19,17 +19,17 @@ namespace EShopper.Controllers
 
         public void AddCart(string productId)
         {
-            string userId = Session["userId"].ToString();
+                string userId = Session["userId"].ToString();
             CartProcess cartProcess = new CartProcess();
             var response = cartProcess.AddCart(productId, userId);
             if (!response)
             {
             }
+            return;
             //ProductProcess productProcess = new ProductProcess();
             //var GetProducts = productProcess.GetAllProduct();
             //ViewBag.ProductList = GetProducts;
             //var session = Session["userId"];
-            return;
             //return RedirectToAction("Index", "Home");
             //return View("~/Views/Home/Index.cshtml", ViewBag);
         }

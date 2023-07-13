@@ -17,11 +17,11 @@
                 @using (Html.BeginForm("LoginControl", "Login", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
-                    <h2>Login to your account</h2>
+                    <h2>Hesabınıza Giriş Yapınız</h2>
                     <form action="#">
-                        <input type="email" placeholder="Email Address" name="TxtEmail" />
-                        <input type="password" placeholder="Password" name="TxtPassword" />
-                        <button type="submit" class="btn btn-default">Login</button>
+                        <input type="email" placeholder="E-Mail Adresi" name="TxtEmail" />
+                        <input type="password" placeholder="Şifre" name="TxtPassword" />
+                        <button type="submit" class="btn btn-default">Giriş Yap</button>
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10" style="color:red">
                                 @ViewBag.LErrorMessage
@@ -42,39 +42,39 @@
                 {
                     @Html.AntiForgeryToken()
 
-                    <h2>New User Signup!</h2>
+                    <h2>Yeni Kullanıcı Kayıt Formu!</h2>
 
-                    @Html.ValidationMessage("Name", "Please enter Name", "text-danger")
+                    @Html.ValidationMessage("Name", "Lütfen İsminizi Giriniz", "text-danger")
 
-                    <input type="text" class="" placeholder="Name*" name="TxtName" onblur="ValidControl(this);" required />
+                    <input type="text" class="" placeholder="İsim*" name="TxtName" onblur="ValidControl(this);" required />
 
-                    @Html.ValidationMessage("Surname", "Please enter Surname", "text-danger")
+                    @Html.ValidationMessage("Surname", "Lütfen Soyisminizi Giriniz", "text-danger")
 
-                    <input type="text" class="" placeholder="Surname*" name="TxtSurname" onblur="ValidControl(this);" required />
+                    <input type="text" class="" placeholder="Soyisim*" name="TxtSurname" onblur="ValidControl(this);" required />
 
-                    @Html.ValidationMessage("Email", "Please enter email", "text-danger")
+                    @Html.ValidationMessage("Email", "Lütfen E-Mail Adresinizi Giriniz", "text-danger")
 
-                    <input type="email" placeholder="Email Address*" name="TxtEmail" onblur="ValidControl(this);" required/>
+                    <input type="email" placeholder="E-mail Adresi*" name="TxtEmail" onblur="ValidControl(this);" required />
 
-                    @Html.ValidationMessage("Password", "Please enter password", "text-danger")
+                    @Html.ValidationMessage("Password", "Lütfen Şifrenizi Giriniz", "text-danger")
 
-                    <input type="password" placeholder="Password*" name="TxtPassword" onblur="ValidControl(this);" required/>
+                    <input type="password" placeholder="Şifre*" name="TxtPassword" onblur="ValidControl(this);" required />
 
-                    @Html.ValidationMessage("DateOfBirth", "Please enter Birth Of Date", "text-danger")
+                    @Html.ValidationMessage("DateOfBirth", "Lütfen Doğum Tarihinizi Giriniz (+18)", "text-danger")
 
-                    <input type="date" placeholder="Date Of Birth*" name="DtDateOfBirth" onblur="ValidControl(this);" required/>
+                    <input type="date" placeholder="Doğum Tarihi*" name="DtDateOfBirth" onblur="ValidControl(this);" required min="1963-01-01" max="2005-01-01" />
 
-                    @Html.ValidationMessage("Address", "Please enter Address", "text-danger")
+                    @Html.ValidationMessage("Address", "Lütfen Adresinizi Giriniz", "text-danger")
 
-                    <input type="text" placeholder="Address*" name="TxtAddress" onblur="ValidControl(this);" required/>
+                    <input type="text" placeholder="Adres*" name="TxtAddress" onblur="ValidControl(this);" required />
 
-                    @Html.ValidationMessage("Gender", "Please enter Gender", "text-danger")
+                    @Html.ValidationMessage("Gender", "Lütfen Cinsiyetinizi Giriniz", "text-danger")
 
                     <select name="slGender" onchange="ValidControl(this);" required>
 
                         <option value="-1" selected>Seçiniz</option>
-                        <option value="Man">Man*</option>
-                        <option value="Woman">Woman*</option>
+                        <option value="Man">Erkek*</option>
+                        <option value="Woman">Kadın*</option>
                     </select>
 
                     <button style="margin-top:10px;" type="submit" class="btn btn-default">

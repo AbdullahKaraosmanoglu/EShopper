@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace EShopper.Controllers
 {
-    public class OrdersController : Controller
+    public class AdminController : Controller
     {
-        // GET: Orders
+        // GET: Admin
         public ActionResult Index()
         {
             return View();

@@ -35,7 +35,7 @@ function ValidControl(AInput) {
     if (Input.required != null) {
         if (Input.required) {
             if (Input.value === "" || Input.value === "-1") {
-                Input.style.backgroundColor = "#FF4D4D";
+                Input.style.backgroundColor = "#FF6B6B";
             }
             else {
                 Input.style.backgroundColor = "#F0F0E9";
@@ -52,10 +52,10 @@ function AddToCart(productId) {
         data: { productID }
         ,
         success: function () {
-            alert("Ürün sepete eklendi.");
+            alert("Urun sepete eklendi.");
         },
         error: function () {
-            alert("sepete eklenemedi");
+            alert("Urun sepete eklenemedi");
         }
     });
 };
@@ -70,7 +70,10 @@ function hesapla() {
         var fiyat = parseFloat(urun.getAttribute("data-fiyat"));
         var adetInput = urun.getElementsByClassName("cart_quantity_input")[0];
         var adet = parseInt(adetInput.value);
-
+        if (adet > 5) {
+            adet = 5;
+            urun.getElementsByClassName("cart_quantity_input")[0].value = 5;
+        }
         var urunTutari = fiyat * adet;
         toplamTutar += urunTutari;
     }
@@ -92,11 +95,57 @@ function DeleteItemCart(productId) {
         data: { productID }
         ,
         success: function () {
-            alert("Ürün sepetten silindi.");
+            alert("Urun sepetten silindi.");
         },
         error: function () {
-            alert("Ürün sepetten silinemedi.");
+            alert("Urun sepetten silinemedi.");
         }
     });
+};
+
+function checkedOnClick(el) {
+
+    
+    var checkboxesList = document.getElementsByClassName("checkoption");
+    for (var i = 0; i < checkboxesList.length; i++) {
+        checkboxesList.item(i).checked = false; 
+    }
+
+    el.checked = true; 
+}
+
+function AddOrder() {
+    var subTotal = document.getElementById("toplamSepetTutari").innerHTML;
+    var paymentType = 1;
+    if (document.getElementById("pay2").checked) {
+        paymentType = 2;
+    }
+    var address = document.getElementById("orderAddress").value;
+    var description = document.getElementById("orderDescription").value;
+    var phoneNumber = document.getElementById("orderPhone").value;
+
+    $.ajax({
+        type: 'POST',
+        url: '/Order/AddOrder',
+        data: { subTotal, paymentType, address, description, phoneNumber }
+        ,
+        success: function () {
+            alert("Siparis Alindi...");
+        },
+        error: function () {
+            alert("Siparis Alinamadi..");
+        }
+    });
+
+    var paymentType = 1;
+    var subTotal = document.getElementById("toplamSepetTutari").innerHTML = "0";
+    var address = document.getElementById("orderAddress").value = "";
+    var description = document.getElementById("orderDescription").value="";
+    var phoneNumber = document.getElementById("orderPhone").value = "";
+    var orderEmail = document.getElementById("orderEmail").value = "";
+    var orderName = document.getElementById("orderName").value = "";
+    var orderSurname = document.getElementById("orderSurname").value = "";
+    var orderCartsTotal = document.getElementById("sepetTutari").innerHTML = "0";
+
 };
 

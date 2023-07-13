@@ -1,7 +1,7 @@
 ﻿@model EShopper.Models.UsersModel
 
 @{
-    ViewBag.Title = "Profile";
+    ViewBag.Title = "Hesabım";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,16 +11,16 @@
 {
     @Html.AntiForgeryToken()
 
-    
-    if (@Session["userId"] != null)
+
+    if (TempData["AlertMessage"] != null)
     {
-        <div class="alert alert-success">
+        <div class="alert alert-success" style="position:center">
             <span class="glyphicon glyphicon-ok"></span>
-            Hesap Bilgileri Başarılı Bir Şekilde Güncellendi!
+           @TempData["AlertMessage"] Hesap Bilgileri Başarılı Bir Şekilde Güncellendi!
         </div>
     }
 
-    <div class="form-horizontal">
+    <div class="form-horizontal" style="margin-left:450px">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(m => m.UserId)
         <div class="form-group">

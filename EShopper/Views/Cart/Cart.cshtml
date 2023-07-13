@@ -8,11 +8,11 @@
     <div class="container">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
-                <li><a href=@Url.Action("Index", "Home") class="active">AnaSayfa</a></li>
+                <li><a href=@Url.Action("Index", "Home") class="active">Home</a></li>
                 <li class="active">Sepetim</li>
             </ol>
         </div>
-        <div class="table-responsive cart_info">
+        <div class="table-responsive cart_info" style="overflow:hidden;">
             <table class="table table-condensed">
                 <thead>
                     <tr class="cart_menu">
@@ -24,38 +24,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                        @foreach (var item in @ViewBag.CartList)
-                        {
+                    @foreach (var item in @ViewBag.CartList)
+                    {
 
-                            <tr class="urun" data-fiyat="@item.Price">
-                                <td class="cart_product">
-                                    <img src="@item.ImagePath" width="100" height="100" alt="" />
-                                </td>
-                                <td class="cart_description" style="padding-left:50px">
-                                    <h4><a href="">@item.ProductName</a></h4>
-                                    <p>@item.ProductGuid</p>
-                                </td>
-                                <td class="cart_price">
-                                    <p id="price">@item.Price</p>
-                                </td>
-                                <td class="cart_quantity">
-                                    <div class="cart_quantity_button">
-                                        <input class="cart_quantity_input" min="1" max="5" value="1" type="number" size="2" onchange="hesapla();">
-                                    </div>
-                                </td>
-                                <td class="cart_delete" style="padding-top:50px">
-                                    <a class="cart_quantity_delete" href="" onclick="DeleteItemCart(@item.ProductId);"><i class="fa fa-times"></i></a>
-                                </td>
-                            </tr>
-                        }
-                    
+                        <tr class="urun" data-fiyat="@item.Price">
+                            <td class="cart_product">
+                                <img src="@item.ImagePath" width="100" height="100" alt="" />
+                            </td>
+                            <td class="cart_description" style="padding-left:50px">
+                                <h4><a href="">@item.ProductName</a></h4>
+                                <p>@item.ProductGuid</p>
+                            </td>
+                            <td class="cart_price">
+                                <p id="price">@item.Price TL</p>
+                            </td>
+                            <td class="cart_quantity">
+                                <div class="cart_quantity_button">
+                                    <input class="cart_quantity_input" min="1" max="5" value="1" type="number" size="2" onchange="hesapla()">
+                                </div>
+                            </td>
+                            <td class="cart_delete" style="padding-top:50px">
+                                <a class="cart_quantity_delete" href="" onclick="DeleteItemCart(@item.ProductId);"><i class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                    }
+
                     <tr>
-                        <td colspan="4">&nbsp;</td>
+                        <td colspan="2">&nbsp;</td>
                         <td colspan="2">
                             <table class="table table-condensed total-result">
                                 <tr>
                                     <td>Sepet Toplamı</td>
-                                    <td><span id="sepetTutari">0TL</span></td>
+                                    <td><span id="sepetTutari"></span><span>TL</span></td>
                                 </tr>
                                 <tr>
                                     <td>Kargo Ücreti</td>
@@ -63,7 +63,7 @@
                                 </tr>
                                 <tr>
                                     <td>Toplam Tutar</td>
-                                    <td><span id="toplamSepetTutari">0TL</span></td>
+                                    <td><span id="toplamSepetTutari"></span><span>TL</span></td>
                                 </tr>
                             </table>
                         </td>
@@ -73,86 +73,90 @@
             </table>
             @*<button type="submit" class="btn btn-primary" onclick="hesapla();">Sepeti Onayla</button>*@
         </div>
-        <div class="payment-options">
+        <div class="">
+            @*<span>
+                <label><input type="checkbox" class="checkoption" value="0" onclick="checkedOnClick(this);"> Havale/EFT İle Ödeme</label>
+            </span>*@
             <span>
-                <label><input type="checkbox"> Havale/EFT İle Ödeme</label>
+                <label><input type="checkbox" class="checkoption" id="pay1" value="1" onclick="checkedOnClick(this);" style="margin-left:20px;"> Kapıda Ödeme</label>
             </span>
             <span>
-                <label><input type="checkbox"> Kapıda Ödeme</label>
-            </span>
-            <span>
-                <label><input type="checkbox"> Kredi Kartı İle Ödeme</label>
+                <label><input type="checkbox" class="checkoption" id="pay2" value="2" onclick="checkedOnClick(this);" style="margin-left:20px;"> Kredi Kartı İle Ödeme</label>
             </span>
         </div>
-        <div class="shopper-informations">
+        <div class="shopper-informations" style="margin-top:40px;">
             <div class="row" @*style="padding-bottom: 10px;"*@>
-                <div class="col-sm-3">
+                <div class="col-sm-3 clearfix ">
                     <div class="shopper-info">
-                        <p>Shopper Information</p>
+                        <p>Adres</p>
                         <form>
-                            <input type="text" placeholder="İsim Soyisim">
-                            <input type="text" placeholder="Mail Adresi">
-                            <input type="password" placeholder="Şifre">
-                            <input type="password" placeholder="Şifre Onayla">
+                            <textarea id="orderAddress" placeholder="Teslimatın Yapılacağı Açık Adresi Belirtiniz" rows="16"></textarea>
                         </form>
                     </div>
                 </div>
                 <div class="col-sm-5 clearfix">
                     <div class="bill-to">
-                        <p>Fatura</p>
+                        <p>Fatura Bilgileri</p>
                         <div class="form-one">
                             <form>
-                                <input type="text" placeholder="Şirket İsmi (İsteğe Bağlı)">
-                                <input type="text" placeholder="Email *">
-                                <input type="text" placeholder="Meslek(İsteğe Bağlı)">
-                                <input type="text" placeholder="Birinci İsim *">
-                                <input type="text" placeholder="Varsa İkinci İsim">
-                                <input type="text" placeholder="Soyisim *">
-                                <input type="text" placeholder="Birincil Adres  *">
-                                <input type="text" placeholder="İkincil Adres *">
+                                @*<input type="text" placeholder="Şirket İsmi (İsteğe Bağlı)">*@
+                                <input type="text" id="orderEmail" placeholder="Email *">
+                                @*<input type="text" placeholder="Meslek(İsteğe Bağlı)">*@
+                                <input type="text" id="orderName" placeholder="İsim *">
+                                @*<input type="text" placeholder="Varsa İkinci İsim">*@
+                                <input type="text" id="orderSurname" placeholder="Soyisim *">
+                                @*<input type="text" placeholder="Birincil Adres  *">*@
+                                @*<input type="text" placeholder="İkincil Adres *">*@
                             </form>
                         </div>
                         <div class="form-two">
                             <form>
-                                <input type="text" placeholder="Posta Kodu *">
-                                <select>
-                                    <option>-- Ülke --</option>
-                                    <option>TÜRKİYE</option>
-                                    <option>United States</option>
-                                    <option>Bangladesh</option>
-                                    <option>UK</option>
-                                    <option>India</option>
-                                    <option>Pakistan</option>
-                                    <option>Ucrane</option>
-                                    <option>Canada</option>
-                                    <option>Dubai</option>
-                                </select>
-                                <select>
-                                    <option>-- Şehir --</option>
-                                    <option>ANKARA</option>
-                                    <option>İSTANBUL</option>
-                                    <option>KOCAELİ</option>
-                                    <option>RİZE</option>
-                                    <option>BURSA</option>
-                                    <option>SAKARYA</option>
-                                    <option>İZMİR</option>
-                                    <option>ANTALYA</option>
-                                </select>
-                                <input type="password" placeholder="Şifreyi Onayla">
-                                <input type="text" placeholder="İş Yeri Telefonu (İsteğe Bağlı) ">
-                                <input type="text" placeholder="Cep Telefonu*">
-                                <input type="text" placeholder="Fax">
+                                <input type="text" id="orderPhone" placeholder="Cep Telefonu*">
+                                <input type="text" placeholder="Kredi/Banka Kart Numarası*">
+                                <input type="text" placeholder="Kredi/Banka Kart Üzerinde Yazan İsim*">
+                                <input type="text" placeholder="Kredi/Banka Kart Son Geçerlilik Süresi*">
+                                <input type="text" placeholder="Kredi/Banka Kart Güvenlik Numarasının Son 2 Rakamı*">
+                                @*<input type="text" placeholder="Posta Kodu *">*@
+                                @*<select>
+                                        <option>-- Ülke --</option>
+                                        <option>TÜRKİYE</option>
+                                        <option>United States</option>
+                                        <option>Bangladesh</option>
+                                        <option>UK</option>
+                                        <option>India</option>
+                                        <option>Pakistan</option>
+                                        <option>Ucrane</option>
+                                        <option>Canada</option>
+                                        <option>Dubai</option>
+                                    </select>
+                                    <select>
+                                        <option>-- Şehir --</option>
+                                        <option>ANKARA</option>
+                                        <option>İSTANBUL</option>
+                                        <option>KOCAELİ</option>
+                                        <option>RİZE</option>
+                                        <option>BURSA</option>
+                                        <option>SAKARYA</option>
+                                        <option>İZMİR</option>
+                                        <option>ANTALYA</option>
+                                    </select>*@
+                                @*<input type="password" placeholder="Şifreyi Onayla">*@
+                                @*<input type="text" placeholder="İş Yeri Telefonu (İsteğe Bağlı) ">*@
+
+                                @*<input type="text" placeholder="Fax">*@
+
                             </form>
+
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="order-message">
                         <p>Alışveriş Siparişi</p>
-                        <textarea name="message" placeholder="Siparişinizle ilgili notlar, Teslimata İlişkin Özel Notlar" rows="16"></textarea>
+                        <textarea  id="orderDescription" placeholder="Siparişinizle ilgili notlar, Teslimata İlişkin Özel Notlar" rows="16"></textarea>
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Siparişi Ver" class="btn btn-default" />
+                                <button type="submit" class="btn btn-danger"  onclick="AddOrder();">Sipariş Ver</button>
                             </div>
                         </div>
                     </div>

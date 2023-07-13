@@ -2538,8 +2538,8 @@ th {
   background-color: #ebcccc;
 }
 .table-responsive {
-  min-height: 0.01%;
-  overflow-x: auto;
+    min-height: 0.01%;
+    overflow: hidden !important;
 }
 @media screen and (max-width: 767px) {
   .table-responsive {
@@ -3080,7 +3080,7 @@ select[multiple].input-lg {
   margin-left: -15px;
 }
 @media (min-width: 768px) {
-  .form-horizontal .control-label {
+    .form-horizontal .control-label {
     padding-top: 7px;
     margin-bottom: 0;
     text-align: right;
