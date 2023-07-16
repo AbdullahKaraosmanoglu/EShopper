@@ -130,10 +130,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Layers\CartProcess.cs" />
-    <Compile Include="Layers\OrdersProcess.cs" />
-    <Compile Include="Layers\ProductProcess.cs" />
-    <Compile Include="Layers\UserProcess.cs" />
+    <Compile Include="DataLayers\CartProcess.cs" />
+    <Compile Include="DataLayers\OrdersProcess.cs" />
+    <Compile Include="DataLayers\ProductProcess.cs" />
+    <Compile Include="DataLayers\UserProcess.cs" />
     <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\ProductModel.cs" />

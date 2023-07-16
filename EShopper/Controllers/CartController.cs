@@ -19,7 +19,7 @@ namespace EShopper.Controllers
 
         public void AddCart(string productId)
         {
-                string userId = Session["userId"].ToString();
+            string userId = Session["userId"].ToString();
             CartProcess cartProcess = new CartProcess();
             var response = cartProcess.AddCart(productId, userId);
             if (!response)
