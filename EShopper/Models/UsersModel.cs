@@ -11,9 +11,7 @@ namespace EShopper.Models
     [Bind(Include = "UserId,Name,Surname,Address,Email,Password,DateOfBirth,Gender ")]
     public class UsersModel
     {
-        /// <summary>
-        /// Prop'ların oluşturulması.
-        /// </summary>
+
         [Display(Name = "UserId")]
         [Required(ErrorMessage = " ID alanını doldurmak zorundasınız")]
         public int UserId { get; set; }
@@ -45,7 +43,6 @@ namespace EShopper.Models
         public DateTime? DateOfBirth { get; set; }
 
         [Display(Name = "Gender")]
-        //[Required(ErrorMessage = "Cinsiyet alanını doldurmak zorundasınız")]
         public int? Gender { get; set; }
     }
 }

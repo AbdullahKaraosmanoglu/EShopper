@@ -12,9 +12,6 @@ namespace EShopper.Controllers
     {
         public ActionResult Index()
         {
-            ////UsersModel model = new UsersModel();
-            //Guid guid = Guid.NewGuid();
-            //var x = guid.ToString();
             ProductProcess productProcess = new ProductProcess();
             var GetProducts = productProcess.GetAllProduct();
             ViewBag.ProductList = GetProducts;

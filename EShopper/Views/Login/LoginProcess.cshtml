@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Üye Ol Ve Giriş Yap";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    //ViewBag.UserId = Model.UserId;
 }
 
 
@@ -19,13 +18,20 @@
                     @Html.AntiForgeryToken()
                     <h2>Hesabınıza Giriş Yapınız</h2>
                     <form action="#">
-                        <input type="email" placeholder="E-Mail Adresi" name="TxtEmail" />
-                        <input type="password" placeholder="Şifre" name="TxtPassword" />
+
+                        @Html.ValidationMessage("Email", "Lütfen E-Mail Adresinizi Giriniz", "text-danger")
+
+                        <input type="email" placeholder="E-Mail Adresi" name="TxtEmail" onblur="ValidControl(this);" required  />
+
+                        @Html.ValidationMessage("Password", "Lütfen Şifrenizi Giriniz", "text-danger")
+
+                        <input type="password" placeholder="Şifre" name="TxtPassword" onblur="ValidControl(this);" required />
+
                         <button type="submit" class="btn btn-default">Giriş Yap</button>
+
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10" style="color:red">
                                 @ViewBag.LErrorMessage
-
                             </div>
                         </div>
                     </form>
@@ -65,7 +71,16 @@
                     <input type="date" placeholder="Doğum Tarihi*" name="DtDateOfBirth" onblur="ValidControl(this);" required min="1963-01-01" max="2005-01-01" />
 
                     @Html.ValidationMessage("Address", "Lütfen Adresinizi Giriniz", "text-danger")
-
+                    <select>
+                        <option>United States</option>
+                        <option>Bangladesh</option>
+                        <option>UK</option>
+                        <option>India</option>
+                        <option>Pakistan</option>
+                        <option>Ucrane</option>
+                        <option>Canada</option>
+                        <option>Dubai</option>
+                    </select>
                     <input type="text" placeholder="Adres*" name="TxtAddress" onblur="ValidControl(this);" required />
 
                     @Html.ValidationMessage("Gender", "Lütfen Cinsiyetinizi Giriniz", "text-danger")

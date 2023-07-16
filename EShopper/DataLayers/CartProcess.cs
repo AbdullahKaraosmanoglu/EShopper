@@ -34,13 +34,9 @@ namespace EShopper.Layers
             int i = sp.GetHashCode();
             con.Close();
             if (i == 1)
-            {
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
 
         public bool DeleteItemCart(string productId, string userId)
@@ -56,13 +52,9 @@ namespace EShopper.Layers
             int i = sp.GetHashCode();
             con.Close();
             if (i == 1)
-            {
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
 
         public List<ProductModel> GetCarts(string userId)

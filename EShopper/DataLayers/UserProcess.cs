@@ -14,20 +14,12 @@ namespace EShopper.Layers
     {
         private SqlConnection con;
 
-        /// <summary>
-        /// web.config'den connection string'i alan SQL bağlantı yapısı...
-        /// </summary>
         private void connection()
         {
             string constr = ConfigurationManager.ConnectionStrings["dbconnection"].ToString();
             con = new SqlConnection(constr);
 
         }
-        /// <summary>
-        /// Kullanıcıyı Kayıt Eden Insert  Yapısı ve Methodları...
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
         public bool AddUser(UsersModel obj)
         {
             connection();
@@ -46,20 +38,11 @@ namespace EShopper.Layers
             int i = sp.GetHashCode();
             con.Close();
             if (i >= 1)
-            {
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
 
-        /// <summary>
-        /// Kullanıcı Giriş yaparken VeriTabanında Hesabı Olup olmadığını dönen ve kontrol eden SELECT Yapısı ve Methodudur...
-        /// </summary>
-        /// <param name="usersModel"></param>
-        /// <returns></returns>
         public List<UsersModel> LoginControl(UsersModel usersModel)
         {
             connection();
@@ -115,11 +98,9 @@ namespace EShopper.Layers
 
             con.Open();
             var sp = com.ExecuteScalar();
-            con.Close(); //burada kayıt varsa  
+            con.Close();
             if (sp.Equals("true"))
-            {
                 return true;
-            }
             return false;
         }
 
@@ -187,10 +168,10 @@ namespace EShopper.Layers
             userModel.DateOfBirth = Convert.ToDateTime(dr["DateOfBirth"]);
             userModel.Gender = Convert.ToInt32(dr["Gender"]);
             userModel.Address = Convert.ToString(dr["Address"]);
-            
+
             return userModel;
         }
-       
+
         public Boolean UpdateUsers(UsersModel usersModel)
         {
             connection();
@@ -209,14 +190,10 @@ namespace EShopper.Layers
             int i = sp.GetHashCode();
             con.Close();
             if (i >= 1)
-            {
                 return true;
-            }
             else
-            {
                 return false;
-            }
-        
+
         }
     }
 }

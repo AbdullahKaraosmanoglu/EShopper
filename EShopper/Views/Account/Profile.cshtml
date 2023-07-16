@@ -14,9 +14,12 @@
 
     if (TempData["AlertMessage"] != null)
     {
-        <div class="alert alert-success" style="position:center">
+        <div class="alert alert-success" style="width:550px; margin-left:510px;">
             <span class="glyphicon glyphicon-ok"></span>
-           @TempData["AlertMessage"] Hesap Bilgileri Başarılı Bir Şekilde Güncellendi!
+            @TempData["AlertMessage"] Hesap Bilgileri Başarılı Bir Şekilde Güncellendi!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span>&times;</span>
+            </button>
         </div>
     }
 

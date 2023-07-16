@@ -34,13 +34,11 @@ namespace EShopper.Layers
                 com.Parameters.Clear();
                 com.CommandType = CommandType.StoredProcedure;
                 com.Parameters.AddWithValue("@UserId", orderModel.UserId).DbType = DbType.Int32;
-                //com.Parameters.AddWithValue("@TranDate", orderModel.TranDate).DbType = DbType.DateTime;
                 com.Parameters.AddWithValue("@SubTotal", orderModel.SubTotal).DbType = DbType.Decimal;
                 com.Parameters.AddWithValue("@PaymentType", orderModel.PaymentType).DbType = DbType.Int32;
                 com.Parameters.AddWithValue("@Address", orderModel.Address).DbType = DbType.String;
                 com.Parameters.AddWithValue("@Description", orderModel.Description).DbType = DbType.String;
                 com.Parameters.AddWithValue("@PhoneNumber", orderModel.PhoneNumber).DbType = DbType.String;
-                // com.Parameters.AddWithValue("@OrderStatus", orderModel.OrderStatus).DbType = DbType.Int32;
 
                 if (con.State != ConnectionState.Open)
                     con.Open();
@@ -73,7 +71,6 @@ namespace EShopper.Layers
                 com.Parameters.AddWithValue("@UserId", userId).DbType = DbType.Int32;
                 SqlDataAdapter da = new SqlDataAdapter(com);
                 DataTable dt = new DataTable();
-                //con.Open();
                 da.Fill(dt);
                 con.Close();
 

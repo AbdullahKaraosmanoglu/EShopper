@@ -23,15 +23,7 @@ namespace EShopper.Controllers
             CartProcess cartProcess = new CartProcess();
             var response = cartProcess.AddCart(productId, userId);
             if (!response)
-            {
-            }
             return;
-            //ProductProcess productProcess = new ProductProcess();
-            //var GetProducts = productProcess.GetAllProduct();
-            //ViewBag.ProductList = GetProducts;
-            //var session = Session["userId"];
-            //return RedirectToAction("Index", "Home");
-            //return View("~/Views/Home/Index.cshtml", ViewBag);
         }
 
         public ActionResult GetProductToCart()
@@ -51,8 +43,6 @@ namespace EShopper.Controllers
             CartProcess cartProcess = new CartProcess();
             var response = cartProcess.DeleteItemCart(productId, userId);
             if (!response)
-            {
-            }
             return;
         }
     }

@@ -14,7 +14,7 @@ namespace EShopper.Controllers
 
         public new ActionResult Profile(int userId)
         {
-            TempData["name"] = "Bill";
+            TempData["name"] = "Abdullah";
 
             UserProcess userProcess = new UserProcess();
             var responseUserModel = userProcess.GetUserModelByUserId(userId);
@@ -30,8 +30,6 @@ namespace EShopper.Controllers
             var ResponseUserProcess = UserProcess.UpdateUsers(usersModel);
             var responseUserModel = UserProcess.GetUserModelByUserId(usersModel.UserId);
             TempData["AlertMessage"] = "";
-            //usersModel = (EShopper.Models.UsersModel)TempData["usersModel"];
-            //TempData["usersModel"] = "Güncellendi";
             return View("~/Views/Account/Profile.cshtml", responseUserModel);
         }
     }

@@ -19,24 +19,7 @@ namespace EShopper.Controllers
         {
             return View();
         }
-        //örnek region kullanımı
-        #region Insert method  
-        /// <summary>
-        /// Müşteriyi Üye Yapan Controller Methodudur...
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
-        /// 
-        //tüm alanları doldurmadan add Usera geçmesini bekleyemezsin. 
-        //çünkü parametre olarak model alıyorsun. Frontend tarafında model oluşmadan
-        //yani tüm alanlar entity oluşturmadan model oluşmaz. 
-        //model oluşmadığu içinde httppost metodu yerine get metodunu arar
 
-
-        //public ActionResult AddUser()
-        //{
-        //    return RedirectToAction("AddUser", "Login", FormMethod.Post);
-        //}
         [HttpPost]
         public ActionResult AddUser(UsersModel user)
         {
@@ -96,13 +79,7 @@ namespace EShopper.Controllers
             @ViewBag.SuccessMessage = "Kayıt İşlemi Başarıyla Tamamlandı Lütfen Giriş Yaparak Devam Ediniz";
             return View("~/Views/Login/LoginProcess.cshtml");
         }
-        #endregion
 
-        /// <summary>
-        /// Giriş Yap Formunda üyenin olup olmadığını kontrol eden methodum...
-        /// </summary>
-        /// <param name="usersModel"></param>
-        /// <returns></returns>
         [HttpPost]
         public ActionResult LoginControl(UsersModel usersModel)
         {
@@ -112,7 +89,7 @@ namespace EShopper.Controllers
             try
             {
 
-                if (!String.IsNullOrEmpty(TxtEmail) || !String.IsNullOrEmpty(TxtPassword)/*ModelState.IsValid*/)
+                if (!String.IsNullOrEmpty(TxtEmail) || !String.IsNullOrEmpty(TxtPassword))
                 {
                     UsersModel usersModelGet = new UsersModel
                     {
@@ -140,13 +117,8 @@ namespace EShopper.Controllers
                 throw ex;
             }
             var responseUserModel = userProcess.SelectUserModelByEmailAndPassword(TxtEmail, TxtPassword);
-            //ViewBag.UserModel = responseUserModel;
             Session["userId"] = responseUserModel.UserId;
-            //ProductProcess productProcess = new ProductProcess();
-            //var GetProducts = productProcess.GetAllProduct();
-            //ViewBag.ProductList = GetProducts;
             return RedirectToAction("Index", "Home");
-            //return View("~/Views/Home/Index.cshtml", ViewBag);
 
 
         }
@@ -184,13 +156,9 @@ namespace EShopper.Controllers
                 UserProcess userProcess = new UserProcess();
                 var response = userProcess.SignUpControl(usersModelGet);
                 if (response == true)
-                {
                     return true;
-                }
                 else
-                {
                     return false;
-                }
             }
             return true;
         }
