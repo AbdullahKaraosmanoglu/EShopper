@@ -1,13 +1,6 @@
 ﻿using EShopper.Layers;
 using EShopper.Models;
-using Microsoft.Ajax.Utilities;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.Remoting.Messaging;
-using System.Web;
 using System.Web.Mvc;
 
 namespace EShopper.Controllers
@@ -44,12 +37,12 @@ namespace EShopper.Controllers
                 string TxtAddress = Request.Form["TxtAddress"].ToString();
                 string slGender = Request.Form["slGender"].ToString();
 
-                int gender= 0;
-                
+                int gender = 0;
+
                 switch (slGender)
                 {
                     case "Man":
-                        gender = 0 ;
+                        gender = 0;
                         break;
                     case "Woman":
                         gender = 1;
@@ -117,7 +110,16 @@ namespace EShopper.Controllers
                 throw ex;
             }
             var responseUserModel = userProcess.SelectUserModelByEmailAndPassword(TxtEmail, TxtPassword);
+            Session["CurrentUser"] = responseUserModel;
             Session["userId"] = responseUserModel.UserId;
+            var currentUser = Session["CurrentUser"] as UsersModel;
+            if (currentUser != null)
+            {
+                if (currentUser.RoleId == 1)
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
+            }
             return RedirectToAction("Index", "Home");
 
 
@@ -135,7 +137,7 @@ namespace EShopper.Controllers
             if (String.IsNullOrEmpty(TxtName) || String.IsNullOrEmpty(TxtSurname) ||
                 String.IsNullOrEmpty(TxtEmail) || String.IsNullOrEmpty(TxtPassword) ||
                 String.IsNullOrEmpty(DtDateOfBirth) || String.IsNullOrEmpty(TxtAddress)
-                || slGender== "-1")
+                || slGender == "-1")
             {
                 return false;
             }

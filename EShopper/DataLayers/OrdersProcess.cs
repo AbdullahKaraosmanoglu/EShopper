@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace EShopper.Layers
 {
@@ -39,6 +37,11 @@ namespace EShopper.Layers
                 com.Parameters.AddWithValue("@Address", orderModel.Address).DbType = DbType.String;
                 com.Parameters.AddWithValue("@Description", orderModel.Description).DbType = DbType.String;
                 com.Parameters.AddWithValue("@PhoneNumber", orderModel.PhoneNumber).DbType = DbType.String;
+                com.Parameters.AddWithValue("@CreditCardNumber", orderModel.CreditCardNumber).DbType = DbType.String;
+                com.Parameters.AddWithValue("@CreditCardName", orderModel.CreditCardName).DbType = DbType.String;
+                com.Parameters.AddWithValue("@CreditCartLastDate", orderModel.CreditCardLastDate).DbType = DbType.String;
+                com.Parameters.AddWithValue("@CreditCardSecurityNumber", orderModel.CreditCardSecurityNumber).DbType = DbType.String;
+
 
                 if (con.State != ConnectionState.Open)
                     con.Open();

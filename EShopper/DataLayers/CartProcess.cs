@@ -4,10 +4,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Web;
 
 namespace EShopper.Layers
 {
@@ -20,14 +16,14 @@ namespace EShopper.Layers
             con = new SqlConnection(constr);
 
         }
-        public bool AddCart(string productId , string userId)
+        public bool AddCart(string productId, string userId)
         {
 
             connection();
             SqlCommand com = new SqlCommand("dbo.SpAddCartByUserId", con);
             com.CommandType = CommandType.StoredProcedure;
             com.Parameters.AddWithValue("@UserId", userId).DbType = DbType.Int32;
-            com.Parameters.AddWithValue("@ProductId", productId).DbType =DbType.Int32;
+            com.Parameters.AddWithValue("@ProductId", productId).DbType = DbType.Int32;
 
             con.Open();
             var sp = com.ExecuteScalar();
@@ -79,7 +75,7 @@ namespace EShopper.Layers
                 {
                     CartList.Add(new ProductModel
                     {
-                        ProductId= Convert.ToInt32(item["ProductId"]),
+                        ProductId = Convert.ToInt32(item["ProductId"]),
                         ProductName = item["ProductName"].ToString(),
                         Price = Convert.ToDecimal(item["Price"]),
                         Stock = Convert.ToInt32(item["Stock"]),

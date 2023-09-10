@@ -5,7 +5,7 @@
 
 }
 
-<section id="slider">
+@*<section id="slider">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -48,6 +48,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <img src="images/home/girl3.jpg" class="girl img-responsive" alt="" />
+                                <img />
                                 <img src="images/home/pricing.png" class="pricing" alt="" />
                             </div>
                         </div>
@@ -65,7 +66,7 @@
             </div>
         </div>
     </div>
-</section>
+</section>*@
 
 <div class="container">
     <div class="row">
@@ -206,12 +207,13 @@
                                         <div class="overlay-content">
                                             <h2>@item.Price TL</h2>
                                             <p>@item.ProductName</p>
-                                            <p>@item.Stock Stock Mevcut</p>
+                                            <p>@item.ProductId ProductId</p>
                                             <button type="submit" class="btn btn-danger" style="width:100%" onclick="AddToCart(@item.ProductId);"> Sepete Ekle </button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="choose">
+                                    @*<button type="submit" class="btn btn-danger" style="width:100%" onclick="goToProductDetail();">Ürün Detaay </button>*@
                                     <button type="submit" class="btn btn-default" style="width:100%" onclick="AddToCart(@item.ProductId);"> Sepete Ekle </button>
                                 </div>
                             </div>

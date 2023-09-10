@@ -70,7 +70,7 @@
 
                     <input type="date" placeholder="Doğum Tarihi*" name="DtDateOfBirth" onblur="ValidControl(this);" required min="1963-01-01" max="2005-01-01" />
 
-                    @Html.ValidationMessage("Address", "Lütfen Adresinizi Giriniz", "text-danger")
+                    @*@Html.ValidationMessage("Address", "Lütfen Adresinizi Giriniz", "text-danger")
                     <select>
                         <option>United States</option>
                         <option>Bangladesh</option>
@@ -80,7 +80,7 @@
                         <option>Ucrane</option>
                         <option>Canada</option>
                         <option>Dubai</option>
-                    </select>
+                    </select>*@
                     <input type="text" placeholder="Adres*" name="TxtAddress" onblur="ValidControl(this);" required />
 
                     @Html.ValidationMessage("Gender", "Lütfen Cinsiyetinizi Giriniz", "text-danger")
@@ -94,7 +94,7 @@
 
                     <button style="margin-top:10px;" type="submit" class="btn btn-default">
 
-                        Signup
+                        Kayıt Ol.
 
                     </button>
 

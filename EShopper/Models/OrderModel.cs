@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 namespace EShopper.Models
@@ -20,5 +16,9 @@ namespace EShopper.Models
         public int OrderStatus { get; set; }
         public string PaymentTypeText { get; set; }
         public string OrderStatusText { get; set; }
+        public string CreditCardNumber { get; set; }
+        public string CreditCardName { get; set; }
+        public string CreditCardLastDate { get; set; }
+        public string CreditCardSecurityNumber { get; set; }
     }
 }

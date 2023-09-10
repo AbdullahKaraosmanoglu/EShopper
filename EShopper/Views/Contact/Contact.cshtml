@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="contact-page" class="container">
+    <div class="bg">
+        <div class="row">
+            @*<div class="col-sm-12">
+                <h2 class="title text-center">Contact <strong>Us</strong></h2>
+                <div id="gmap" class="contact-map">
+                </div>
+            </div>*@
+        </div>
+        <div class="row">
+            <div class="col-sm-8" style="margin-top:30px;">
+                <div class="contact-form">
+                    <h2 class="title text-center">Şikayet Ve Önerileriniz</h2>
+                    <div class="status alert alert-success" style="display: none"></div>
+                    <form id="main-contact-form" class="contact-form row" name="contact-form" method="post">
+                        <div class="form-group col-md-6">
+                            <input type="text" name="name" class="form-control" required="required" placeholder="İsim">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="text" name="surname" class="form-control" required="required" placeholder="Soyisim">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <input type="text" name="subject" class="form-control" required="required" placeholder="Konu">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Bize Yazın"></textarea>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <input type="submit" name="submit" class="btn btn-primary pull-right" value="Gönder">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-8" style="margin-top:30px;">
+                <div class="contact-info">
+                    <h2 class="title text-center">İletişim Bilgi</h2>
+                    <address>
+                        <p>E-Shopper Şirketi</p>
+                        <p>İstanbul/Mecidiyeköy E-Shopper Plaza No:88</p>
+                        <p>İstanbul TÜRKİYE</p>
+                        <p>Mobile: 05436817410</p>
+                        <p>Fax: 1-714-252-0026</p>
+                        <p>E-mail: abdullahkaraosmanoglu53@gmail.com</p>
+                    </address>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-5" style="margin-top:300px;">
+                <div class="social-networks">
+                    <h2 class="title text-center">Sosyal MEdyalarımız</h2>
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-youtube"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--/#contact-page-->

@@ -1,12 +1,9 @@
-﻿using System;
+﻿using EShopper.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Web;
-using EShopper.Models;
-using Newtonsoft.Json;
+using System.Data.SqlClient;
 
 namespace EShopper.Layers
 {
@@ -128,6 +125,7 @@ namespace EShopper.Layers
             var dr = dt.Rows[0];
 
             userModel.UserId = Convert.ToInt32(dr["UserId"]);
+            userModel.RoleId = Convert.ToInt32(dr["RoleId"]);
             userModel.Name = Convert.ToString(dr["Name"]);
             userModel.Surname = Convert.ToString(dr["Surname"]);
             userModel.Email = Convert.ToString(dr["Email"]);

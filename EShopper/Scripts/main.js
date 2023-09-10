@@ -6,25 +6,24 @@ var RGBChange = function () {
     $('#RGB').css('background', 'rgb(' + r.getValue() + ',' + g.getValue() + ',' + b.getValue() + ')')
 };
 
-/*scroll to top*/
 
 $(document).ready(function () {
     $(function () {
         $.scrollUp({
-            scrollName: 'scrollUp', // Element ID
-            scrollDistance: 300, // Distance from top/bottom before showing element (px)
-            scrollFrom: 'top', // 'top' or 'bottom'
-            scrollSpeed: 300, // Speed back to top (ms)
-            easingType: 'linear', // Scroll to top easing (see http://easings.net/)
+            scrollName: 'scrollYukarý', // Element ID
+            scrollDistance: 300, // Elementin görünmeden önceki mesafe (px)
+            scrollFrom: 'top', // 'top' veya 'bottom'
+            scrollSpeed: 300, // Yukarý hareketin hýzý (ms)
+            easingType: 'linear', // Yukarý hareket için geçiþ efekti
             animation: 'fade', // Fade, slide, none
-            animationSpeed: 200, // Animation in speed (ms)
-            scrollTrigger: false, // Set a custom triggering element. Can be an HTML string or jQuery object
-            //scrollTarget: false, // Set a custom target element for scrolling to the top
-            scrollText: '<i class="fa fa-angle-up"></i>', // Text for element, can contain HTML
-            scrollTitle: false, // Set a custom <a> title if required.
-            scrollImg: false, // Set true to use image
-            activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
-            zIndex: 2147483647 // Z-Index for the overlay
+            animationSpeed: 200, // Animasyon hýzý (ms)
+            scrollTrigger: false, // Özel bir tetikleyici element belirleyin. Bir HTML dizesi veya jQuery nesnesi olabilir
+            scrollText: '<i class="fa fa-angle-up"></i>', // Element için metin, HTML içerebilir
+            scrollTitle: false, // Gerekirse özel bir <a> baþlýðý belirleyin
+            scrollImg: false, // Resim kullanmak için true olarak ayarlayýn
+            activeOverlay: false, // scrollUp aktif noktasýný göstermek için CSS rengi belirleyin, örn. '#00FFFF'
+            zIndex: 2147483647 // Geçiþ katmaný için Z-indeksi
+
 
         });
     });
@@ -81,11 +80,12 @@ function hesapla() {
     var sepetTutariSpan = document.getElementById("sepetTutari");
     sepetTutariSpan.textContent = toplamTutar.toFixed(2);
 
-    var toplamSepetTutariSpan = document.getElementById("toplamSepetTutari"); 
+    var toplamSepetTutariSpan = document.getElementById("toplamSepetTutari");
     var toplamSepTutar = toplamTutar + kargoFiyati;
     toplamSepetTutariSpan.textContent = toplamSepTutar.toFixed(2);
 }
-window.onload = hesapla;
+
+
 
 function DeleteItemCart(productId) {
     var productID = productId;
@@ -105,13 +105,13 @@ function DeleteItemCart(productId) {
 
 function checkedOnClick(el) {
 
-    
+
     var checkboxesList = document.getElementsByClassName("checkoption");
     for (var i = 0; i < checkboxesList.length; i++) {
-        checkboxesList.item(i).checked = false; 
+        checkboxesList.item(i).checked = false;
     }
-
-    el.checked = true; 
+    el.checked = true;
+    handleCheckboxClick();
 }
 
 function AddOrder() {
@@ -123,11 +123,16 @@ function AddOrder() {
     var address = document.getElementById("orderAddress").value;
     var description = document.getElementById("orderDescription").value;
     var phoneNumber = document.getElementById("orderPhone").value;
+    var cardNumber = document.getElementById("orderCardNumber").value;
+    var cardName = document.getElementById("orderCardName").value;
+    var cardLastDate = document.getElementById("orderCardLastDate").value;
+    var cardSecurityNumber = document.getElementById("orderCardSecurity").value;
+
 
     $.ajax({
         type: 'POST',
         url: '/Order/AddOrder',
-        data: { subTotal, paymentType, address, description, phoneNumber }
+        data: { subTotal, paymentType, address, description, phoneNumber, cardNumber, cardName, cardLastDate, cardSecurityNumber }
         ,
         success: function () {
             alert("Siparis Alindi...");
@@ -140,13 +145,12 @@ function AddOrder() {
     var paymentType = 1;
     var subTotal = document.getElementById("toplamSepetTutari").innerHTML = "0";
     var address = document.getElementById("orderAddress").value = "";
-    var description = document.getElementById("orderDescription").value="";
+    var description = document.getElementById("orderDescription").value = "";
     var phoneNumber = document.getElementById("orderPhone").value = "";
     var orderEmail = document.getElementById("orderEmail").value = "";
     var orderName = document.getElementById("orderName").value = "";
     var orderSurname = document.getElementById("orderSurname").value = "";
     var orderCartsTotal = document.getElementById("sepetTutari").innerHTML = "0";
-
 };
 
 window.setTimeout(function () {
@@ -154,3 +158,39 @@ window.setTimeout(function () {
         $(this).remove();
     });
 }, 4000);
+
+
+
+function handleCheckboxClick() {
+    var checkbox = document.getElementById("pay2");
+    var orderCardNumber = document.getElementById("orderCardNumber");
+    var orderCardName = document.getElementById("orderCardName");
+    var orderCardLastDate = document.getElementById("orderCardLastDate");
+    var orderCardSecurity = document.getElementById("orderCardSecurity");
+
+    if (checkbox.checked) {
+        orderCardNumber.disabled = false;
+        orderCardName.disabled = false;
+        orderCardLastDate.disabled = false;
+        orderCardSecurity.disabled = false;
+    }
+    else {
+        orderCardNumber.disabled = true;
+        orderCardName.disabled = true;
+        orderCardLastDate.disabled = true;
+        orderCardSecurity.disabled = true;
+
+        orderCardNumber.value = "";
+        orderCardName.value = "";
+        orderCardLastDate.value = "";
+        orderCardSecurity.value = "";
+
+    }
+    var checkbox = document.getElementById("myCheckbox");
+    checkbox.addEventListener("click", handleCheckboxClick);
+}
+
+
+
+window.addEventListener("load", handleCheckboxClick);
+window.addEventListener("load", hesapla);

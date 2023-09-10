@@ -1,11 +1,9 @@
-﻿using System;
+﻿using EShopper.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Web;
 using System.Data;
 using System.Data.SqlClient;
-using EShopper.Models;
 
 namespace EShopper.Layers
 {

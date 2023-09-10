@@ -1,11 +1,8 @@
 ﻿using EShopper.Layers;
 using EShopper.Models;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 namespace EShopper.Controllers
@@ -19,17 +16,23 @@ namespace EShopper.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddOrder(string subtotal, string paymentType, string address, string description, string phoneNumber)
+        public ActionResult AddOrder(string subtotal, string paymentType, string address,
+            string description, string phoneNumber, string cardNumber, string cardName, string cardLastDate, string cardSecurityNumber)
         {
             string userId = Session["userId"].ToString();
             OrderModel orderModel = new OrderModel()
             {
                 UserId = Convert.ToInt32(Session["userId"]),
-                SubTotal =  decimal.Parse(subtotal, new NumberFormatInfo() { NumberDecimalSeparator = "." }),
+                SubTotal = decimal.Parse(subtotal, new NumberFormatInfo() { NumberDecimalSeparator = "." }),
                 PaymentType = Convert.ToInt32(paymentType),
                 Address = address,
                 Description = description,
                 PhoneNumber = phoneNumber,
+                CreditCardNumber = cardNumber,
+                CreditCardName = cardName,
+                CreditCardLastDate = cardLastDate,
+                CreditCardSecurityNumber = cardSecurityNumber
+
             };
             OrdersProcess ordersProcess = new OrdersProcess();
             ordersProcess.AddOrders(orderModel, userId);

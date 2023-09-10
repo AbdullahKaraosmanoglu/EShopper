@@ -1,10 +1,5 @@
 ﻿using EShopper.Layers;
-using EShopper.Models;
-using Microsoft.Ajax.Utilities;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace EShopper.Controllers
@@ -23,7 +18,7 @@ namespace EShopper.Controllers
             CartProcess cartProcess = new CartProcess();
             var response = cartProcess.AddCart(productId, userId);
             if (!response)
-            return;
+                return;
         }
 
         public ActionResult GetProductToCart()
@@ -43,7 +38,7 @@ namespace EShopper.Controllers
             CartProcess cartProcess = new CartProcess();
             var response = cartProcess.DeleteItemCart(productId, userId);
             if (!response)
-            return;
+                return;
         }
     }
 }

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Profile;
 
 namespace EShopper.Models
 {
@@ -15,6 +11,7 @@ namespace EShopper.Models
         [Display(Name = "UserId")]
         [Required(ErrorMessage = " ID alanını doldurmak zorundasınız")]
         public int UserId { get; set; }
+        public int RoleId { get; set; }
 
         [Display(Name = "Name")]
         [Required(ErrorMessage = " İsim alanını doldurmak zorundasınız")]
@@ -34,7 +31,7 @@ namespace EShopper.Models
 
         [Required(ErrorMessage = "Password alanını doldurmak zorundasınız")]
         [DataType(DataType.Password)]
-        
+
         public string Password { get; set; }
 
         [Display(Name = "DateOfBirth")]
