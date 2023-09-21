@@ -9,190 +9,165 @@ namespace EShopper.Layers
 {
     public class UserProcess
     {
-        private SqlConnection con;
+        private readonly string _connectionString;
 
-        private void connection()
+        public UserProcess()
         {
-            string constr = ConfigurationManager.ConnectionStrings["dbconnection"].ToString();
-            con = new SqlConnection(constr);
-
+            _connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ToString();
         }
+
+        private SqlConnection CreateConnection()
+        {
+            var con = new SqlConnection(_connectionString);
+            if (con.State != ConnectionState.Open)
+            {
+                con.Open();
+            }
+            return con;
+        }
+
         public bool AddUser(UsersModel obj)
         {
-            connection();
-            SqlCommand com = new SqlCommand("dbo.SpAddNewUsers", con);
-            com.CommandType = CommandType.StoredProcedure;
-            com.Parameters.AddWithValue("@Name", obj.Name).DbType = DbType.String;
-            com.Parameters.AddWithValue("@Surname", obj.Surname).DbType = DbType.String;
-            com.Parameters.AddWithValue("@Email", obj.Email).DbType = DbType.String;
-            com.Parameters.AddWithValue("@Password", obj.Password).DbType = DbType.String;
-            com.Parameters.AddWithValue("@DateOfBirth", obj.DateOfBirth).DbType = DbType.DateTime;
-            com.Parameters.AddWithValue("@Gender", obj.Gender).DbType = DbType.Int32;
-            com.Parameters.AddWithValue("@Address", obj.Address).DbType = DbType.String;
+            using (var con = CreateConnection())
+            using (var com = new SqlCommand("dbo.SpAddNewUsers", con))
+            {
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@Name", obj.Name).DbType = DbType.String;
+                com.Parameters.AddWithValue("@Surname", obj.Surname).DbType = DbType.String;
+                com.Parameters.AddWithValue("@Email", obj.Email).DbType = DbType.String;
+                com.Parameters.AddWithValue("@Password", obj.Password).DbType = DbType.String;
+                com.Parameters.AddWithValue("@DateOfBirth", obj.DateOfBirth).DbType = DbType.DateTime;
+                com.Parameters.AddWithValue("@Gender", obj.Gender).DbType = DbType.Int32;
+                com.Parameters.AddWithValue("@Address", obj.Address).DbType = DbType.String;
 
-            con.Open();
-            var sp = com.ExecuteScalar();
-            int i = sp.GetHashCode();
-            con.Close();
-            if (i >= 1)
-                return true;
-            else
-                return false;
+                var sp = com.ExecuteScalar();
+                return sp != null && sp.GetHashCode() >= 1;
+            }
         }
 
         public List<UsersModel> LoginControl(UsersModel usersModel)
         {
-            connection();
-            List<UsersModel> userModelList = new List<UsersModel>();
-
-            SqlCommand com = new SqlCommand("dbo.SpLoginControl", con)
+            using (var con = CreateConnection())
+            using (var com = new SqlCommand("dbo.SpLoginControl", con))
             {
-                CommandType = CommandType.StoredProcedure
-            };
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@Email", usersModel.Email).DbType = DbType.String;
+                com.Parameters.AddWithValue("@Password", usersModel.Password).DbType = DbType.String;
 
-            com.Parameters.AddWithValue("@Email", usersModel.Email).DbType = DbType.String;
-            com.Parameters.AddWithValue("@Password", usersModel.Password).DbType = DbType.String;
+                var userModelList = new List<UsersModel>();
 
-            SqlDataAdapter da = new SqlDataAdapter(com);
-            DataTable dt = new DataTable();
-
-            con.Open();
-            da.Fill(dt);
-            con.Close();
-
-            foreach (DataRow dr in dt.Rows)
-            {
-
-                userModelList.Add(
-
-                    new UsersModel
+                using (var reader = com.ExecuteReader())
+                {
+                    while (reader.Read())
                     {
-                        UserId = Convert.ToInt32(dr["UserId"]),
-                        Name = Convert.ToString(dr["Name"]),
-                        Surname = Convert.ToString(dr["Surname"]),
-                        Email = Convert.ToString(dr["Email"]),
-                        Password = Convert.ToString(dr["Password"]),
-                        DateOfBirth = Convert.ToDateTime(dr["DateOfBirth"]),
-                        Gender = Convert.ToInt32(dr["Gender"]),
-                        Address = Convert.ToString(dr["Address"])
-
+                        userModelList.Add(new UsersModel
+                        {
+                            UserId = Convert.ToInt32(reader["UserId"]),
+                            Name = reader["Name"].ToString(),
+                            Surname = reader["Surname"].ToString(),
+                            Email = reader["Email"].ToString(),
+                            Password = reader["Password"].ToString(),
+                            DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]),
+                            Gender = Convert.ToInt32(reader["Gender"]),
+                            Address = reader["Address"].ToString()
+                        });
                     }
-                    );
-            }
+                }
 
-            return userModelList;
+                return userModelList;
+            }
         }
 
-        public Boolean SignUpControl(UsersModel usersModel)
+        public bool SignUpControl(UsersModel usersModel)
         {
-            connection();
-            SqlCommand com = new SqlCommand("dbo.SpUsersControl", con)
+            using (var con = CreateConnection())
+            using (var com = new SqlCommand("dbo.SpUsersControl", con))
             {
-                CommandType = CommandType.StoredProcedure
-            };
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@Email", usersModel.Email).DbType = DbType.String;
 
-            com.Parameters.AddWithValue("@Email", usersModel.Email).DbType = DbType.String;
-
-            con.Open();
-            var sp = com.ExecuteScalar();
-            con.Close();
-            if (sp.Equals("true"))
-                return true;
-            return false;
+                var sp = com.ExecuteScalar();
+                return sp != null && sp.Equals("true");
+            }
         }
 
         public UsersModel SelectUserModelByEmailAndPassword(string Email, string Password)
         {
-            connection();
-            UsersModel userModel = new UsersModel();
-
-
-            SqlCommand com = new SqlCommand("dbo.SpGetUserModelByEmailAndPassword", con)
+            using (var con = CreateConnection())
+            using (var com = new SqlCommand("dbo.SpGetUserModelByEmailAndPassword", con))
             {
-                CommandType = CommandType.StoredProcedure
-            };
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@Email", Email).DbType = DbType.String;
+                com.Parameters.AddWithValue("@Password", Password).DbType = DbType.String;
 
-            com.Parameters.AddWithValue("@Email", Email).DbType = DbType.String;
-            com.Parameters.AddWithValue("@Password", Password).DbType = DbType.String;
+                var userModel = new UsersModel();
 
-            SqlDataAdapter da = new SqlDataAdapter(com);
-            DataTable dt = new DataTable();
+                using (var reader = com.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        userModel.UserId = Convert.ToInt32(reader["UserId"]);
+                        userModel.RoleId = Convert.ToInt32(reader["RoleId"]);
+                        userModel.Name = reader["Name"].ToString();
+                        userModel.Surname = reader["Surname"].ToString();
+                        userModel.Email = reader["Email"].ToString();
+                        userModel.Password = reader["Password"].ToString();
+                        userModel.DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]);
+                        userModel.Gender = Convert.ToInt32(reader["Gender"]);
+                        userModel.Address = reader["Address"].ToString();
+                    }
+                }
 
-            con.Open();
-            da.Fill(dt);
-            con.Close();
-
-            var dr = dt.Rows[0];
-
-            userModel.UserId = Convert.ToInt32(dr["UserId"]);
-            userModel.RoleId = Convert.ToInt32(dr["RoleId"]);
-            userModel.Name = Convert.ToString(dr["Name"]);
-            userModel.Surname = Convert.ToString(dr["Surname"]);
-            userModel.Email = Convert.ToString(dr["Email"]);
-            userModel.Password = Convert.ToString(dr["Password"]);
-            userModel.DateOfBirth = Convert.ToDateTime(dr["DateOfBirth"]);
-            userModel.Gender = Convert.ToInt32(dr["Gender"]);
-            userModel.Address = Convert.ToString(dr["Address"]);
-
-            return userModel;
+                return userModel;
+            }
         }
+
         public UsersModel GetUserModelByUserId(int UserId)
         {
-            connection();
-            UsersModel userModel = new UsersModel();
-
-
-            SqlCommand com = new SqlCommand("dbo.SpGetUserModelByUserId", con)
+            using (var con = CreateConnection())
+            using (var com = new SqlCommand("dbo.SpGetUserModelByUserId", con))
             {
-                CommandType = CommandType.StoredProcedure
-            };
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@UserId", UserId).DbType = DbType.Int32;
 
-            com.Parameters.AddWithValue("@UserId", UserId).DbType = DbType.Int32;
+                var userModel = new UsersModel();
 
-            SqlDataAdapter da = new SqlDataAdapter(com);
-            DataTable dt = new DataTable();
+                using (var reader = com.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        userModel.UserId = Convert.ToInt32(reader["UserId"]);
+                        userModel.Name = reader["Name"].ToString();
+                        userModel.Surname = reader["Surname"].ToString();
+                        userModel.Email = reader["Email"].ToString();
+                        userModel.Password = reader["Password"].ToString();
+                        userModel.DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]);
+                        userModel.Gender = Convert.ToInt32(reader["Gender"]);
+                        userModel.Address = reader["Address"].ToString();
+                    }
+                }
 
-            con.Open();
-            da.Fill(dt);
-            con.Close();
-
-            var dr = dt.Rows[0];
-
-            userModel.UserId = Convert.ToInt32(dr["UserId"]);
-            userModel.Name = Convert.ToString(dr["Name"]);
-            userModel.Surname = Convert.ToString(dr["Surname"]);
-            userModel.Email = Convert.ToString(dr["Email"]);
-            userModel.Password = Convert.ToString(dr["Password"]);
-            userModel.DateOfBirth = Convert.ToDateTime(dr["DateOfBirth"]);
-            userModel.Gender = Convert.ToInt32(dr["Gender"]);
-            userModel.Address = Convert.ToString(dr["Address"]);
-
-            return userModel;
+                return userModel;
+            }
         }
 
-        public Boolean UpdateUsers(UsersModel usersModel)
+        public bool UpdateUsers(UsersModel usersModel)
         {
-            connection();
-            SqlCommand com = new SqlCommand("dbo.SpUpdateUsers", con);
-            com.CommandType = CommandType.StoredProcedure;
-            com.Parameters.AddWithValue("@UserId", usersModel.UserId).DbType = DbType.Int32;
-            com.Parameters.AddWithValue("@Name", usersModel.Name).DbType = DbType.String;
-            com.Parameters.AddWithValue("@Surname", usersModel.Surname).DbType = DbType.String;
-            com.Parameters.AddWithValue("@Email", usersModel.Email).DbType = DbType.String;
-            com.Parameters.AddWithValue("@Password", usersModel.Password).DbType = DbType.String;
-            com.Parameters.AddWithValue("@DateOfBirth", usersModel.DateOfBirth).DbType = DbType.DateTime;
-            com.Parameters.AddWithValue("@Address", usersModel.Address).DbType = DbType.String;
+            using (var con = CreateConnection())
+            using (var com = new SqlCommand("dbo.SpUpdateUsers", con))
+            {
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@UserId", usersModel.UserId).DbType = DbType.Int32;
+                com.Parameters.AddWithValue("@Name", usersModel.Name).DbType = DbType.String;
+                com.Parameters.AddWithValue("@Surname", usersModel.Surname).DbType = DbType.String;
+                com.Parameters.AddWithValue("@Email", usersModel.Email).DbType = DbType.String;
+                com.Parameters.AddWithValue("@Password", usersModel.Password).DbType = DbType.String;
+                com.Parameters.AddWithValue("@DateOfBirth", usersModel.DateOfBirth).DbType = DbType.DateTime;
+                com.Parameters.AddWithValue("@Address", usersModel.Address).DbType = DbType.String;
 
-            con.Open();
-            var sp = com.ExecuteScalar();
-            int i = sp.GetHashCode();
-            con.Close();
-            if (i >= 1)
-                return true;
-            else
-                return false;
-
+                var sp = com.ExecuteScalar();
+                return sp != null && sp.GetHashCode() >= 1;
+            }
         }
     }
 }
-

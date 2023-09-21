@@ -9,27 +9,28 @@ namespace EShopper.Layers
 {
     public class OrdersProcess
     {
-        private SqlConnection con;
-        private void connection()
+        private readonly string _connectionString;
+
+        public OrdersProcess()
         {
-            string constr = ConfigurationManager.ConnectionStrings["dbconnection"].ToString();
-            con = new SqlConnection(constr);
+            _connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ToString();
+        }
+
+        private SqlConnection CreateConnection()
+        {
+            var con = new SqlConnection(_connectionString);
             if (con.State != ConnectionState.Open)
             {
                 con.Open();
             }
+            return con;
         }
+
         public bool AddOrders(OrderModel orderModel, string userId)
         {
-            bool result = false;
-            connection();
-            try
+            using (var con = CreateConnection())
+            using (var com = new SqlCommand("dbo.SpAddOrdersByUserId", con))
             {
-                if (orderModel.TranDate == null || orderModel.TranDate.Year < DateTime.Now.Year)
-                    orderModel.TranDate = DateTime.Now;
-
-                SqlCommand com = new SqlCommand("dbo.SpAddOrdersByUserId", con);
-                com.Parameters.Clear();
                 com.CommandType = CommandType.StoredProcedure;
                 com.Parameters.AddWithValue("@UserId", orderModel.UserId).DbType = DbType.Int32;
                 com.Parameters.AddWithValue("@SubTotal", orderModel.SubTotal).DbType = DbType.Decimal;
@@ -42,60 +43,43 @@ namespace EShopper.Layers
                 com.Parameters.AddWithValue("@CreditCartLastDate", orderModel.CreditCardLastDate).DbType = DbType.String;
                 com.Parameters.AddWithValue("@CreditCardSecurityNumber", orderModel.CreditCardSecurityNumber).DbType = DbType.String;
 
-
-                if (con.State != ConnectionState.Open)
-                    con.Open();
-
-                var sp = com.ExecuteScalar();
-                int i = Convert.ToInt32(sp);
-                con.Close();
-                if (i >= 1)
-                    result = true;
-                else
-                    result = false;
+                var result = com.ExecuteScalar();
+                return result != null && Convert.ToInt32(result) >= 1;
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            return result;
         }
+
         public List<OrderModel> GetOrder(string userId)
         {
-            connection();
-            List<OrderModel> OrderList = new List<OrderModel>();
-
-            using (SqlConnection sqlConnection = new SqlConnection())
+            using (var con = CreateConnection())
+            using (var com = new SqlCommand("dbo.SpGetOrder", con))
             {
-                SqlCommand com = new SqlCommand("dbo.SpGetOrder", con)
-                {
-                    CommandType = CommandType.StoredProcedure
-                };
+                com.CommandType = CommandType.StoredProcedure;
                 com.Parameters.AddWithValue("@UserId", userId).DbType = DbType.Int32;
-                SqlDataAdapter da = new SqlDataAdapter(com);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                con.Close();
 
-                foreach (DataRow item in dt.Rows)
+                var orderList = new List<OrderModel>();
+
+                using (var reader = com.ExecuteReader())
                 {
-                    OrderList.Add(new OrderModel
+                    while (reader.Read())
                     {
-                        UserId = Convert.ToInt32(item["UserId"]),
-                        TranDate = Convert.ToDateTime(item["Trandate"]),
-                        SubTotal = Convert.ToDecimal(item["Subtotal"]),
-                        PaymentType = Convert.ToInt32(item["PaymentType"]),
-                        Address = item["Address"].ToString(),
-                        Description = item["Description"].ToString(),
-                        PhoneNumber = item["PhoneNumber"].ToString(),
-                        OrderStatus = Convert.ToInt32(item["OrderStatus"]),
-                        PaymentTypeText = item["PaymentTypeText"].ToString(),
-                        OrderStatusText = item["OrderStatusText"].ToString(),
+                        orderList.Add(new OrderModel
+                        {
+                            UserId = Convert.ToInt32(reader["UserId"]),
+                            TranDate = Convert.ToDateTime(reader["Trandate"]),
+                            SubTotal = Convert.ToDecimal(reader["Subtotal"]),
+                            PaymentType = Convert.ToInt32(reader["PaymentType"]),
+                            Address = reader["Address"].ToString(),
+                            Description = reader["Description"].ToString(),
+                            PhoneNumber = reader["PhoneNumber"].ToString(),
+                            OrderStatus = Convert.ToInt32(reader["OrderStatus"]),
+                            PaymentTypeText = reader["PaymentTypeText"].ToString(),
+                            OrderStatusText = reader["OrderStatusText"].ToString(),
+                        });
                     }
-                    );
                 }
+
+                return orderList;
             }
-            return OrderList;
         }
     }
 }

@@ -9,26 +9,30 @@ namespace EShopper.Layers
 {
     public class ProductProcess
     {
-        string ConString = ConfigurationManager.ConnectionStrings["dbconnection"].ToString();
+        private readonly string _connectionString;
+
+        public ProductProcess()
+        {
+            _connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ToString();
+        }
+
         public List<ProductModel> GetAllProduct()
         {
-            List<ProductModel> ProductList = new List<ProductModel>();
+            var productList = new List<ProductModel>();
 
-            using (SqlConnection connection = new SqlConnection(ConString))
+            using (var connection = new SqlConnection(_connectionString))
+            using (var command = new SqlCommand("SpGetProducts", connection))
             {
-                SqlCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "SpGetProducts";
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(command);
-                DataTable DataProducts = new DataTable();
+                var dataAdapter = new SqlDataAdapter(command);
+                var dataProducts = new DataTable();
 
                 connection.Open();
-                sqlDataAdapter.Fill(DataProducts);
-                connection.Close();
+                dataAdapter.Fill(dataProducts);
 
-                foreach (DataRow dr in DataProducts.Rows)
+                foreach (DataRow dr in dataProducts.Rows)
                 {
-                    ProductList.Add(new ProductModel
+                    productList.Add(new ProductModel
                     {
                         ProductId = Convert.ToInt32(dr["ProductId"]),
                         ProductCategoryId = Convert.ToInt32(dr["ProductCategoryId"]),
@@ -43,7 +47,7 @@ namespace EShopper.Layers
                     });
                 }
             }
-            return ProductList;
+            return productList;
         }
     }
 }

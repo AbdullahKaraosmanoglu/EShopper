@@ -1,94 +1,86 @@
 ﻿using EShopper.Models;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace EShopper.Layers
 {
     public class CartProcess
     {
-        private SqlConnection con;
-        private void connection()
-        {
-            string constr = ConfigurationManager.ConnectionStrings["dbconnection"].ToString();
-            con = new SqlConnection(constr);
+        private readonly string _connectionString;
 
+        public CartProcess()
+        {
+            _connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ToString();
         }
+
+        private SqlConnection CreateConnection()
+        {
+            return new SqlConnection(_connectionString);
+        }
+
         public bool AddCart(string productId, string userId)
         {
+            using (var con = CreateConnection())
+            using (var com = new SqlCommand("dbo.SpAddCartByUserId", con))
+            {
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@UserId", userId).DbType = DbType.Int32;
+                com.Parameters.AddWithValue("@ProductId", productId).DbType = DbType.Int32;
 
-            connection();
-            SqlCommand com = new SqlCommand("dbo.SpAddCartByUserId", con);
-            com.CommandType = CommandType.StoredProcedure;
-            com.Parameters.AddWithValue("@UserId", userId).DbType = DbType.Int32;
-            com.Parameters.AddWithValue("@ProductId", productId).DbType = DbType.Int32;
-
-            con.Open();
-            var sp = com.ExecuteScalar();
-            int i = sp.GetHashCode();
-            con.Close();
-            if (i == 1)
-                return true;
-            else
-                return false;
+                con.Open();
+                var result = com.ExecuteScalar();
+                return result != null && (int)result == 1;
+            }
         }
 
         public bool DeleteItemCart(string productId, string userId)
         {
-            connection();
-            SqlCommand com = new SqlCommand("dbo.SpDeleteCartItemByProductId", con);
-            com.CommandType = CommandType.StoredProcedure;
-            com.Parameters.AddWithValue("@UserId", userId).DbType = DbType.Int32;
-            com.Parameters.AddWithValue("@ProductId", productId).DbType = DbType.Int32;
+            using (var con = CreateConnection())
+            using (var com = new SqlCommand("dbo.SpDeleteCartItemByProductId", con))
+            {
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@UserId", userId).DbType = DbType.Int32;
+                com.Parameters.AddWithValue("@ProductId", productId).DbType = DbType.Int32;
 
-            con.Open();
-            var sp = com.ExecuteScalar();
-            int i = sp.GetHashCode();
-            con.Close();
-            if (i == 1)
-                return true;
-            else
-                return false;
+                con.Open();
+                var result = com.ExecuteScalar();
+                return result != null && (int)result == 1;
+            }
         }
 
         public List<ProductModel> GetCarts(string userId)
         {
-            connection();
-            List<ProductModel> CartList = new List<ProductModel>();
-
-            using (SqlConnection sqlConnection = new SqlConnection())
+            using (var con = CreateConnection())
+            using (var com = new SqlCommand("dbo.SpGetCarts", con))
             {
-                SqlCommand com = new SqlCommand("dbo.SpGetCarts", con)
-                {
-                    CommandType = CommandType.StoredProcedure
-                };
+                com.CommandType = CommandType.StoredProcedure;
                 com.Parameters.AddWithValue("@UserId", userId).DbType = DbType.Int32;
-                SqlDataAdapter da = new SqlDataAdapter(com);
-                DataTable dt = new DataTable();
-                con.Open();
-                da.Fill(dt);
-                con.Close();
 
-                foreach (DataRow item in dt.Rows)
+                var cartList = new List<ProductModel>();
+                con.Open();
+
+                using (var reader = com.ExecuteReader())
                 {
-                    CartList.Add(new ProductModel
+                    while (reader.Read())
                     {
-                        ProductId = Convert.ToInt32(item["ProductId"]),
-                        ProductName = item["ProductName"].ToString(),
-                        Price = Convert.ToDecimal(item["Price"]),
-                        Stock = Convert.ToInt32(item["Stock"]),
-                        Quantity = Convert.ToInt32(item["Quantity"]),
-                        ProductGuid = item["ProductGuid"].ToString(),
-                        ImagePath = item["ImagePath"].ToString(),
+                        cartList.Add(new ProductModel
+                        {
+                            ProductId = Convert.ToInt32(reader["ProductId"]),
+                            ProductName = reader["ProductName"].ToString(),
+                            Price = Convert.ToDecimal(reader["Price"]),
+                            Stock = Convert.ToInt32(reader["Stock"]),
+                            Quantity = Convert.ToInt32(reader["Quantity"]),
+                            ProductGuid = reader["ProductGuid"].ToString(),
+                            ImagePath = reader["ImagePath"].ToString(),
+                        });
                     }
-                    );
                 }
+
+                return cartList;
             }
-            return CartList;
         }
     }
 }
-
-
