@@ -11,7 +11,6 @@
 {
     @Html.AntiForgeryToken()
 
-
     if (TempData["AlertMessage"] != null)
     {
         <div class="alert alert-success" style="width:550px; margin-left:510px;">
@@ -25,64 +24,44 @@
 
     <div class="form-horizontal" style="margin-left:450px">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(m => m.UserId)
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, "Adı ", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
+
+        @Html.HiddenFor(model => model.UserId)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Surname, "Soyadı ", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+            <div class="control-label col-md-2">
+                @Html.LabelFor(model => model.Address, " Adres : ")
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Address, "Adres ", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.Address, new { @class = "form-control", placeholder = "Adres" })
                 @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Email, "E-mail", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2">
+                @Html.LabelFor(model => model.Email, " E-mail : ")
+            </div>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "E-mail" })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Password, "Şifre", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2">
+                @Html.LabelFor(model => model.Password, " Şifre : ")
+            </div>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Şifre" })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DateOfBirth, "Doğum Tarihi", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                @*<button type="submit" value="Hesap Bilgilerini Güncelle" class="btn btn-default" />*@
                 <button type="submit" class="btn btn-default">Hesap Bilgilerini Güncelle</button>
             </div>
         </div>
     </div>
 }
-
-@*<div>
-        @Html.ActionLink("HomePage", "Index", "Home")
-    </div>*@
