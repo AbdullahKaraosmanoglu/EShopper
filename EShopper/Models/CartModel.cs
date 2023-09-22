@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace EShopper.Models
 {
@@ -8,5 +9,6 @@ namespace EShopper.Models
         public int UserId { get; set; }
         public int ProductId { get; set; }
         public string ImagePath { get; set; }
+
     }
 }

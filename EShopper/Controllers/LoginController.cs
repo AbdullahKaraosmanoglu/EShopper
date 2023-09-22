@@ -117,7 +117,7 @@ namespace EShopper.Controllers
             {
                 if (currentUser.RoleId == 1)
                 {
-                    return RedirectToAction("Index", "Admin");
+                    return RedirectToAction("Indexs", "Admin");
                 }
             }
             return RedirectToAction("Index", "Home");

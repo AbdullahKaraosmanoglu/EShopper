@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IM ADMIN TEMPLATE</title>
+    <base href="../">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="assets/scss/global.css">
+</head>
+<body>
+    <div class="im-root d-flex flex-column">
+        <div class="im-page flex-column flex-column-fluid">
+            <input type="checkbox" id="side-action-input">
+            <div class="im-header">
+                <div class="im-header-row">
+                    <label class="side-action-btn" for="side-action-input">
+                        <span class="material-symbols-outlined menu-icon">
+                            menu
+                        </span>
+                    </label>
+                    <div class="search">
+                        <form action="#" class="form">
+                            <div class="search-container">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <button type="button" class="btn btn-primary">
+                                    <span class="material-symbols-outlined">
+                                        search
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div><!-- search -->
+                    <div class="app-navbar">
+                        <div class="app-navbar-item">
+                            <div class="dropdown user-dropdown">
+                                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span>
+                                        <img src="assets/img/brahim.jpg" alt="">
+                                    </span> 
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#">Profil</a></li>
+                                    <li><a class="dropdown-item" href="#">Hesap</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Çıkış</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- im-header -->
+            <div class="im-side">
+                <label class="side-action-btn" for="side-action-input">
+                    <span class="material-symbols-outlined">
+                        arrow_left_alt
+                    </span>
+                    <span class="material-symbols-outlined menu-icon">
+                        menu
+                    </span>
+                    <span class="material-symbols-outlined close-icon">
+                        close
+                    </span>
+                </label>
+                <div class="logo">
+                    <a href="./">
+                        <span>IM</span>
+                    </a>
+                </div><!-- logo -->
+                <div class="menu">
+                    <div class="menu-scroll">
+                        <div class="menu-item">
+                            <a href="javascript:;">
+                                <span class="material-symbols-outlined">
+                                    dashboard
+                                </span>
+                                <span class="menu-text">
+                                    Dashboards
+                                </span>
+                            </a>
+                            <div class="menu-sub">
+                                <ul>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="material-symbols-outlined">
+                                                bar_chart_4_bars
+                                            </span>
+                                            <span class="menu-text">Dashboard 1</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="material-symbols-outlined">
+                                                team_dashboard
+                                            </span>
+                                            <span class="menu-text">Dashboard 2</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="material-symbols-outlined">
+                                                dashboard_customize
+                                            </span>
+                                            <span class="menu-text">Dashboard 3</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><!-- menu-item -->
+                        <div class="menu-head">
+                            <span class="material-symbols-outlined">
+                                auto_stories
+                            </span>
+                            <span class="menu-text">PAGES</span>
+                        </div><!-- menu-head -->
+                        <div class="menu-item">
+                            <a href="javascript:;">
+                                <span class="material-symbols-outlined">
+                                    fact_check
+                                </span>
+                                <span class="menu-text">LOGIN PAGES</span>
+                            </a>
+                            <div class="menu-sub">
+                                <ul>
+                                    <li>
+                                        <a href="pages/login-resigter/login.html">
+                                            <span class="material-symbols-outlined">
+                                                check_box
+                                            </span>
+                                            <span class="menu-text">LOGIN</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="pages/login-resigter/login.html">
+                                            <span class="material-symbols-outlined">
+                                                sync_saved_locally
+                                            </span>
+                                            <span class="menu-text">REGISTER</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="pages/login-resigter/login.html">
+                                            <span class="material-symbols-outlined">
+                                                cycle
+                                            </span>
+                                            <span class="menu-text">CHANGE PASS</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><!-- menu-item -->
+                        <div class="menu-item">
+                            <a href="javascript:;">
+                                <span class="material-symbols-outlined">
+                                    person
+                                </span>
+                                <span class="menu-text">USER PAGES</span>
+                            </a>
+                        </div><!-- menu-item -->
+                        <div class="menu-head">
+                            <span class="material-symbols-outlined">
+                                apps
+                            </span>
+                            <span class="menu-text">APPS</span>
+                        </div><!-- menu-head -->
+                        <div class="menu-item">
+                            <a href="javascript:;">
+                                <span class="material-symbols-outlined">
+                                    recycling
+                                </span>
+                                <span class="menu-text">PROJECTS</span>
+                            </a>
+                        </div><!-- menu-item -->
+                        <div class="menu-item">
+                            <a href="javascript:;">
+                                <span class="material-symbols-outlined">
+                                    favorite
+                                </span>
+                                <span class="menu-text">CUSTOMERS</span>
+                            </a>
+                        </div><!-- menu-item -->
+                    </div><!-- menu-scroll -->
+                </div><!-- menu -->
+                <div class="side-footer">
+                    <span>2023 &copy; IM </span>
+                </div><!-- menu-footer -->
+            </div><!-- im-side -->
+            <label class="im-side-overlay" for="side-action-input"></label><!-- im-side-overlay -->
+            <div class="im-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-12 col-lg-3">
+                            <div class="cripto-dash-box-1">
+                                <div class="up">
+                                    <div class="icon">
+                                        <span class="material-symbols-outlined">
+                                            home
+                                        </span>
+                                    </div>
+                                    <div class="name">
+                                        Dash box set
+                                    </div>
+                                </div>
+                                <div class="bot">
+                                    <div class="units">
+                                        <span class="text-warning">0.00000434 </span>
+                                        <span>BTC</span><span class="text-primary">$0.04</span>
+                                    </div>
+                                    <div class="percent text-success">+1.05%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-lg-3">
+                            <div class="cripto-dash-box-1">
+                                <div class="up">
+                                    <div class="icon">
+                                        <span class="material-symbols-outlined">
+                                            search
+                                        </span>
+                                    </div>
+                                    <div class="name">
+                                        Dash box set
+                                    </div>
+                                </div>
+                                <div class="bot">
+                                    <div class="units">
+                                        <span class="text-warning">0.00000434 </span>
+                                        <span>BTC</span><span class="text-primary">$0.04</span>
+                                    </div>
+                                    <div class="percent text-success">+1.05%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-lg-3">
+                            <div class="cripto-dash-box-1">
+                                <div class="up">
+                                    <div class="icon">
+                                        <span class="material-symbols-outlined">
+                                            settings
+                                        </span>
+                                    </div>
+                                    <div class="name">
+                                        Dash box set
+                                    </div>
+                                </div>
+                                <div class="bot">
+                                    <div class="units">
+                                        <span class="text-warning">0.00000434 </span>
+                                        <span>BTC</span><span class="text-primary">$0.04</span>
+                                    </div>
+                                    <div class="percent text-success">+1.05%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-lg-3">
+                            <div class="cripto-dash-box-1">
+                                <div class="up">
+                                    <div class="icon">
+                                        <span class="material-symbols-outlined">
+                                            person
+                                        </span>
+                                    </div>
+                                    <div class="name">
+                                        Dash box set
+                                    </div>
+                                </div>
+                                <div class="bot">
+                                    <div class="units">
+                                        <span class="text-warning">0.00000434 </span>
+                                        <span>BTC</span><span class="text-primary">$0.04</span>
+                                    </div>
+                                    <div class="percent text-success">+1.05%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- row -->
+                    <div class="row">
+                        <div class="col col-12 col-lg-4">
+                            <div class="cripto-dash-box-1">
+                                <div class="up">
+                                    <div class="icon">
+                                        <span class="material-symbols-outlined">
+                                            people
+                                        </span>
+                                    </div>
+                                    <div class="name">
+                                        Dash box set
+                                    </div>
+                                </div>
+                                <div class="bot">
+                                    <div class="units">
+                                        <span class="text-warning">0.00000434 </span>
+                                        <span>BTC</span><span class="text-primary">$0.04</span>
+                                    </div>
+                                    <div class="percent text-success">+1.05%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-lg-4">
+                            <div class="cripto-dash-box-1">
+                                <div class="up">
+                                    <div class="icon">
+                                        <span class="material-symbols-outlined">
+                                            arrow_right_alt
+                                        </span>
+                                    </div>
+                                    <div class="name">
+                                        Dash box set
+                                    </div>
+                                </div>
+                                <div class="bot">
+                                    <div class="units">
+                                        <span class="text-warning">0.00000434 </span>
+                                        <span>BTC</span><span class="text-primary">$0.04</span>
+                                    </div>
+                                    <div class="percent text-success">+1.05%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-lg-4">
+                            <div class="cripto-dash-box-1">
+                                <div class="up">
+                                    <div class="icon">
+                                        <span class="material-symbols-outlined">
+                                            mouse
+                                        </span>
+                                    </div>
+                                    <div class="name">
+                                        Dash box set
+                                    </div>
+                                </div>
+                                <div class="bot">
+                                    <div class="units">
+                                        <span class="text-warning">0.00000434 </span>
+                                        <span>BTC</span><span class="text-primary">$0.04</span>
+                                    </div>
+                                    <div class="percent text-success">+1.05%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-title d-flex justify-content-between align-items-end pt-4 pb-4">
+                        <div class="table-head">
+                            <h1>Lorem ipsum dolor SİT amet</h1>
+                            <p>Lorem ipsum dolor sit amet</p>
+                        </div>
+                        <div class="button-actions">
+                            <button type="button" class="btn btn-primary d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <span class="material-symbols-outlined me-2">
+                                    add
+                                </span>
+                                <span>Ekle</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <!--begin::Table-->
+                        <table class="table">
+                            <!--begin::Table head-->
+                            <thead>
+                                <tr class="fw-bold">                                    
+                                    <th>Symbol</th>
+                                    <th>Name</th>
+                                    <th>USD</th>                               
+                                    <th>Change 1h</th>                       
+                                    <th>Change 24h</th>                       
+                                    <th>Change 7d</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>BTC</td>
+                                    <td>Bitcoin</td>
+                                    <td>9,213</td>
+                                    <td>0.8 %</td>
+                                    <td>7.18 %</td>
+                                    <td>13.74 %</td>
+                                </tr>
+                                <tr>
+                                    <td>ETH</td>
+                                    <td>Ethereum</td>
+                                    <td>9,213</td>
+                                    <td>0.8 %</td>
+                                    <td>7.18 %</td>
+                                    <td>13.74 %</td>
+                                </tr>
+                                <tr>
+                                    <td>XRP</td>
+                                    <td>Ripple</td>
+                                    <td>9,213</td>
+                                    <td>0.8 %</td>
+                                    <td>7.18 %</td>
+                                    <td>13.74 %</td>
+                                </tr>
+                                <tr>
+                                    <td>LTC</td>
+                                    <td>Litecoin</td>
+                                    <td>9,213</td>
+                                    <td>0.8 %</td>
+                                    <td>7.18 %</td>
+                                    <td>13.74 %</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination-container d-flex justify-content-between mb-5">
+                        <div class="col col-12 col-lg-5">
+                            <div class="entries d-flex align-items-center">
+                                <span>Showing 1 to </span>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>10</option>
+                                    <option value="1">25</option>
+                                    <option value="2">50</option>
+                                    <option value="3">100</option>
+                                </select> 
+                                <span>of 50 entries</span>
+                            </div><!-- entries -->
+                        </div>
+                        <div class="col col-12 col-lg-7">
+                            <nav class="d-flex justify-content-end" aria-label="table navigation">
+                                <ul class="pagination">
+                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div><!-- pagination-container -->
+                    <div class="row">
+                        <div class="col col-12 col-lg-3">
+                            <div class="cripto-dash-box-2 bg-warning">
+                                <div class="up">
+                                    <div class="name">
+                                        <h2>BTC</h2>
+                                        <h4>Bitcoin</h4>
+                                    </div>
+                                </div>
+                                <div class="bot">
+                                    <div class="units">
+                                        <div class="uni-1">
+                                            <div class="name">USD</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                        <div class="uni-2">
+                                            <div class="name">EUR</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                        <div class="uni-3">
+                                            <div class="name">GBP</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                    </div>
+                                    <div class="percent">
+                                        <div class="per-1">
+                                            <div class="time">
+                                                % 1h
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-danger">
+                                                    arrow_downward
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                        <div class="per-2">
+                                            <div class="time">
+                                                % 24h
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-success">
+                                                    arrow_upward_alt
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                        <div class="per-3">
+                                            <div class="time">
+                                                % 7d
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-success">
+                                                    arrow_upward_alt
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-lg-3">
+                            <div class="cripto-dash-box-2 bg-dark">
+                                <div class="up">
+                                    <div class="name">
+                                        <h2>BTC</h2>
+                                        <h4>Bitcoin</h4>
+                                    </div>
+                                </div>
+                                <div class="bot">
+                                    <div class="units">
+                                        <div class="uni-1">
+                                            <div class="name">USD</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                        <div class="uni-2 border-left-1">
+                                            <div class="name">EUR</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                        <div class="uni-3">
+                                            <div class="name">GBP</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                    </div>
+                                    <div class="percent">
+                                        <div class="per-1">
+                                            <div class="time">
+                                                % 1h
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-success">
+                                                    arrow_upward_alt
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                        <div class="per-2">
+                                            <div class="time">
+                                                % 24h
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-success">
+                                                    arrow_upward_alt
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                        <div class="per-3">
+                                            <div class="time">
+                                                % 7d
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-success">
+                                                    arrow_upward_alt
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-lg-3">
+                            <div class="cripto-dash-box-2 bg-warning">
+                                <div class="up">
+                                    <div class="name">
+                                        <h2>BTC</h2>
+                                        <h4>Bitcoin</h4>
+                                    </div>
+                                </div>
+                                <div class="bot">
+                                    <div class="units">
+                                        <div class="uni-1">
+                                            <div class="name">USD</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                        <div class="uni-2">
+                                            <div class="name">EUR</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                        <div class="uni-3">
+                                            <div class="name">GBP</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                    </div>
+                                    <div class="percent">
+                                        <div class="per-1">
+                                            <div class="time">
+                                                % 1h
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-danger">
+                                                    arrow_downward
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                        <div class="per-2">
+                                            <div class="time">
+                                                % 24h
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-success">
+                                                    arrow_upward_alt
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                        <div class="per-3">
+                                            <div class="time">
+                                                % 7d
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-success">
+                                                    arrow_upward_alt
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-lg-3">
+                            <div class="cripto-dash-box-2 bg-dark">
+                                <div class="up">
+                                    <div class="name">
+                                        <h2>BTC</h2>
+                                        <h4>Bitcoin</h4>
+                                    </div>
+                                </div>
+                                <div class="bot">
+                                    <div class="units">
+                                        <div class="uni-1">
+                                            <div class="name">USD</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                        <div class="uni-2 border-left-1">
+                                            <div class="name">EUR</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                        <div class="uni-3">
+                                            <div class="name">GBP</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                    </div>
+                                    <div class="percent">
+                                        <div class="per-1">
+                                            <div class="time">
+                                                % 1h
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-success">
+                                                    arrow_upward_alt
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                        <div class="per-2">
+                                            <div class="time">
+                                                % 24h
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-success">
+                                                    arrow_upward_alt
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                        <div class="per-3">
+                                            <div class="time">
+                                                % 7d
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-success">
+                                                    arrow_upward_alt
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-lg-3">
+                            <div class="cripto-dash-box-2 bg-dark">
+                                <div class="up">
+                                    <div class="name">
+                                        <h2>BTC</h2>
+                                        <h4>Bitcoin</h4>
+                                    </div>
+                                </div>
+                                <div class="bot">
+                                    <div class="units">
+                                        <div class="uni-1">
+                                            <div class="name">USD</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                        <div class="uni-2 border-left-1">
+                                            <div class="name">EUR</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                        <div class="uni-3">
+                                            <div class="name">GBP</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                    </div>
+                                    <div class="percent">
+                                        <div class="per-1">
+                                            <div class="time">
+                                                % 1h
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-success">
+                                                    arrow_upward_alt
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                        <div class="per-2">
+                                            <div class="time">
+                                                % 24h
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-success">
+                                                    arrow_upward_alt
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                        <div class="per-3">
+                                            <div class="time">
+                                                % 7d
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-success">
+                                                    arrow_upward_alt
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-lg-3">
+                            <div class="cripto-dash-box-2 bg-warning">
+                                <div class="up">
+                                    <div class="name">
+                                        <h2>BTC</h2>
+                                        <h4>Bitcoin</h4>
+                                    </div>
+                                </div>
+                                <div class="bot">
+                                    <div class="units">
+                                        <div class="uni-1">
+                                            <div class="name">USD</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                        <div class="uni-2">
+                                            <div class="name">EUR</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                        <div class="uni-3">
+                                            <div class="name">GBP</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                    </div>
+                                    <div class="percent">
+                                        <div class="per-1">
+                                            <div class="time">
+                                                % 1h
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-danger">
+                                                    arrow_downward
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                        <div class="per-2">
+                                            <div class="time">
+                                                % 24h
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-success">
+                                                    arrow_upward_alt
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                        <div class="per-3">
+                                            <div class="time">
+                                                % 7d
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-success">
+                                                    arrow_upward_alt
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-lg-3">
+                            <div class="cripto-dash-box-2 bg-dark">
+                                <div class="up">
+                                    <div class="name">
+                                        <h2>BTC</h2>
+                                        <h4>Bitcoin</h4>
+                                    </div>
+                                </div>
+                                <div class="bot">
+                                    <div class="units">
+                                        <div class="uni-1">
+                                            <div class="name">USD</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                        <div class="uni-2 border-left-1">
+                                            <div class="name">EUR</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                        <div class="uni-3">
+                                            <div class="name">GBP</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                    </div>
+                                    <div class="percent">
+                                        <div class="per-1">
+                                            <div class="time">
+                                                % 1h
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-success">
+                                                    arrow_upward_alt
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                        <div class="per-2">
+                                            <div class="time">
+                                                % 24h
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-success">
+                                                    arrow_upward_alt
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                        <div class="per-3">
+                                            <div class="time">
+                                                % 7d
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-success">
+                                                    arrow_upward_alt
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-lg-3">
+                            <div class="cripto-dash-box-2 bg-warning">
+                                <div class="up">
+                                    <div class="name">
+                                        <h2>BTC</h2>
+                                        <h4>Bitcoin</h4>
+                                    </div>
+                                </div>
+                                <div class="bot">
+                                    <div class="units">
+                                        <div class="uni-1">
+                                            <div class="name">USD</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                        <div class="uni-2">
+                                            <div class="name">EUR</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                        <div class="uni-3">
+                                            <div class="name">GBP</div>
+                                            <div class="value">11.153</div>
+                                        </div>
+                                    </div>
+                                    <div class="percent">
+                                        <div class="per-1">
+                                            <div class="time">
+                                                % 1h
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-danger">
+                                                    arrow_downward
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                        <div class="per-2">
+                                            <div class="time">
+                                                % 24h
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-success">
+                                                    arrow_upward_alt
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                        <div class="per-3">
+                                            <div class="time">
+                                                % 7d
+                                            </div>
+                                            <div class="value">
+                                                <span class="material-symbols-outlined text-success">
+                                                    arrow_upward_alt
+                                                </span>
+                                                <span>1.4</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-12 col-lg-6">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">First</th>
+                                        <th scope="col">Last</th>
+                                        <th scope="col">Handle</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <th scope="row">1</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">2</th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>@fat</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">3</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-lg-6">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">First</th>
+                                        <th scope="col">Last</th>
+                                        <th scope="col">Handle</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <th scope="row">1</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">2</th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>@fat</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">3</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-12 col-lg-6">
+                            <div class="table-responsive">
+                                <table class="table no-margin table-hover">
+                                    <thead>					
+                                        <tr>
+                                            <th class="bg-dark text-white">Transaction Hash</th>
+                                            <th class="bg-dark text-white">BTC</th>
+                                            <th class="bg-dark text-white">Time</th>
+                                            <th class="bg-dark text-white">Miner Preference</th>
+                                            <th class="bg-dark text-white">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <a href="#" class="text-primary">
+                                                7d2c7b06afa0
+                                                </a>
+                                            </td>
+                                            <td>1.0126281 BTC</td>
+                                            <td>
+                                                <time class="timeago" datetime="2018-02-01T13:38:01Z" title="2018-02-01 13:38 GMT">2 minutes ago</time>
+                                            </td>
+                                            <td>medium</td>
+                                            <td><span class="badge bg-primary">Confirmed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#" class="text-primary">
+                                                7d2c7b06afa0
+                                                </a>
+                                            </td>
+                                            <td>1.0126281 BTC</td>
+                                            <td>
+                                                <time class="timeago" datetime="2018-02-01T13:38:01Z" title="2018-02-01 13:38 GMT">2 minutes ago</time>
+                                            </td>
+                                            <td>medium</td>
+                                            <td><span class="badge bg-primary">Confirmed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#" class="text-primary">
+                                                7d2c7b06afa0
+                                                </a>
+                                            </td>
+                                            <td>1.0126281 BTC</td>
+                                            <td>
+                                                <time class="timeago" datetime="2018-02-01T13:38:01Z" title="2018-02-01 13:38 GMT">2 minutes ago</time>
+                                            </td>
+                                            <td>medium</td>
+                                            <td><span class="badge bg-success">Confirmed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#" class="text-primary">
+                                                7d2c7b06afa0
+                                                </a>
+                                            </td>
+                                            <td>1.0126281 BTC</td>
+                                            <td>
+                                                <time class="timeago" datetime="2018-02-01T13:38:01Z" title="2018-02-01 13:38 GMT">2 minutes ago</time>
+                                            </td>
+                                            <td>medium</td>
+                                            <td><span class="badge bg-danger">Confirmed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#" class="text-primary">
+                                                7d2c7b06afa0
+                                                </a>
+                                            </td>
+                                            <td>1.0126281 BTC</td>
+                                            <td>
+                                                <time class="timeago" datetime="2018-02-01T13:38:01Z" title="2018-02-01 13:38 GMT">2 minutes ago</time>
+                                            </td>
+                                            <td>medium</td>
+                                            <td><span class="badge bg-warning">Confirmed</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-lg-6">
+                            <div class="table-responsive">
+                                <table class="table no-margin table-hover">
+                                    <thead>					
+                                        <tr>
+                                            <th class="bg-dark text-white">Transaction Hash</th>
+                                            <th class="bg-dark text-white">BTC</th>
+                                            <th class="bg-dark text-white">Time</th>
+                                            <th class="bg-dark text-white">Miner Preference</th>
+                                            <th class="bg-dark text-white">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <a href="#" class="text-primary">
+                                                7d2c7b06afa0
+                                                </a>
+                                            </td>
+                                            <td>1.0126281 BTC</td>
+                                            <td>
+                                                <time class="timeago" datetime="2018-02-01T13:38:01Z" title="2018-02-01 13:38 GMT">2 minutes ago</time>
+                                            </td>
+                                            <td>medium</td>
+                                            <td><span class="badge bg-primary">Confirmed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#" class="text-primary">
+                                                7d2c7b06afa0
+                                                </a>
+                                            </td>
+                                            <td>1.0126281 BTC</td>
+                                            <td>
+                                                <time class="timeago" datetime="2018-02-01T13:38:01Z" title="2018-02-01 13:38 GMT">2 minutes ago</time>
+                                            </td>
+                                            <td>medium</td>
+                                            <td><span class="badge bg-primary">Confirmed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#" class="text-primary">
+                                                7d2c7b06afa0
+                                                </a>
+                                            </td>
+                                            <td>1.0126281 BTC</td>
+                                            <td>
+                                                <time class="timeago" datetime="2018-02-01T13:38:01Z" title="2018-02-01 13:38 GMT">2 minutes ago</time>
+                                            </td>
+                                            <td>medium</td>
+                                            <td><span class="badge bg-success">Confirmed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#" class="text-primary">
+                                                7d2c7b06afa0
+                                                </a>
+                                            </td>
+                                            <td>1.0126281 BTC</td>
+                                            <td>
+                                                <time class="timeago" datetime="2018-02-01T13:38:01Z" title="2018-02-01 13:38 GMT">2 minutes ago</time>
+                                            </td>
+                                            <td>medium</td>
+                                            <td><span class="badge bg-danger">Confirmed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#" class="text-primary">
+                                                7d2c7b06afa0
+                                                </a>
+                                            </td>
+                                            <td>1.0126281 BTC</td>
+                                            <td>
+                                                <time class="timeago" datetime="2018-02-01T13:38:01Z" title="2018-02-01 13:38 GMT">2 minutes ago</time>
+                                            </td>
+                                            <td>medium</td>
+                                            <td><span class="badge bg-warning">Confirmed</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- datatable begin -->
+                    <br><br>
+                    <div class="table-responsive">
+                        <table id="datatable" class="display">
+                            <thead>
+                                <tr>
+                                    <th>Column 1</th>
+                                    <th>Column 2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Row 1 Data 1</td>
+                                    <td>Row 1 Data 2</td>
+                                </tr>
+                                <tr>
+                                    <td>Row 2 Data 1</td>
+                                    <td>Row 2 Data 2</td>
+                                </tr>
+                                <tr>
+                                    <td>Row 1 Data 1</td>
+                                    <td>Row 1 Data 2</td>
+                                </tr>
+                                <tr>
+                                    <td>Row 2 Data 1</td>
+                                    <td>Row 2 Data 2</td>
+                                </tr>
+                                <tr>
+                                    <td>Row 1 Data 1</td>
+                                    <td>Row 1 Data 2</td>
+                                </tr>
+                                <tr>
+                                    <td>Row 2 Data 1</td>
+                                    <td>Row 2 Data 2</td>
+                                </tr>
+                                <tr>
+                                    <td>Row 1 Data 1</td>
+                                    <td>Row 1 Data 2</td>
+                                </tr>
+                                <tr>
+                                    <td>Row 2 Data 1</td>
+                                    <td>Row 2 Data 2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br><br>
+                    <!-- datatable end -->
+                    <div class="row">
+                        <div class="col col-12 col-md-3">
+                            <div class="cripto-dash-box-3 bg-warning">
+                                <div class="up">
+                                    <div class="icon">
+                                        <span class="material-symbols-outlined">
+                                            search
+                                        </span>
+                                    </div>
+                                    <div class="name">Bitcoin</div>
+                                </div>
+                                <div class="bot">
+                                    <div class="price">$325k</div>
+                                    <div class="value">3.3017 BTC</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-md-3">
+                            <div class="cripto-dash-box-3 bg-dark">
+                                <div class="up">
+                                    <div class="icon">
+                                        <span class="material-symbols-outlined">
+                                            search
+                                        </span>
+                                    </div>
+                                    <div class="name">Bitcoin</div>
+                                </div>
+                                <div class="bot">
+                                    <div class="price">$325k</div>
+                                    <div class="value">3.3017 BTC</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-md-3">
+                            <div class="cripto-dash-box-3 bg-info">
+                                <div class="up">
+                                    <div class="icon">
+                                        <span class="material-symbols-outlined">
+                                            search
+                                        </span>
+                                    </div>
+                                    <div class="name">Bitcoin</div>
+                                </div>
+                                <div class="bot">
+                                    <div class="price">$325k</div>
+                                    <div class="value">3.3017 BTC</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-md-3">
+                            <div class="cripto-dash-box-3 bg-danger">
+                                <div class="up">
+                                    <div class="icon">
+                                        <span class="material-symbols-outlined">
+                                            search
+                                        </span>
+                                    </div>
+                                    <div class="name">Bitcoin</div>
+                                </div>
+                                <div class="bot">
+                                    <div class="price">$325k</div>
+                                    <div class="value">3.3017 BTC</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dash-info-list">
+                        <div class="row">
+                            <div class="col col-12 col-lg-2">
+                                <div class="list-name">ETH/BTC</div>
+                            </div>
+                            <div class="col col-12 col-lg-2">
+                                <div class="list-box">
+                                    <div class="name">Last Price</div>
+                                    <div class="value">
+                                        <span class="text-info">0.0000245</span>
+                                        <span class="text-dark">$1.25</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-12 col-lg-2">
+                                <div class="list-box">
+                                    <div class="name">24h Change</div>
+                                    <div class="value">
+                                        <span class="text-info">0.0000245</span>
+                                        <span class="text-info">$1.25</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-12 col-lg-2">
+                                <div class="list-box">
+                                    <div class="name">24h High</div>
+                                    <div class="value">
+                                        <span class="text-dark">0.0000245</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-12 col-lg-2">
+                                <div class="list-box">
+                                    <div class="name">24h Low</div>
+                                    <div class="value">
+                                        <span class="text-danger">0.0000245</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-12 col-lg-2">
+                                <div class="list-box">
+                                    <div class="name">24h Total</div>
+                                    <div class="value">
+                                        <span class="text-dark">0.0000245</span>
+                                        <span class="text-dark">$1.25</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-12 col-lg-3">
+                            <div class="cripto-dash-box-4 bg-warning">
+                                <div class="icon">
+                                    <span class="material-symbols-outlined">
+                                        people
+                                    </span>
+                                </div>
+                                <div class="info">
+                                    <div class="price">$250.00</div>
+                                    <div class="desc">Charges on hold</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-lg-3">
+                            <div class="cripto-dash-box-4 bg-dark">
+                                <div class="icon">
+                                    <span class="material-symbols-outlined">
+                                        settings
+                                    </span>
+                                </div>
+                                <div class="info">
+                                    <div class="price">$250.00</div>
+                                    <div class="desc">Charges on hold</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-lg-3">
+                            <div class="cripto-dash-box-4 bg-danger">
+                                <div class="icon">
+                                    <span class="material-symbols-outlined">
+                                        person
+                                    </span>
+                                </div>
+                                <div class="info">
+                                    <div class="price">$250.00</div>
+                                    <div class="desc">Charges on hold</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-lg-3">
+                            <div class="cripto-dash-box-4 bg-info">
+                                <div class="icon">
+                                    <span class="material-symbols-outlined">
+                                        bolt
+                                    </span>
+                                </div>
+                                <div class="info">
+                                    <div class="price">$250.00</div>
+                                    <div class="desc">Charges on hold</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <hr>
+                    <br><br>
+                    <div class="table-title d-flex justify-content-between align-items-end pb-4">
+                        <div class="table-head">
+                            <h1>Key Performance Indicators</h1>
+                        </div>
+                    </div>
+                    <div class="table-info">
+                        <div class="row">
+                            <div class="col col-12 col-lg-3">
+                                <div class="table-info-box">
+                                    <div class="name">Income</div>
+                                    <div class="value text-success">
+                                        <span class="material-symbols-outlined">
+                                            arrow_drop_up
+                                        </span>
+                                        <span>7.1%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-12 col-lg-3">
+                                <div class="table-info-box">
+                                    <div class="name">Expenses</div>
+                                    <div class="value text-danger">
+                                        <span class="material-symbols-outlined">
+                                            arrow_drop_down
+                                        </span>
+                                        <span>-15.4%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-12 col-lg-3">
+                                <div class="table-info-box">
+                                    <div class="name">Receivablies</div>
+                                    <div class="value text-success">
+                                        <span class="material-symbols-outlined">
+                                            arrow_drop_up
+                                        </span>
+                                        <span>2.5%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-12 col-lg-3">
+                                <div class="table-info-box">
+                                    <div class="name">Project Billing</div>
+                                    <div class="value text-success">
+                                        <span class="material-symbols-outlined">
+                                            arrow_drop_up
+                                        </span>
+                                        <span>97.1%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <!--begin::Table-->
+                        <table class="table">
+                            <!--begin::Table head-->
+                            <thead>
+                                <tr class="fw-bold">                                    
+                                    <th>Symbol</th>
+                                    <th>Name</th>
+                                    <th>USD</th>                               
+                                    <th>Change 1h</th>                       
+                                    <th>Change 24h</th>                       
+                                    <th>Change 7d</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>BTC</td>
+                                    <td>Bitcoin</td>
+                                    <td>9,213</td>
+                                    <td>0.8 %</td>
+                                    <td>7.18 %</td>
+                                    <td><span class="badge bg-danger">13.74 %</span></td>
+                                </tr>
+                                <tr>
+                                    <td>ETH</td>
+                                    <td>Ethereum</td>
+                                    <td>9,213</td>
+                                    <td>0.8 %</td>
+                                    <td>7.18 %</td>
+                                    <td><span class="badge bg-dark">13.74 %</span></td>
+                                </tr>
+                                <tr>
+                                    <td>XRP</td>
+                                    <td>Ripple</td>
+                                    <td>9,213</td>
+                                    <td>0.8 %</td>
+                                    <td>7.18 %</td>
+                                    <td><span class="badge bg-success">13.74 %</span></td>
+                                </tr>
+                                <tr>
+                                    <td>LTC</td>
+                                    <td>Litecoin</td>
+                                    <td>9,213</td>
+                                    <td>0.8 %</td>
+                                    <td>7.18 %</td>
+                                    <td><span class="badge bg-info">13.74 %</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div><!-- im-wrapper -->
+        </div><!-- im-page --> 
+    </div><!-- im-root -->
+    <div class="loader"></div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script>
+        new DataTable('#datatable');
+    </script>
+</body>
+</html>

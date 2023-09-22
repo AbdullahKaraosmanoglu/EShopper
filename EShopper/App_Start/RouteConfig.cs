@@ -18,6 +18,12 @@ namespace EShopper
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "ProductsByBrand",
+                url: "Home/ProductsByBrand/{brandName}",
+                defaults: new { controller = "Home", action = "ProductsByBrand" }
+            );
+
         }
     }
 }

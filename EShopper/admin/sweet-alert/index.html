@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IM ADMIN TEMPLATE</title>
+    <base href="../">
+    <link rel="stylesheet" href="assets/scss/global.css">
+</head>
+<body>
+    <div class="im-root d-flex flex-column">
+        <div class="im-page flex-column flex-column-fluid">
+            <input type="checkbox" id="side-action-input">
+            <div class="im-header">
+                <div class="im-header-row">
+                    <label class="side-action-btn" for="side-action-input">
+                        <span class="material-symbols-outlined menu-icon">
+                            menu
+                        </span>
+                    </label>
+                    <div class="search">
+                        <form action="#" class="form">
+                            <div class="search-container">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <button type="button" class="btn btn-primary">
+                                    <span class="material-symbols-outlined">
+                                        search
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div><!-- search -->
+                    <div class="app-navbar">
+                        <div class="app-navbar-item">
+                            <div class="dropdown user-dropdown">
+                                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span>
+                                        <img src="assets/img/brahim.jpg" alt="">
+                                    </span> 
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#">Profil</a></li>
+                                    <li><a class="dropdown-item" href="#">Hesap</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Çıkış</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- im-header -->
+            <div class="im-side">
+                <label class="side-action-btn" for="side-action-input">
+                    <span class="material-symbols-outlined">
+                        arrow_left_alt
+                    </span>
+                    <span class="material-symbols-outlined menu-icon">
+                        menu
+                    </span>
+                    <span class="material-symbols-outlined close-icon">
+                        close
+                    </span>
+                </label>
+                <div class="logo">
+                    <a href="./">
+                        <span>IM</span>
+                    </a>
+                </div><!-- logo -->
+                <div class="menu">
+                    <div class="menu-scroll">
+                        <div class="menu-item">
+                            <a href="javascript:;">
+                                <span class="material-symbols-outlined">
+                                    dashboard
+                                </span>
+                                <span class="menu-text">
+                                    Dashboards
+                                </span>
+                            </a>
+                            <div class="menu-sub">
+                                <ul>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="material-symbols-outlined">
+                                                bar_chart_4_bars
+                                            </span>
+                                            <span class="menu-text">Dashboard 1</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="material-symbols-outlined">
+                                                team_dashboard
+                                            </span>
+                                            <span class="menu-text">Dashboard 2</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="material-symbols-outlined">
+                                                dashboard_customize
+                                            </span>
+                                            <span class="menu-text">Dashboard 3</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><!-- menu-item -->
+                        <div class="menu-head">
+                            <span class="material-symbols-outlined">
+                                auto_stories
+                            </span>
+                            <span class="menu-text">PAGES</span>
+                        </div><!-- menu-head -->
+                        <div class="menu-item">
+                            <a href="javascript:;">
+                                <span class="material-symbols-outlined">
+                                    fact_check
+                                </span>
+                                <span class="menu-text">LOGIN PAGES</span>
+                            </a>
+                            <div class="menu-sub">
+                                <ul>
+                                    <li>
+                                        <a href="pages/login-resigter/login.html">
+                                            <span class="material-symbols-outlined">
+                                                check_box
+                                            </span>
+                                            <span class="menu-text">LOGIN</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="pages/login-resigter/login.html">
+                                            <span class="material-symbols-outlined">
+                                                sync_saved_locally
+                                            </span>
+                                            <span class="menu-text">REGISTER</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="pages/login-resigter/login.html">
+                                            <span class="material-symbols-outlined">
+                                                cycle
+                                            </span>
+                                            <span class="menu-text">CHANGE PASS</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><!-- menu-item -->
+                        <div class="menu-item">
+                            <a href="javascript:;">
+                                <span class="material-symbols-outlined">
+                                    person
+                                </span>
+                                <span class="menu-text">USER PAGES</span>
+                            </a>
+                        </div><!-- menu-item -->
+                        <div class="menu-head">
+                            <span class="material-symbols-outlined">
+                                apps
+                            </span>
+                            <span class="menu-text">APPS</span>
+                        </div><!-- menu-head -->
+                        <div class="menu-item">
+                            <a href="javascript:;">
+                                <span class="material-symbols-outlined">
+                                    recycling
+                                </span>
+                                <span class="menu-text">PROJECTS</span>
+                            </a>
+                        </div><!-- menu-item -->
+                        <div class="menu-item">
+                            <a href="javascript:;">
+                                <span class="material-symbols-outlined">
+                                    favorite
+                                </span>
+                                <span class="menu-text">CUSTOMERS</span>
+                            </a>
+                        </div><!-- menu-item -->
+                    </div><!-- menu-scroll -->
+                </div><!-- menu -->
+                <div class="side-footer">
+                    <span>2023 &copy; IM </span>
+                </div><!-- menu-footer -->
+            </div><!-- im-side -->
+            <label class="im-side-overlay" for="side-action-input"></label><!-- im-side-overlay -->
+            <div class="im-wrapper">
+                <div class="container">
+                    <div class="page-title d-flex justify-content-between align-items-end pb-4">
+                        <div class="page-head">
+                            <h1>SweetAlert</h1>
+                            <p>SweetAlert kullanımına dair</p>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="button" id="button-1" class="btn btn-primary d-flex align-items-center">
+                            <span class="material-symbols-outlined">
+                                search
+                            </span>
+                        </button>
+                        <button type="button" id="button-2" class="btn btn-primary d-flex align-items-center">
+                            <span class="material-symbols-outlined">
+                                add
+                            </span>
+                        </button>
+                        <button type="button" id="button-3" class="btn btn-primary d-flex align-items-center">
+                            <span class="material-symbols-outlined">
+                                done
+                            </span>
+                        </button>
+                        <button type="button" id="button-4" class="btn btn-primary d-flex align-items-center">
+                            <span class="material-symbols-outlined">
+                                settings
+                            </span>
+                        </button>
+                    </div>
+                    <hr class="py-5">
+                    <p>SweetAlert örnekleri <a href="https://sweetalert.js.org/docs/">SweetAlert Docs</a> üzerinden hazırlanmıştır.</p>
+                </div>
+            </div><!-- im-wrapper -->
+        </div><!-- im-page --> 
+    </div><!-- im-root -->
+    <div class="loader"></div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        document.getElementById('button-1').onclick = function(){
+            swal("Here's a message!");
+        };
+
+        document.getElementById('button-2').onclick = function(){
+            swal("Here's a message!", "It's pretty, isn't it?")
+        };
+
+        document.getElementById('button-3').onclick = function(){
+            swal("Good job!", "You clicked the button!", "success");
+        };
+        document.getElementById('button-4').onclick = function(){
+            swal({
+                title: "Sweet!",
+                text: "Here's a custom image.",
+                imageUrl: 'https://i.imgur.com/4NZ6uLY.jpg'
+            });
+        };
+        
+    </script>
+</body>
+</html>

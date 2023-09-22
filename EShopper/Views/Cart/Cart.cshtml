@@ -1,4 +1,6 @@
 ﻿
+@model EShopper.Models.ProductModel
+
 @{
     ViewBag.Title = "Sepet";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -24,7 +26,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in @ViewBag.CartList)
+                    @foreach (var item in @Model.CartList)
                     {
 
                         <tr class="urun" data-fiyat="@item.Price">
@@ -75,8 +77,8 @@
         </div>
         <div class="">
             @*<span>
-                <label><input type="checkbox" class="checkoption" value="0" onclick="checkedOnClick(this);"> Havale/EFT İle Ödeme</label>
-            </span>*@
+                    <label><input type="checkbox" class="checkoption" value="0" onclick="checkedOnClick(this);"> Havale/EFT İle Ödeme</label>
+                </span>*@
             <span>
                 <label><input type="checkbox" class="checkoption" id="pay1" value="1" onclick="checkedOnClick(this);" style="margin-left:20px;"> Kapıda Ödeme</label>
             </span>
@@ -153,10 +155,10 @@
                 <div class="col-sm-4">
                     <div class="order-message">
                         <p>Alışveriş Siparişi</p>
-                        <textarea  id="orderDescription" placeholder="Siparişinizle ilgili notlar, Teslimata İlişkin Özel Notlar" rows="16"></textarea>
+                        <textarea id="orderDescription" placeholder="Siparişinizle ilgili notlar, Teslimata İlişkin Özel Notlar" rows="16"></textarea>
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <button type="submit" class="btn btn-danger"  onclick="AddOrder();">Sipariş Ver</button>
+                                <button type="submit" class="btn btn-danger" onclick="AddOrder();">Sipariş Ver</button>
                             </div>
                         </div>
                     </div>

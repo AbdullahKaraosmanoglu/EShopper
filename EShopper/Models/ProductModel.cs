@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace EShopper.Models
@@ -31,5 +32,7 @@ namespace EShopper.Models
         public string ProductBrandName { get; set; }
         [Display(Name = "ProductCategoryName")]
         public string ProductCategoryName { get; set; }
+        public List<ProductModel> ProductList { get; set; }
+        public List<ProductModel> CartList { get; set; }
     }
 }

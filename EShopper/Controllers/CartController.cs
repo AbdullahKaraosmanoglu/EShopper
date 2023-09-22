@@ -1,4 +1,5 @@
 ﻿using EShopper.Layers;
+using EShopper.Models;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -18,18 +19,24 @@ namespace EShopper.Controllers
             CartProcess cartProcess = new CartProcess();
             var response = cartProcess.AddCart(productId, userId);
             if (!response)
+            {
                 return;
+            }
+                
         }
 
         public ActionResult GetProductToCart()
         {
             string userId = Session["userId"].ToString();
             CartProcess cartProcess = new CartProcess();
-            var response = cartProcess.GetCarts(userId);
-            var CartList = response.ToList();
-            ViewBag.CartList = CartList;
+            var cartList = cartProcess.GetCarts(userId);
 
-            return View("~/Views/Cart/Cart.cshtml", ViewBag);
+            var cartModel = new ProductModel
+            {
+                CartList = cartList,
+            };
+
+            return View("~/Views/Cart/Cart.cshtml", cartModel);
         }
 
         public void DeleteItemCart(string productId)
@@ -38,7 +45,9 @@ namespace EShopper.Controllers
             CartProcess cartProcess = new CartProcess();
             var response = cartProcess.DeleteItemCart(productId, userId);
             if (!response)
+            {
                 return;
+            }
         }
     }
 }
