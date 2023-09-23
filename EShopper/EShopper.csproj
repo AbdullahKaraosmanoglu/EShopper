@@ -139,6 +139,7 @@
     <Compile Include="Models\ProductListModel.cs" />
     <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\UpdateUserModel.cs" />
     <Compile Include="Models\UsersModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -150,7 +151,6 @@
     <Content Include="admin\assets\img\IMG_5641.JPEG" />
     <Content Include="admin\assets\scss\global.css" />
     <Content Include="admin\dashboards\dashboard-1.html" />
-    <Content Include="admin\index.html" />
     <Content Include="admin\pages\login-resigter\change-password.html" />
     <Content Include="admin\pages\login-resigter\login.html" />
     <Content Include="admin\pages\login-resigter\register.html" />
@@ -281,6 +281,8 @@
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Contact\Contact.cshtml" />
     <Content Include="Views\Admin\Indexs.cshtml" />
+    <Content Include="Views\Admin\ProductsControl.cshtml" />
+    <Content Include="Views\Admin\UsersControl.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

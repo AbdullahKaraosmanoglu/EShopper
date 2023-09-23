@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing.Printing;
 
 namespace EShopper.Layers
 {
@@ -25,6 +26,7 @@ namespace EShopper.Layers
             }
             return con;
         }
+
 
         public bool AddUser(UsersModel obj)
         {
@@ -68,7 +70,7 @@ namespace EShopper.Layers
                             Email = reader["Email"].ToString(),
                             Password = reader["Password"].ToString(),
                             DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]),
-                            Gender = Convert.ToInt32(reader["Gender"]),
+                            Gender = Convert.ToBoolean(reader["Gender"]),
                             Address = reader["Address"].ToString()
                         });
                     }
@@ -113,7 +115,7 @@ namespace EShopper.Layers
                         userModel.Email = reader["Email"].ToString();
                         userModel.Password = reader["Password"].ToString();
                         userModel.DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]);
-                        userModel.Gender = Convert.ToInt32(reader["Gender"]);
+                        userModel.Gender = Convert.ToBoolean(reader["Gender"]);
                         userModel.Address = reader["Address"].ToString();
                     }
                 }
@@ -142,7 +144,7 @@ namespace EShopper.Layers
                         userModel.Email = reader["Email"].ToString();
                         userModel.Password = reader["Password"].ToString();
                         userModel.DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]);
-                        userModel.Gender = Convert.ToInt32(reader["Gender"]);
+                        userModel.Gender = Convert.ToBoolean(reader["Gender"]);
                         userModel.Address = reader["Address"].ToString();
                     }
                 }
@@ -151,23 +153,62 @@ namespace EShopper.Layers
             }
         }
 
-        public bool UpdateUsers(UsersModel usersModel)
+        public bool UpdateUsers(UpdateUserModel updateUserModel)
         {
             using (var con = CreateConnection())
             using (var com = new SqlCommand("dbo.SpUpdateUsers", con))
             {
                 com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@UserId", usersModel.UserId).DbType = DbType.Int32;
-                com.Parameters.AddWithValue("@Name", usersModel.Name).DbType = DbType.String;
-                com.Parameters.AddWithValue("@Surname", usersModel.Surname).DbType = DbType.String;
-                com.Parameters.AddWithValue("@Email", usersModel.Email).DbType = DbType.String;
-                com.Parameters.AddWithValue("@Password", usersModel.Password).DbType = DbType.String;
-                com.Parameters.AddWithValue("@DateOfBirth", usersModel.DateOfBirth).DbType = DbType.DateTime;
-                com.Parameters.AddWithValue("@Address", usersModel.Address).DbType = DbType.String;
+                com.Parameters.AddWithValue("@UserId", updateUserModel.UserId).DbType = DbType.Int32;
+                com.Parameters.AddWithValue("@Email", updateUserModel.Email).DbType = DbType.String;
+                com.Parameters.AddWithValue("@Password", updateUserModel.Password).DbType = DbType.String;
+                com.Parameters.AddWithValue("@Address", updateUserModel.Address).DbType = DbType.String;
 
                 var sp = com.ExecuteScalar();
                 return sp != null && sp.GetHashCode() >= 1;
             }
+        }
+
+        public List<UsersModel> GetAllUsersWithPagenation(int pageNumber, int pageSize)
+        {
+            List<UsersModel> userList = new List<UsersModel>();
+
+            using (var con = CreateConnection())
+            {
+                //int pageNumber = 1; // Sayfa numarasını belirleyin
+                //int pageSize = 10; // Sayfa boyutunu belirleyin
+
+                using (var com = new SqlCommand("dbo.SpGetAllUsersWithPagination", con))
+                {
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@PageNumber", pageNumber);
+                    com.Parameters.AddWithValue("@PageSize", pageSize);
+
+                    using (SqlDataReader reader = com.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            UsersModel user = new UsersModel
+                            {
+                                UserId = reader.GetInt32(reader.GetOrdinal("UserId")),
+                                RoleId = reader.GetInt32(reader.GetOrdinal("RoleId")),
+                                Name = reader.GetString(reader.GetOrdinal("Name")),
+                                Surname = reader.GetString(reader.GetOrdinal("Surname")),
+                                Email = reader.GetString(reader.GetOrdinal("Email")),
+                                Password = reader.GetString(reader.GetOrdinal("Password")),
+                                DateOfBirth = reader.GetDateTime(reader.GetOrdinal("DateOfBirth")),
+                                Gender = reader.GetBoolean(reader.GetOrdinal("Gender")),
+                                Address = reader.GetString(reader.GetOrdinal("Address")),
+                                GenderTypeText = reader.IsDBNull(reader.GetOrdinal("GenderTypeText")) ? null : reader.GetString(reader.GetOrdinal("GenderTypeText"))
+
+                            };
+
+                            userList.Add(user);
+                        }
+                    }
+                }
+            }
+            return userList;
         }
     }
 }

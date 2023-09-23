@@ -19,23 +19,23 @@ namespace EShopper.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ProfileUpdate(UsersModel usersModel)
+        public ActionResult ProfileUpdate(UpdateUserModel updateUserModel)
         {
             if (ModelState.IsValid)
             {
                 var userProcess = new UserProcess();
-                bool isUpdated = userProcess.UpdateUsers(usersModel);
+                bool isUpdated = userProcess.UpdateUsers(updateUserModel);
 
                 if (isUpdated)
                 {
-                    var updatedUser = userProcess.GetUserModelByUserId(usersModel.UserId);
+                    var updatedUser = userProcess.GetUserModelByUserId(updateUserModel.UserId);
                     TempData["AlertMessage"] = "Mükemmel!!";
                     return View("~/Views/Account/Profile.cshtml", updatedUser);
                 }
             }
 
             // Eğer güncelleme başarısızsa veya model geçerli değilse aynı sayfayı tekrar göster
-            return View("~/Views/Account/Profile.cshtml", usersModel);
+            return View("~/Views/Account/Profile.cshtml", updateUserModel);
         }
 
     }

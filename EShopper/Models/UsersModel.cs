@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -40,6 +41,9 @@ namespace EShopper.Models
         public DateTime? DateOfBirth { get; set; }
 
         [Display(Name = "Gender")]
-        public int? Gender { get; set; }
+        public bool? Gender { get; set; }
+        public string GenderTypeText { get; set; }
+
+        public List<UsersModel> UserList { get; set; }
     }
 }

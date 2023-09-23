@@ -1,4 +1,5 @@
-﻿
+﻿@model EShopper.Models.ProductModel
+
 
 @{
     Layout = null;
@@ -222,24 +223,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td class="text-end ">
-                                        <span class="fw-bold"> ₺</span>
-                                    </td>
-                                    <td class="text-end">
-                                    </td>
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="material-symbols-outlined">
-                                                edit
-                                            </span>
-                                        </a>
-                                    </td>
-                                </tr>
+                                @foreach (var item in @Model.ProductList)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="@item.ImagePath" alt="" width="100" height="100" />
+                                        </td>
+                                        <td>
+                                            @item.ProductName
+                                        </td>
+                                        <td class="text-end ">
+                                            <span class="fw-bold">@item.Price ₺</span>
+                                        </td>
+                                        <td class="text-end">
+                                            @item.Stock
+                                        </td>
+                                        <td class="text-end">
+                                            <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <span class="material-symbols-outlined">
+                                                    edit
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>

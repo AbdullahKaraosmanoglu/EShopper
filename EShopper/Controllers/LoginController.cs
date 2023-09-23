@@ -41,11 +41,11 @@ namespace EShopper.Controllers
 
                 switch (slGender)
                 {
-                    case "Man":
-                        gender = 0;
+                    case "Erkek":
+                        gender = Convert.ToInt32(false);
                         break;
-                    case "Woman":
-                        gender = 1;
+                    case "Kadın":
+                        gender = Convert.ToInt32(true);
                         break;
                 }
 
@@ -58,7 +58,7 @@ namespace EShopper.Controllers
                     Password = TxtPassword,
                     Address = TxtAddress,
                     DateOfBirth = Convert.ToDateTime(DtDateOfBirth),
-                    Gender = gender
+                    Gender = Convert.ToBoolean(gender)
                 };
 
                 UserProcess userProcess = new UserProcess();

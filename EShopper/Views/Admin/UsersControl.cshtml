@@ -1,10 +1,18 @@
+﻿@model EShopper.Models.UsersModel
+
+@{
+    Layout = null;
+}
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IM ADMIN TEMPLATE</title>
-    <link rel="stylesheet" href="assets/scss/global.css">
+    <title>ADMIN PANEL</title>
+    <link rel="stylesheet" href="~/admin/assets/scss/global.css">
 </head>
 <body>
     <div class="im-root d-flex flex-column">
@@ -34,8 +42,8 @@
                             <div class="dropdown user-dropdown">
                                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <span>
-                                        <img src="assets/img/brahim.jpg" alt="">
-                                    </span> 
+                                        <img src="assets/img/IMG_5641.JPEG" alt="">
+                                    </span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li><a class="dropdown-item" href="#">Profil</a></li>
@@ -61,8 +69,8 @@
                     </span>
                 </label>
                 <div class="logo">
-                    <a href="./">
-                        <span>IM</span>
+                    <a href="@Url.Action("Indexs", "Admin")">
+                        <span>APOFATHER</span>
                     </a>
                 </div><!-- logo -->
                 <div class="menu">
@@ -79,19 +87,19 @@
                             <div class="menu-sub">
                                 <ul>
                                     <li>
-                                        <a href="javascript:;">
+                                        <a href="@Url.Action("ProductsControl", "Admin")">
                                             <span class="material-symbols-outlined">
                                                 bar_chart_4_bars
                                             </span>
-                                            <span class="menu-text">Dashboard 1</span>
+                                            <span class="menu-text">Ürün Kontrol Sayfası</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="javascript:;">
+                                        <a href="@Url.Action("UsersControl", "Admin")">
                                             <span class="material-symbols-outlined">
                                                 team_dashboard
                                             </span>
-                                            <span class="menu-text">Dashboard 2</span>
+                                            <span class="menu-text">Kullanıcılar Listesi</span>
                                         </a>
                                     </li>
                                     <li>
@@ -188,8 +196,8 @@
                 <div class="container">
                     <div class="table-title d-flex justify-content-between align-items-end pb-4">
                         <div class="table-head">
-                            <h1>LOREM İPSUM</h1>
-                            <p>Dolor sit amet</p>
+                            <h1>E-SHOPPER KULLANICI LİSTESİ</h1>
+                            <p>KONTROL PANELİ</p>
                         </div>
                         <div class="button-actions">
                             <button type="button" class="btn btn-primary d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -205,50 +213,43 @@
                         <table class="table">
                             <!--begin::Table head-->
                             <thead>
-                                <tr class="fw-bold border-bottom-0">                                    
-                                    <th class="text-start">PERSONEL</th>
-                                    <th class="text-end">FİYAT</th>
-                                    <th class="text-end">DURUM</th>                               
+                                <tr class="fw-bold border-bottom-0">
+                                    <th class="text-start">İSİM</th>
+                                    <th class="text-start">SOYİSİM</th>
+                                    <th class="text-start">ADRES</th>
+                                    <th class="text-start">CİNSİYET</th>
+                                    <th class="text-start">DOĞUM TARİHİ</th>
                                     <th class="text-end">DÜZENLEME</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        İbrahim Mesut Yılmaz                             
-                                    </td>
-                                    <td class="text-end ">
-                                        <span class="fw-bold">10₺</span>                                
-                                    </td>    
-                                    <td class="text-end">
-                                        Yapılıyor
-                                    </td>     
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="material-symbols-outlined">
-                                                edit
-                                            </span>
-                                        </a>
-                                    </td>
-                                </tr>  
-                                <tr>
-                                    <td>
-                                        Fatih Baytar                          
-                                    </td>
-                                    <td class="text-end ">
-                                        <span class="fw-bold">100₺</span>                                
-                                    </td>    
-                                    <td class="text-end">
-                                        Tamamlandı
-                                    </td>     
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="material-symbols-outlined">
-                                                edit
-                                            </span>
-                                        </a>
-                                    </td>
-                                </tr>                           
+                                @foreach (var item in @Model.UserList)
+                                {
+                                    <tr>
+                                        <td class="text-start ">
+                                            @item.Name
+                                        </td>
+                                        <td class="text-start ">
+                                            @item.Surname
+                                        </td>
+                                        <td class="text-start ">
+                                            <span class="fw-bold">@item.Address</span>
+                                        </td>
+                                        <td class="text-start">
+                                            @item.GenderTypeText
+                                        </td>
+                                        <td class="text-start">
+                                            @item.DateOfBirth
+                                        </td> 
+                                        <td class="text-end">
+                                            <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <span class="material-symbols-outlined">
+                                                    edit
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -261,7 +262,7 @@
                                     <option value="1">25</option>
                                     <option value="2">50</option>
                                     <option value="3">100</option>
-                                </select> 
+                                </select>
                                 <span>of 50 entries</span>
                             </div><!-- entries -->
                         </div>
@@ -279,9 +280,9 @@
                     </div><!-- pagination-container -->
                 </div>
             </div><!-- im-wrapper -->
-        </div><!-- im-page --> 
+        </div><!-- im-page -->
     </div><!-- im-root -->
-    <div class="loader"></div>
+    @*<div class="loader"></div>*@
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -300,6 +301,6 @@
             </div>
         </div>
     </div>
-    <script src="assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="~/admin/assets/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>

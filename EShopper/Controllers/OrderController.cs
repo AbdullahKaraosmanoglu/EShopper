@@ -48,6 +48,7 @@ namespace EShopper.Controllers
             var OrderList = response.ToList();
             ViewBag.OrderList = OrderList;
             return View("~/Views/Orders/Index.cshtml", ViewBag);
+            //ViewBag bir nesnedir ve return View() çağrısında bir ViewBag nesnesini bir model olarak kullanamazsın. 
         }
     }
 }
