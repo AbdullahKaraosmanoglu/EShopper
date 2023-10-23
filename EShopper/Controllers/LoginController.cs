@@ -24,11 +24,13 @@ namespace EShopper.Controllers
 
                     return View("~/Views/Login/LoginProcess.cshtml");
                 }
+
                 if (!SignUpControl())
                 {
                     @ViewBag.SErrorMessage = "Aynı Email İle Kayıtlı Üye Mevcut Başka Bir Email İle Deneyiniz";
                     return View("~/Views/Login/LoginProcess.cshtml");
                 }
+
                 string TxtName = Request.Form["TxtName"].ToString();
                 string TxtSurname = Request.Form["TxtSurname"].ToString();
                 string TxtEmail = Request.Form["TxtEmail"].ToString();
@@ -79,39 +81,35 @@ namespace EShopper.Controllers
             UserProcess userProcess = new UserProcess();
             string TxtEmail = Request.Form["TxtEmail"].ToString();
             string TxtPassword = Request.Form["TxtPassword"].ToString();
-            try
+
+            if (!String.IsNullOrEmpty(TxtEmail) || !String.IsNullOrEmpty(TxtPassword))
             {
-
-                if (!String.IsNullOrEmpty(TxtEmail) || !String.IsNullOrEmpty(TxtPassword))
+                UsersModel usersModelGet = new UsersModel
                 {
-                    UsersModel usersModelGet = new UsersModel
-                    {
-                        Email = TxtEmail,
-                        Password = TxtPassword
-                    };
+                    Email = TxtEmail,
+                    Password = TxtPassword
+                };
 
-                    var response = userProcess.LoginControl(usersModelGet);
+                var response = userProcess.LoginControl(usersModelGet);
 
-                    if (response == null || response.Count <= 0)
-                    {
-                        @ViewBag.LErrorMessage = "Email veya şifre hatalı.";
-                        return View("~/Views/Login/LoginProcess.cshtml");
-                    }
-                }
-                else
+                if (response == null || response.Count <= 0)
                 {
-                    @ViewBag.LErrorMessage = "Tüm alanları doldurunuz.";
+                    @ViewBag.LErrorMessage = "Email veya şifre hatalı.";
                     return View("~/Views/Login/LoginProcess.cshtml");
-
                 }
             }
-            catch (Exception ex)
+            else
             {
-                throw ex;
+                @ViewBag.LErrorMessage = "Tüm alanları doldurunuz.";
+                return View("~/Views/Login/LoginProcess.cshtml");
+
             }
+
             var responseUserModel = userProcess.SelectUserModelByEmailAndPassword(TxtEmail, TxtPassword);
+
             Session["CurrentUser"] = responseUserModel;
             Session["userId"] = responseUserModel.UserId;
+
             var currentUser = Session["CurrentUser"] as UsersModel;
             if (currentUser != null)
             {
