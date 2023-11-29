@@ -27,7 +27,6 @@ namespace EShopper.Layers
             return con;
         }
 
-
         public bool AddUser(UsersModel obj)
         {
             using (var con = CreateConnection())

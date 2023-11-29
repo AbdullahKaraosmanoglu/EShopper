@@ -40,7 +40,7 @@ namespace EShopper.Controllers
             int pageNumber = 1; // Sayfa numarasını belirleyin
             int pageSize = 7; // Sayfa boyutunu belirleyin
 
-            var session = Session["userId"];
+            //var session = Session["userId"];
 
             var getUsers = userProcess.GetAllUsersWithPagenation(pageNumber, pageSize);
 
