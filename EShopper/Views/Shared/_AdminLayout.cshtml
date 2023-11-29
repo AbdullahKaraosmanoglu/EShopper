@@ -1,0 +1,293 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN PANEL</title>
+    <link rel="stylesheet" href="~/admin/assets/scss/global.css">
+</head>
+<body>
+    <div class="im-root d-flex flex-column">
+        <div class="im-page flex-column flex-column-fluid">
+            <input type="checkbox" id="side-action-input">
+            <div class="im-header">
+                <div class="im-header-row">
+                    <label class="side-action-btn" for="side-action-input">
+                        <span class="material-symbols-outlined menu-icon">
+                            menu
+                        </span>
+                    </label>
+                    <div class="search">
+                        <form action="#" class="form">
+                            <div class="search-container">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <button type="button" class="btn btn-primary">
+                                    <span class="material-symbols-outlined">
+                                        search
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div><!-- search -->
+                    <div class="app-navbar">
+                        <div class="app-navbar-item">
+                            <div class="dropdown user-dropdown">
+                                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span>
+                                        <img src="assets/img/IMG_5641.JPEG" alt="">
+                                    </span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#">Profil</a></li>
+                                    <li><a class="dropdown-item" href="#">Hesap</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Çıkış</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- im-header -->
+            <div class="im-side">
+                <label class="side-action-btn" for="side-action-input">
+                    <span class="material-symbols-outlined">
+                        arrow_left_alt
+                    </span>
+                    <span class="material-symbols-outlined menu-icon">
+                        menu
+                    </span>
+                    <span class="material-symbols-outlined close-icon">
+                        close
+                    </span>
+                </label>
+                <div class="logo">
+                    <a href="@Url.Action("Indexs", "Admin")">
+                        <span>APOFATHER</span>
+                    </a>
+                </div><!-- logo -->
+                <div class="menu">
+                    <div class="menu-scroll">
+                        <!--<div class="menu-item">
+                            <a href="javascript:;">
+                                <span class="material-symbols-outlined">
+                                    dashboard
+                                </span>
+                                <span class="menu-text">
+                                    Dashboards
+                                </span>
+                            </a>
+                            <div class="menu-sub">
+                                <ul>
+                                    <li>
+                                        <a href="@Url.Action("ProductsControl", "Admin")">
+                                            <span class="material-symbols-outlined">
+                                                bar_chart_4_bars
+                                            </span>
+                                            <span class="menu-text">Ürün Kontrol Sayfası</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("UsersControl", "Admin")">
+                                            <span class="material-symbols-outlined">
+                                                team_dashboard
+                                            </span>
+                                            <span class="menu-text">Kullanıcılar Listesi</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>--><!-- menu-item -->
+                        @*<div class="menu-head">
+                            <span class="material-symbols-outlined">
+                                auto_stories
+                            </span>
+                            <span class="menu-text">PAGES</span>
+                        </div>*@
+
+                        <!-- menu-head -->
+                        <!--<div class="menu-item">
+                            <a href="javascript:;">
+                                <span class="material-symbols-outlined">
+                                    fact_check
+                                </span>
+                                <span class="menu-text">LOGIN PAGES</span>
+                            </a>
+                            <div class="menu-sub">
+                                <ul>
+                                    <li>
+                                        <a href="pages/login-resigter/login.html">
+                                            <span class="material-symbols-outlined">
+                                                check_box
+                                            </span>
+                                            <span class="menu-text">LOGIN</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="pages/login-resigter/login.html">
+                                            <span class="material-symbols-outlined">
+                                                sync_saved_locally
+                                            </span>
+                                            <span class="menu-text">REGISTER</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="pages/login-resigter/login.html">
+                                            <span class="material-symbols-outlined">
+                                                cycle
+                                            </span>
+                                            <span class="menu-text">CHANGE PASS</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>-->
+                        <!-- menu-item -->
+                        <div class="menu-item">
+                            <a href="javascript:;">
+                                <span class="material-symbols-outlined">
+                                    warning
+                                </span>
+                                <span class="menu-text">ŞİKAYET VE ÖNERİLER</span>
+                            </a>
+                        </div><!-- menu-item -->
+                        <!--<div class="menu-head">
+                            <span class="material-symbols-outlined">
+                                apps
+                            </span>
+                            <span class="menu-text">APPS</span>
+                        </div>--><!-- menu-head -->
+                        <div class="menu-item">
+                            <a href="javascript:;">
+                                <span class="material-symbols-outlined">
+                                    shopping_basket
+                                </span>
+                                <span class="menu-text">SİPARİŞLER</span>
+                            </a>
+                            <a href="@Url.Action("ProductsControl", "Admin")">
+                                <span class="material-symbols-outlined">
+                                    shopping_cart_checkout
+                                </span>
+                                <span class="menu-text">ÜRÜNLER</span>
+                            </a>
+                            <a href="@Url.Action("UsersControl", "Admin")">
+                                <span class="material-symbols-outlined">
+                                    favorite
+                                </span>
+                                <span class="menu-text">MÜŞTERİLER</span>
+                            </a>
+                        </div><!-- menu-item -->
+                    </div><!-- menu-scroll -->
+                </div><!-- menu -->
+                <div class="side-footer">
+                    <span>2023 &copy; IM </span>
+                </div><!-- menu-footer -->
+            </div><!-- im-side -->
+
+            @RenderBody()
+
+            <label class="im-side-overlay" for="side-action-input"></label><!-- im-side-overlay -->
+            <!--<div class="im-wrapper">
+                <div class="container">
+                    <div class="table-title d-flex justify-content-between align-items-end pb-4">
+                        <div class="table-head">
+                            <h1>E-SHOPPER ÜRÜN LİSTESİ</h1>
+                            <p>KONTROL PANELİ</p>
+                        </div>
+                        <div class="button-actions">
+                            <button type="button" class="btn btn-primary d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <span class="material-symbols-outlined me-2">
+                                    add
+                                </span>
+                                <span>Ekle</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">-->
+            <!--begin::Table-->
+            <!--<table class="table">-->
+            <!--begin::Table head-->
+            <!--<thead>
+                        <tr class="fw-bold border-bottom-0">
+                            <th class="text-start">FOTOĞRAF</th>
+                            <th class="text-start">PERSONEL</th>
+                            <th class="text-end">FİYAT</th>
+                            <th class="text-end">STOK</th>
+                            <th class="text-end">DÜZENLEME</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td class="text-end ">
+                                <span class="fw-bold"> ₺</span>
+                            </td>
+                            <td class="text-end">
+                            </td>
+                            <td class="text-end">
+                                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <span class="material-symbols-outlined">
+                                        edit
+                                    </span>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination-container d-flex justify-content-between">
+                <div class="col col-12 col-lg-5">
+                    <div class="entries d-flex align-items-center">
+                        <span>Showing 1 to </span>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>10</option>
+                            <option value="1">25</option>
+                            <option value="2">50</option>
+                            <option value="3">100</option>
+                        </select>
+                        <span>of 50 entries</span>
+                    </div>-->
+            <!-- entries -->
+            <!--</div>
+                <div class="col col-12 col-lg-7">
+                    <nav class="d-flex justify-content-end" aria-label="table navigation">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>-->
+            <!-- pagination-container -->
+            <!--</div>
+            </div>-->
+            <!-- im-wrapper -->
+        </div><!-- im-page -->
+    </div><!-- im-root -->
+    @*<div class="loader"></div>*@
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/admin/assets/bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+</html>
