@@ -74,6 +74,7 @@ namespace EShopper.Layers
                             OrderStatus = Convert.ToInt32(reader["OrderStatus"]),
                             PaymentTypeText = reader["PaymentTypeText"].ToString(),
                             OrderStatusText = reader["OrderStatusText"].ToString(),
+
                         });
                     }
                 }
