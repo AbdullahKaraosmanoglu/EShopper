@@ -111,6 +111,7 @@ namespace EShopper.Controllers
             Session["userId"] = responseUserModel.UserId;
 
             var currentUser = Session["CurrentUser"] as UsersModel;
+
             if (currentUser != null)
             {
                 if (currentUser.RoleId == 1)
@@ -132,6 +133,7 @@ namespace EShopper.Controllers
             string DtDateOfBirth = Request.Form["DtDateOfBirth"].ToString();
             string TxtAddress = Request.Form["TxtAddress"].ToString();
             string slGender = Request.Form["slGender"].ToString();
+
             if (String.IsNullOrEmpty(TxtName) || String.IsNullOrEmpty(TxtSurname) ||
                 String.IsNullOrEmpty(TxtEmail) || String.IsNullOrEmpty(TxtPassword) ||
                 String.IsNullOrEmpty(DtDateOfBirth) || String.IsNullOrEmpty(TxtAddress)
@@ -139,13 +141,13 @@ namespace EShopper.Controllers
             {
                 return false;
             }
-
             return true;
         }
 
         private Boolean SignUpControl()
         {
             string TxtEmail = Request.Form["TxtEmail"].ToString();
+
             if (!String.IsNullOrEmpty(TxtEmail))
             {
                 UsersModel usersModelGet = new UsersModel
@@ -165,9 +167,11 @@ namespace EShopper.Controllers
 
         public ActionResult Logout()
         {
+
             Session.Abandon();
             Session.Clear();
             return RedirectToAction("LoginProcess");
+
         }
     }
 }
